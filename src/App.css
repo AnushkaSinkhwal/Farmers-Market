@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   font-family: "Times New Roman", Times, serif;
+  height: fit-content;
+  background: linear-gradient(#ffe066, #c0ff78);
 }
 
 body {
