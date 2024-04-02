@@ -22,25 +22,33 @@ function FarmerLogin() {
             <span className="farmer-BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="Company Name" />
+            <input type="text" placeholder="Company Name" name="FarmerName" />
           </div>
 
           <div className="farmer-input">
             <span className="farmer-LockIcon">
               <LockIcon />
             </span>
-            <input type="password" placeholder="Password" />
+            <input
+              type="password"
+              placeholder="Password"
+              name="FarmerPassword"
+            />
           </div>
         </div>
 
         <div className="farmer-submit-container">
           <div className="farmer-submit">
             <Link to="/FarmerRegister">
-              <button type="button">Register</button>
+              <button type="button" name="Register">
+                Register
+              </button>
             </Link>
           </div>
           <div className="farmer-submit">
-            <button className="button">Login</button>
+            <button type="submit" name="Login">
+              Login
+            </button>
           </div>
         </div>
       </form>

@@ -21,25 +21,29 @@ function LoginPg() {
             <span className="BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="FIrst Name" />
+            <input type="text" placeholder="Username" name="Username" />
           </div>
 
           <div className="input">
             <span className="LockIcon">
               <LockIcon />
             </span>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" name="Password" />
           </div>
         </div>
 
         <div className="submit-container">
           <div className="submit">
             <Link to="/RegisterPg">
-              <button type="button">Signup</button>
+              <button type="button" name="Login">
+                Signup
+              </button>
             </Link>
           </div>
           <div className="submit">
-            <button className="button">Login</button>
+            <button type="submit" name="Login">
+              Login
+            </button>
           </div>
         </div>
       </form>

@@ -24,45 +24,53 @@ function RegisterPg() {
             <span className="BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="FIrst Name" />
+            <input type="text" placeholder="Username" name="username" />
           </div>
 
           <div className="input">
             <span className="PhoneIcon">
               <PhoneIcon />
             </span>
-            <input type="Contact No" placeholder="Phone number" />
+            <input
+              type="Contact No"
+              placeholder="Phone number"
+              name="Phoneno"
+            />
           </div>
 
           <div className="input">
             <span className="HomeIcon">
               <HomeIcon />
             </span>
-            <input type="Address" placeholder="Address" />
+            <input type="Address" placeholder="Address" name="Address" />
           </div>
 
           <div className="input">
             <span className="EmailIcon">
               <EmailIcon />
             </span>
-            <input type="email" placeholder="Email Id" />
+            <input type="email" placeholder="Email Id" name="Email" />
           </div>
 
           <div className="input">
             <span className="LockIcon">
               <LockIcon />
             </span>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" name="Password" />
           </div>
         </div>
 
         <div className="submit-container">
           <div className="submit">
-            <button type="button">Signup</button>
+            <button type="submit" name="Signup">
+              Signup
+            </button>
           </div>
           <div className="submit">
             <Link to="/Login">
-              <button className="button">Login</button>
+              <button type="button" name="Login">
+                Login
+              </button>
             </Link>
           </div>
         </div>

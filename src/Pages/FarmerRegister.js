@@ -24,45 +24,57 @@ function FarmerLogin() {
             <span className="farmer-BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="Company Name" />
+            <input
+              type="text"
+              placeholder="Company Name/Your Name"
+              name="Name"
+            />
           </div>
 
           <div className="farmer-input">
             <span className="farmer-PhoneIcon">
               <PhoneIcon />
             </span>
-            <input type="Contact No" placeholder="Phone number" />
+            <input
+              type="Contact No"
+              placeholder="Phone number"
+              name="Phoneno"
+            />
           </div>
 
           <div className="farmer-input">
             <span className="farmer-HomeIcon">
               <HomeIcon />
             </span>
-            <input type="Addresss" placeholder="Address" />
+            <input type="Address" placeholder="Address" name="Address" />
           </div>
 
           <div className="farmer-input">
             <span className="farmer-EmailIcon">
               <EmailIcon />
             </span>
-            <input type="email" placeholder="Email Id" />
+            <input type="email" placeholder="Email Id" name="Email" />
           </div>
 
           <div className="farmer-input">
             <span className="farmer-LockIcon">
               <LockIcon />
             </span>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" name="Password" />
           </div>
         </div>
 
         <div className="farmer-submit-container">
           <div className="farmer-submit">
-            <button type="button">Register</button>
+            <button type="submit" name="Register">
+              Register
+            </button>
           </div>
           <div className="farmer-submit">
             <Link to="/FarmerLogin">
-              <button className="button">Login</button>
+              <button type="button" name="Login">
+                Login
+              </button>
             </Link>
           </div>
         </div>

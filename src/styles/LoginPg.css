@@ -8,6 +8,8 @@
   margin-left: 54%;
   margin-top: 50px;
   margin-bottom: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 .header {
@@ -98,7 +100,7 @@
 }
 
 .submit button:hover {
-  background-color: bisque;
+  background-color: rgb(85, 215, 85);
   color: black;
 }
 .gray {
