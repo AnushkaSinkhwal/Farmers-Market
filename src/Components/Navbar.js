@@ -8,14 +8,15 @@ function Navbar() {
   const [openLinks, setOpenlinks] = useState(false);
 
   const toggleNavbar = () => {
-    setOpenlinks(true);
+    setOpenlinks(!openLinks);
   };
   return (
     <div className="navbar">
       <div className="Leftside" id={openLinks ? "open" : "close"}>
-        <img src={Logo} />
+        <Link to="/" className="logoLink">
+          <img src={Logo} />
+        </Link>
         <div className="hiddenLinks">
-          <Link to="/">Home</Link>
           <Link to="/Become a seller">Become a seller</Link>
           <Link to="/Payment">Payment</Link>
           <Link to="/Help">Help</Link>
@@ -24,7 +25,6 @@ function Navbar() {
         </div>
       </div>
       <div className="rightside">
-        <Link to="/">Home</Link>
         <Link to="/Become a seller">Become a seller</Link>
         <Link to="/Payment">Payment</Link>
         <Link to="/Help">Help</Link>

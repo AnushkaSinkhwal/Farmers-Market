@@ -1,16 +1,16 @@
-.container {
+.farmer-container {
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-top: 80px;
   background-color: aliceblue;
   padding-bottom: 30px;
   width: 700px;
-  margin-left: 54%;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  border-radius: 50px;
+  margin-bottom: 80px;
 }
 
-.header {
+.farmer-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,53 +19,53 @@
   margin-top: 30px;
 }
 
-.text {
+.farmer-text {
   color: black;
   font-size: 48px;
   font-weight: 700;
 }
 
-.underline {
-  width: 61px;
+.farmer-underline {
+  width: 200px;
   height: 6px;
   background: green;
   border-radius: 9px;
 }
 
-.inputs {
+.farmer-inputs {
   margin-top: 55px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.input {
+.farmer-input {
   display: flex;
   align-items: center;
   margin: auto;
   width: 480px;
   height: 80px;
-  background: rgb(255, 243, 198);
+  background: rgb(255, 241, 206);
   border-radius: 50px;
 }
 
-.input .BadgeIcon {
+.farmer-input .farmer-BadgeIcon {
   margin: 0px 30px;
 }
-.input .PhoneIcon {
+.farmer-input .farmer-PhoneIcon {
   margin: 0px 30px;
 }
-.input .HomeIcon {
+.farmer-input .farmer-HomeIcon {
   margin: 0px 30px;
 }
-.input .EmailIcon {
+.farmer-input .farmer-EmailIcon {
   margin: 0px 30px;
 }
-.input .LockIcon {
+.farmer-input .farmer-LockIcon {
   margin: 0px 30px;
 }
 
-.input input {
+.farmer-input input {
   height: 50px;
   width: 400px;
   background: transparent;
@@ -73,15 +73,16 @@
   outline: none;
   color: rgba(72, 60, 46, 0.842);
   font-size: 19px;
+  margin-left: 35px;
 }
 
-.submit-container {
+.farmer-submit-container {
   display: flex;
   gap: 30px;
   margin: 60px auto;
 }
 
-.submit {
+.farmer-submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +96,7 @@
   cursor: pointer;
 }
 
-.gray {
+.farmer-gray {
   background: rgb(255, 255, 255);
   color: gray;
 }

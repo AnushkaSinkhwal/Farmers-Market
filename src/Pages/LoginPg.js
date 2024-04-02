@@ -17,6 +17,12 @@ function LoginPg() {
       </div>
 
       <div className="inputs">
+        <div className="input">
+          <span className="BadgeIcon">
+            <BadgeIcon />
+          </span>
+          <input type="text" placeholder="FIrst Name" />
+        </div>
         {action === "Sign Up" && (
           <>
             <div className="input">
@@ -41,12 +47,6 @@ function LoginPg() {
             </div>
           </>
         )}
-        <div className="input">
-          <span className="BadgeIcon">
-            <BadgeIcon />
-          </span>
-          <input type="text" placeholder="Name" />
-        </div>
 
         <div className="input">
           <span className="LockIcon">
