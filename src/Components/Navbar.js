@@ -17,18 +17,18 @@ function Navbar() {
           <img src={Logo} />
         </Link>
         <div className="hiddenLinks">
-          <Link to="/Become a seller">Become a seller</Link>
+          <Link to="/FarmerRegister">Become a seller</Link>
           <Link to="/Payment">Payment</Link>
           <Link to="/Help">Help</Link>
-          <Link to="/Login&Signup">Login&Signup</Link>
+          <Link to="/Login">Login&Signup</Link>
           <Link to="/cart">Cart</Link>
         </div>
       </div>
       <div className="rightside">
-        <Link to="/Become a seller">Become a seller</Link>
+        <Link to="/FarmerRegister">Become a seller</Link>
         <Link to="/Payment">Payment</Link>
         <Link to="/Help">Help</Link>
-        <Link to="/Login&Signup">Login&Signup</Link>
+        <Link to="/Login">Login&Signup</Link>
         <Link to="/cart">Cart</Link>
         <button onClick={toggleNavbar}>
           <ReorderIcon />
