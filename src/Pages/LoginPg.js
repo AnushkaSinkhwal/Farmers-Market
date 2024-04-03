@@ -21,7 +21,7 @@ function LoginPg() {
             <span className="BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="Username" name="Username" />
+            <input type="text" placeholder="FirstName" name="First Name" />
           </div>
 
           <div className="input">

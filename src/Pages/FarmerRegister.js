@@ -26,7 +26,7 @@ function FarmerLogin() {
             </span>
             <input
               type="text"
-              placeholder="Company Name/Your Name"
+              placeholder="Full Name/Company Name"
               name="Name"
             />
           </div>
@@ -37,16 +37,9 @@ function FarmerLogin() {
             </span>
             <input
               type="Contact No"
-              placeholder="Phone number"
+              placeholder="Contact number"
               name="Phoneno"
             />
-          </div>
-
-          <div className="farmer-input">
-            <span className="farmer-HomeIcon">
-              <HomeIcon />
-            </span>
-            <input type="Address" placeholder="Address" name="Address" />
           </div>
 
           <div className="farmer-input">

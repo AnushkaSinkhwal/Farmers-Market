@@ -22,7 +22,11 @@ function FarmerLogin() {
             <span className="farmer-BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="Company Name" name="FarmerName" />
+            <input
+              type="text"
+              placeholder="Registered Name"
+              name="FarmerName"
+            />
           </div>
 
           <div className="farmer-input">

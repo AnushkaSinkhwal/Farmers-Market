@@ -24,7 +24,7 @@ function RegisterPg() {
             <span className="BadgeIcon">
               <BadgeIcon />
             </span>
-            <input type="text" placeholder="Username" name="username" />
+            <input type="text" placeholder="FirstName" name="First Name" />
           </div>
 
           <div className="input">
