@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-top: 80px;
   background-color: aliceblue;
   padding-bottom: 30px;
   width: 700px;
-  margin-left: 54%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-radius: 50px;
+  margin-bottom: 80px;
 }
 
 .header {
@@ -28,7 +26,7 @@
 }
 
 .underline {
-  width: 61px;
+  width: 200px;
   height: 6px;
   background: green;
   border-radius: 9px;
@@ -47,7 +45,7 @@
   margin: auto;
   width: 480px;
   height: 80px;
-  background: rgb(255, 243, 198);
+  background: rgb(255, 241, 206);
   border-radius: 50px;
 }
 
@@ -75,6 +73,7 @@
   outline: none;
   color: rgba(72, 60, 46, 0.842);
   font-size: 19px;
+  margin-left: 35px;
 }
 
 .submit-container {

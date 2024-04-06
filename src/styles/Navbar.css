@@ -7,7 +7,6 @@
 }
 
 .navbar .Leftside {
-  flex: 50%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -20,13 +19,17 @@
 }
 
 .navbar .rightside {
-  flex: 50%;
-  height: 100%;
+  margin-left: 50%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.navbar .rightside img {
+  width: 40px;
+  cursor: pointer;
+}
 .navbar a {
   color: white;
   text-decoration: none;
@@ -34,6 +37,7 @@
 }
 
 .navbar .rightside button {
+  padding-left: 85px;
   background-color: transparent;
   border: none;
   color: rgb(255, 255, 255);
@@ -58,7 +62,12 @@
 
 .navbar #open .hiddenLinks {
   display: inherit;
-  margin-left: 30px;
+  margin-left: 10px;
+}
+
+.navbar #open .hiddenLinks img {
+  width: 40px;
+  display: inherit;
 }
 
 .navbar #close .hiddenLinks {
@@ -98,7 +107,6 @@
   .navbar .rightside button {
     display: none;
   }
-
   .hiddenLinks {
     display: none;
   }

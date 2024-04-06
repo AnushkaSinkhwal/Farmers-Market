@@ -1,0 +1,5 @@
+.dashbord-container {
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+}

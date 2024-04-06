@@ -50,9 +50,12 @@ function FarmerLogin() {
             </Link>
           </div>
           <div className="farmer-submit">
-            <button type="submit" name="Login">
-              Login
-            </button>
+            <Link to="/FarmerDashbord">
+              {" "}
+              <button type="submit" name="Login">
+                Login
+              </button>
+            </Link>
           </div>
         </div>
       </form>
