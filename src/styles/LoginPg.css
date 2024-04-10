@@ -1,4 +1,7 @@
 .container {
+  height: 640px;
+}
+.form-container {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -14,9 +17,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .text {
@@ -84,9 +87,6 @@
 }
 
 .submit button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 220px;
   height: 59px;
   color: aliceblue;

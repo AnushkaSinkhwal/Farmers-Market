@@ -1,4 +1,7 @@
 .farmer-container {
+  height: auto;
+}
+.farmer-form-container {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -84,9 +87,6 @@
 }
 
 .farmer-submit button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 220px;
   height: 59px;
   color: aliceblue;

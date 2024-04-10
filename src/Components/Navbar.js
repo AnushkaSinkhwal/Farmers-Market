@@ -3,6 +3,7 @@ import Logo from "../assets/KhetiMart.png";
 import CartLogo from "../assets/shopping-cart.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../styles/Navbar.css";
 
 function Navbar() {
@@ -15,7 +16,7 @@ function Navbar() {
     <div className="navbar">
       <div className="Leftside" id={openLinks ? "open" : "close"}>
         <Link to="/" className="logoLink">
-          <img src={Logo} />
+          <img className="home" src={Logo} />
         </Link>
         <div className="hiddenLinks">
           <Link to="/FarmerRegister">Become a seller</Link>
@@ -23,7 +24,7 @@ function Navbar() {
           <Link to="/Help">Help</Link>
           <Link to="/Login">Login</Link>
           <Link to="/cart" className="cartlink">
-            <img src={CartLogo} />
+            <ShoppingCartIcon />
           </Link>
         </div>
       </div>
@@ -33,7 +34,7 @@ function Navbar() {
         <Link to="/Help">Help</Link>
         <Link to="/Login">Login</Link>
         <Link to="/cart" className="cartlink">
-          <img src={CartLogo} />
+          <ShoppingCartIcon />
         </Link>
         <button onClick={toggleNavbar}>
           <ReorderIcon />

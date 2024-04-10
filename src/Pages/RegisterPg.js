@@ -12,69 +12,71 @@ function RegisterPg() {
     event.preventDefault();
   };
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">Signup</div>
-        <div className="underline"></div>
-      </div>
-
-      <form className="customerRegister-form" onSubmit={handleSubmit}>
-        <div className="inputs">
-          <div className="input">
-            <span className="BadgeIcon">
-              <BadgeIcon />
-            </span>
-            <input type="text" placeholder="First Name" name="FirstName" />
-          </div>
-
-          <div className="input">
-            <span className="PhoneIcon">
-              <PhoneIcon />
-            </span>
-            <input
-              type="Contact No"
-              placeholder="Phone number"
-              name="Phoneno"
-            />
-          </div>
-
-          <div className="input">
-            <span className="HomeIcon">
-              <HomeIcon />
-            </span>
-            <input type="Address" placeholder="Address" name="Address" />
-          </div>
-
-          <div className="input">
-            <span className="EmailIcon">
-              <EmailIcon />
-            </span>
-            <input type="email" placeholder="Email Id" name="Email" />
-          </div>
-
-          <div className="input">
-            <span className="LockIcon">
-              <LockIcon />
-            </span>
-            <input type="password" placeholder="Password" name="Password" />
-          </div>
+    <div className="Container">
+      <div className="form-container">
+        <div className="header">
+          <div className="text">Signup</div>
+          <div className="underline"></div>
         </div>
 
-        <div className="submit-container">
-          <div className="submit">
-            <button type="submit" name="Signup">
-              Signup
-            </button>
+        <form className="customerRegister-form" onSubmit={handleSubmit}>
+          <div className="inputs">
+            <div className="input">
+              <span className="BadgeIcon">
+                <BadgeIcon />
+              </span>
+              <input type="text" placeholder="First Name" name="FirstName" />
+            </div>
+
+            <div className="input">
+              <span className="PhoneIcon">
+                <PhoneIcon />
+              </span>
+              <input
+                type="Contact No"
+                placeholder="Phone number"
+                name="Phoneno"
+              />
+            </div>
+
+            <div className="input">
+              <span className="HomeIcon">
+                <HomeIcon />
+              </span>
+              <input type="Address" placeholder="Address" name="Address" />
+            </div>
+
+            <div className="input">
+              <span className="EmailIcon">
+                <EmailIcon />
+              </span>
+              <input type="email" placeholder="Email Id" name="Email" />
+            </div>
+
+            <div className="input">
+              <span className="LockIcon">
+                <LockIcon />
+              </span>
+              <input type="password" placeholder="Password" name="Password" />
+            </div>
           </div>
-          <div className="submit">
-            <Link to="/Login">
-              <button type="button" name="Login">
-                Login
+
+          <div className="submit-container">
+            <div className="submit">
+              <button type="submit" name="Signup">
+                Signup
               </button>
-            </Link>
+            </div>
+            <div className="submit">
+              <Link to="/Login">
+                <button type="button" name="Login">
+                  Login
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
