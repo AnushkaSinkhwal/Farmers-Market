@@ -8,8 +8,8 @@ export default function App() {
   const [scope, animate] = useAnimate();
   const links = [
     { text: "Add", to: "/AddProduct" },
-    { text: "Edit", to: "/edit" },
-    { text: "Delete", to: "/delete" },
+    { text: "Edit", to: "/EditProduct" },
+    { text: "Delete", to: "/DeleteProduct" },
   ];
 
   // the stagger effect

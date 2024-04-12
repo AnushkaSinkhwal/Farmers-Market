@@ -10,6 +10,8 @@ import Payment from "./Pages/Payment";
 import RegisterPg from "./Pages/RegisterPg";
 import FarmerDashbord from "./Pages/FarmerDashbord";
 import AddProduct from "./Pages/AddProduct";
+import EditProduct from "./Pages/EditProduct";
+import DeleteProduct from "./Pages/DeleteProduct";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route exact path="/RegisterPg" element={<RegisterPg />} />
           <Route exact path="/FarmerDashbord" element={<FarmerDashbord />} />
           <Route exact path="/AddProduct" element={<AddProduct />} />
+          <Route exact path="/EditProduct" element={<EditProduct />} />
+          <Route exact path="/DeleteProduct" element={<DeleteProduct />} />
         </Routes>
       </Router>
     </div>

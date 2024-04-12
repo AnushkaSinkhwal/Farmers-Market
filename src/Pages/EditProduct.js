@@ -1,29 +1,34 @@
 import React from "react";
-import "../styles/AddProduct.css";
-function AddProduct() {
+import "../styles/EditProduct.css";
+function EditProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
   return (
-    <div className="add-container">
-      <div className="add-form-container">
-        <form className="add-form" onSubmit={handleSubmit}>
-          <div className="add-input-form">
+    <div className="Edit-container">
+      <div className="Edit-form-container">
+        <form className="Edit-form" onSubmit={handleSubmit}>
+          <div className="Edit-input-form">
             <div className="NameCategory">
               <label htmlFor="productName">Product Name</label>
-              <input
-                type="text"
-                id="productName"
-                name="productName"
-                placeholder="Product Name"
-              />
+              <select id="category" name="category">
+                <option value="Product Name">Product Name</option>
+              </select>
 
               <select id="category" name="category">
                 <option value="vegetable">Vegetable</option>
                 <option value="fruit">Fruit</option>
                 <option value="dairy">Dairy</option>
               </select>
+            </div>
+            <div>
+              <label htmlFor="NewName">New Name</label>
+              <input
+                type="text"
+                id="NewName"
+                name="NewName"
+                placeholder="New Product Name"
+              ></input>
             </div>
             <div className="priceContent">
               <label htmlFor="productPrice">Product Price</label>
@@ -59,7 +64,7 @@ function AddProduct() {
                 placeholder="Product Quantity"
               />
             </div>
-            <div className="add-description">
+            <div className="description">
               <textarea
                 id="productDescription"
                 name="productDescription"
@@ -68,8 +73,17 @@ function AddProduct() {
             </div>
           </div>
           <div className="form-buttons">
-            <button type="cancle">Cancle</button>
-            <button type="submit">Add</button>
+            <div className="Edit-submit">
+              <button type="submit" name="cancle">
+                Cancle
+              </button>
+            </div>
+
+            <div className="Edit-submit">
+              <button type="submit" name="add">
+                Add
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -77,4 +91,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default EditProduct;
