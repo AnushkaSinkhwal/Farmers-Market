@@ -29,11 +29,11 @@
   padding: 8px 10px;
   border: none;
   border-radius: 5px;
-  width: calc(100% - 20px); /* Adjusted width for input elements */
+  width: calc(100% - 20px);
 }
 
 .add-input-form select {
-  width: 100px; /* Adjusted width for select elements */
+  width: 100px;
 }
 
 .input-group {
@@ -48,13 +48,13 @@
 }
 
 .input-wrapper select {
-  width: 100px; /* Adjusted width of the select element */
-  margin-left: 10px; /* Add margin between input and select */
+  width: 100px;
+  margin-left: 10px;
 }
 
 .input-group label {
-  width: 150px; /* Fixed width for labels */
-  margin-right: 10px; /* Add margin between label and input/select */
+  width: 150px;
+  margin-right: 10px;
 }
 
 .form-buttons {
@@ -95,7 +95,7 @@
 .add-input-form input,
 .add-input-form select,
 .add-input-form textarea {
-  flex: 1; /* Input/select elements occupy remaining space */
+  flex: 1;
   background: #f8ffb9;
   margin-bottom: 10px;
   padding: 8px 10px;

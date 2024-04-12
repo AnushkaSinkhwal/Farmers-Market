@@ -30,6 +30,7 @@ function AddProduct() {
               </div>
             </div>
 
+            {/* product price */}
             <div className="input-group">
               <label htmlFor="productPrice">Product Price:</label>
               <div className="input-wrapper">

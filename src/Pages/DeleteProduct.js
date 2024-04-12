@@ -11,7 +11,6 @@ function DeleteProduct() {
             <label htmlFor="productName">Product Name:</label>
             <select id="Name" name="name">
               <option value="nameDropdown">Drop Down</option>
-              {/* Add options dynamically here if needed */}
             </select>
           </div>
         </div>
