@@ -17,9 +17,6 @@ function EditProduct() {
               <label htmlFor="productName">Product Name:</label>
               <select id="category" name="category">
                 <option value="Product Name">Product Name</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="fruit">Fruit</option>
-                <option value="dairy">Dairy</option>
               </select>
             </div>
 
