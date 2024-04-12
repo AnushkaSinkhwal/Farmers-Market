@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/AddProduct.css";
+
 function AddProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Add your form submission logic here
   };
 
   return (
@@ -10,65 +12,80 @@ function AddProduct() {
       <div className="add-form-container">
         <form className="add-form" onSubmit={handleSubmit}>
           <div className="add-input-form">
-            <div className="NameCategory">
-              <label htmlFor="productName">Product Name</label>
-              <input
-                type="text"
-                id="productName"
-                name="productName"
-                placeholder="Product Name"
-              />
-
-              <select id="category" name="category">
-                <option value="vegetable">Vegetable</option>
-                <option value="fruit">Fruit</option>
-                <option value="dairy">Dairy</option>
-              </select>
-            </div>
-            <div className="priceContent">
-              <label htmlFor="productPrice">Product Price</label>
-              <input
-                type="number"
-                id="productPrice"
-                name="productPrice"
-                placeholder="Product Price"
-              />
-
-              <select id="category" name="category">
-                <option value="vegetable">Per Kg</option>
-                <option value="fruit">per item</option>
-                <option value="dairy">Per liter</option>
-              </select>
+            {/* Product Name */}
+            <div className="input-group">
+              <label htmlFor="productName">Product Name:</label>
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="productName"
+                  name="productName"
+                  placeholder="Enter product name"
+                />
+                <select id="category" name="category">
+                  <option value="vegetable">Vegetable</option>
+                  <option value="fruit">Fruit</option>
+                  <option value="dairy">Dairy</option>
+                </select>
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="productImage">Product Image</label>
-              <input
-                type="url"
-                id="productImage"
-                name="productImage"
-                placeholder="Product Image URL"
-              />
+            <div className="input-group">
+              <label htmlFor="productPrice">Product Price:</label>
+              <div className="input-wrapper">
+                <input
+                  type="number"
+                  id="productPrice"
+                  name="productPrice"
+                  placeholder="Enter product price"
+                />
+                <select id="unit" name="unit">
+                  <option value="kg">Per Kg</option>
+                  <option value="item">Per item</option>
+                  <option value="liter">Per liter</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label htmlFor="productQuantity">Product Quantity</label>
-              <input
-                type="number"
-                id="productQuantity"
-                name="productQuantity"
-                placeholder="Product Quantity"
-              />
+
+            {/* Product Image */}
+            <div className="input-group">
+              <label htmlFor="productImage">Product Image:</label>
+              <div className="input-wrapper">
+                <input
+                  type="url"
+                  id="productImage"
+                  name="productImage"
+                  placeholder="Enter product image URL"
+                />
+              </div>
             </div>
-            <div className="add-description">
+
+            {/* Product Quantity */}
+            <div className="input-group">
+              <label htmlFor="productQuantity">Product Quantity:</label>
+              <div className="input-wrapper">
+                <input
+                  type="number"
+                  id="productQuantity"
+                  name="productQuantity"
+                  placeholder="Enter product quantity"
+                />
+              </div>
+            </div>
+
+            {/* Product Description */}
+            <div className="input-group">
               <textarea
                 id="productDescription"
                 name="productDescription"
-                placeholder="Product Description"
+                placeholder="Enter product description"
               ></textarea>
             </div>
           </div>
+
+          {/* Form Buttons */}
           <div className="form-buttons">
-            <button type="cancle">Cancle</button>
+            <button type="button">Cancel</button>
             <button type="submit">Add</button>
           </div>
         </form>

@@ -1,53 +1,58 @@
 import React from "react";
 import "../styles/EditProduct.css";
+
 function EditProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Add your form submission logic here
   };
+
   return (
-    <div className="Edit-container">
-      <div className="Edit-form-container">
-        <form className="Edit-form" onSubmit={handleSubmit}>
-          <div className="Edit-input-form">
-            <div className="NameCategory">
-              <label htmlFor="productName">Product Name</label>
+    <div className="edit-container">
+      <div className="edit-form-container">
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <div className="edit-input-form">
+            {/* Product Name */}
+            <div className="edit-input-group">
+              <label htmlFor="productName">Product Name:</label>
               <select id="category" name="category">
                 <option value="Product Name">Product Name</option>
-              </select>
-
-              <select id="category" name="category">
                 <option value="vegetable">Vegetable</option>
                 <option value="fruit">Fruit</option>
                 <option value="dairy">Dairy</option>
               </select>
             </div>
-            <div>
-              <label htmlFor="NewName">New Name</label>
+
+            {/* New Name */}
+            <div className="edit-input-group">
+              <label htmlFor="newName">New Name:</label>
               <input
                 type="text"
-                id="NewName"
-                name="NewName"
+                id="newName"
+                name="newName"
                 placeholder="New Product Name"
-              ></input>
+              />
             </div>
-            <div className="priceContent">
-              <label htmlFor="productPrice">Product Price</label>
+
+            {/* Product Price */}
+            <div className="edit-input-group">
+              <label htmlFor="productPrice">Product Price:</label>
               <input
                 type="number"
                 id="productPrice"
                 name="productPrice"
                 placeholder="Product Price"
               />
-
-              <select id="category" name="category">
-                <option value="vegetable">Per Kg</option>
-                <option value="fruit">per item</option>
-                <option value="dairy">Per liter</option>
+              <select id="unit" name="unit">
+                <option value="kg">Per Kg</option>
+                <option value="item">Per item</option>
+                <option value="liter">Per liter</option>
               </select>
             </div>
 
-            <div>
-              <label htmlFor="productImage">Product Image</label>
+            {/* Product Image */}
+            <div className="edit-input-group">
+              <label htmlFor="productImage">Product Image:</label>
               <input
                 type="url"
                 id="productImage"
@@ -55,8 +60,10 @@ function EditProduct() {
                 placeholder="Product Image URL"
               />
             </div>
-            <div>
-              <label htmlFor="productQuantity">Product Quantity</label>
+
+            {/* Product Quantity */}
+            <div className="edit-input-group">
+              <label htmlFor="productQuantity">Product Quantity:</label>
               <input
                 type="number"
                 id="productQuantity"
@@ -64,7 +71,9 @@ function EditProduct() {
                 placeholder="Product Quantity"
               />
             </div>
-            <div className="description">
+
+            {/* Product Description */}
+            <div className="edit-input-group">
               <textarea
                 id="productDescription"
                 name="productDescription"
@@ -72,17 +81,16 @@ function EditProduct() {
               ></textarea>
             </div>
           </div>
-          <div className="form-buttons">
-            <div className="Edit-submit">
-              <button type="submit" name="cancle">
-                Cancle
+
+          {/* Form Buttons */}
+          <div className="edit-form-buttons">
+            <div className="edit-submit">
+              <button type="button" onClick={handleSubmit}>
+                Cancel
               </button>
             </div>
-
-            <div className="Edit-submit">
-              <button type="submit" name="add">
-                Add
-              </button>
+            <div className="edit-submit">
+              <button type="submit">Update</button>
             </div>
           </div>
         </form>
