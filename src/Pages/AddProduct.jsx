@@ -4,7 +4,7 @@ import "../styles/AddProduct.css";
 function AddProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your form submission logic here
+    
   };
 
   return (
