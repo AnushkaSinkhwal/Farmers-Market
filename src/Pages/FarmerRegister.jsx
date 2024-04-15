@@ -6,7 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 
-function FarmerLogin() {
+function FarmerRegister() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -77,4 +77,4 @@ function FarmerLogin() {
   );
 }
 
-export default FarmerLogin;
+export default FarmerRegister;
