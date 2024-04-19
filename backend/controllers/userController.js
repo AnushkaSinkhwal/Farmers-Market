@@ -13,7 +13,7 @@ const loginUser = async(req,res)=>{
 
 //signup user
 const signupUser = async(req,res)=>{
-    const [username, phoneNumber, address, email, password] = req.body
+    const {username, phoneNumber, address, email, password} = req.body
     try{
         const user = await User.signup(username, phoneNumber, address, email, password)
         res.status(200).json({username, phoneNumber, address, email, password})

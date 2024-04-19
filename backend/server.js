@@ -26,7 +26,7 @@ app.use((req,res,next)=>{
 })
 
 //routes
-app.use('/api/users', userRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/farmers', farmerRoutes)
 
 // Connection URI
@@ -42,5 +42,5 @@ mongoose.connect(process.env.MONGO_URI)
 
 const PORT = 3002
 app.listen(process.env.PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
