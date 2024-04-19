@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function AddProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Add your form submission logic here
   };
 
   return (

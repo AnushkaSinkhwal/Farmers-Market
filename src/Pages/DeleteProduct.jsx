@@ -1,22 +1,22 @@
 import React from "react";
 import "../styles/DeleteProduct.css";
+<<<<<<< HEAD:src/Pages/DeleteProduct.jsx
 import { Link } from "react-router-dom";
 
+=======
+>>>>>>> parent of 399408e (Did some minor styling for the add edit and delete pages):src/Pages/DeleteProduct.js
 function DeleteProduct() {
   return (
     <div className="deletePg">
       <div className="delete-container">
-        {/* Product Selection */}
         <div className="delete-inputs">
           <div className="del-input">
-            <label htmlFor="productName">Product Name:</label>
+            <label htmlFor="productName"> Product Name</label>
             <select id="Name" name="name">
               <option value="nameDropdown">Drop Down</option>
             </select>
           </div>
         </div>
-
-        {/* Delete Buttons */}
         <div className="del-button">
           <div className="del-sub">
             <Link to="/FarmerDashbord">

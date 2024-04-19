@@ -15,16 +15,14 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  max-height: 80vh;
+  height: 400px;
   width: 800px;
   border-radius: 20px;
-  overflow-y: auto;
 }
 
-.add-input-form input,
-.add-input-form select,
-.add-input-form textarea {
+.add-input-form input {
   background: #f8ffb9;
+<<<<<<< HEAD
   margin-bottom: 10px;
   padding: 8px 10px;
   border: none;
@@ -101,4 +99,12 @@
   padding: 8px 10px;
   border: none;
   border-radius: 5px;
+=======
+  margin-left: 15px;
+}
+
+.add-input-form {
+  margin-right: 250px;
+  margin-bottom: 150px;
+>>>>>>> parent of 399408e (Did some minor styling for the add edit and delete pages)
 }
