@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/EditProduct.css";
+import { Link } from "react-router-dom";
 
 function EditProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
-
   };
 
   return (
@@ -82,9 +82,9 @@ function EditProduct() {
           {/* Form Buttons */}
           <div className="edit-form-buttons">
             <div className="edit-submit">
-              <button type="button" onClick={handleSubmit}>
-                Cancel
-              </button>
+              <Link to="/FarmerDashbord">
+                <button type="button">Cancel</button>
+              </Link>
             </div>
             <div className="edit-submit">
               <button type="submit">Update</button>

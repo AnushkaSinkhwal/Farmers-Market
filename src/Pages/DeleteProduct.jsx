@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/DeleteProduct.css";
+import { Link } from "react-router-dom";
 
 function DeleteProduct() {
   return (
@@ -18,7 +19,9 @@ function DeleteProduct() {
         {/* Delete Buttons */}
         <div className="del-button">
           <div className="del-sub">
-            <button type="button">Cancel</button>
+            <Link to="/FarmerDashbord">
+              <button type="button">Cancel</button>
+            </Link>
           </div>
           <div className="del-sub">
             <button type="button">Delete</button>

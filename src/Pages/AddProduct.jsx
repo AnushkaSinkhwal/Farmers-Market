@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/AddProduct.css";
+import { Link } from "react-router-dom";
 
 function AddProduct() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    
   };
 
   return (
@@ -86,7 +86,9 @@ function AddProduct() {
 
           {/* Form Buttons */}
           <div className="form-buttons">
-            <button type="button">Cancel</button>
+            <Link to="/FarmerDashbord">
+              <button type="button">Cancel</button>
+            </Link>
             <button type="submit">Add</button>
           </div>
         </form>
