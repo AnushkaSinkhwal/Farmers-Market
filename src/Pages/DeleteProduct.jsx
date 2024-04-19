@@ -1,10 +1,6 @@
 import React from "react";
 import "../styles/DeleteProduct.css";
-<<<<<<< HEAD:src/Pages/DeleteProduct.jsx
 import { Link } from "react-router-dom";
-
-=======
->>>>>>> parent of 399408e (Did some minor styling for the add edit and delete pages):src/Pages/DeleteProduct.js
 function DeleteProduct() {
   return (
     <div className="deletePg">
