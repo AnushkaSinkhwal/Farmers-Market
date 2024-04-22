@@ -18,6 +18,12 @@ function EditProduct() {
               <select id="category" name="category">
                 <option value="Product Name">Product Name</option>
               </select>
+
+              <select id="category" name="category">
+                <option value="vegetable">Vegetable</option>
+                <option value="fruit">Fruit</option>
+                <option value="dairy">Dairy</option>
+              </select>
             </div>
 
             {/* New Name */}

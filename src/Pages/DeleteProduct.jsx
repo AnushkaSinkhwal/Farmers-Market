@@ -11,6 +11,11 @@ function DeleteProduct() {
             <select id="Name" name="name">
               <option value="nameDropdown">Drop Down</option>
             </select>
+            <select id="category" name="category">
+              <option value="vegetable">Vegetable</option>
+              <option value="fruit">Fruit</option>
+              <option value="dairy">Dairy</option>
+            </select>
           </div>
         </div>
         <div className="del-button">
@@ -20,7 +25,7 @@ function DeleteProduct() {
             </Link>
           </div>
           <div className="del-sub">
-            <button type="button">Delete</button>
+            <button type="submit">Delete</button>
           </div>
         </div>
       </div>

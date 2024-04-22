@@ -22,7 +22,7 @@ function Navbar() {
           <Link to="/FarmerRegister">Become a seller</Link>
           <Link to="/Payment">Payment</Link>
           <Link to="/Help">Help</Link>
-          <Link to="/Login">Login</Link>
+          <Link to="/Login">Login & Signup</Link>
           <Link to="/cart" className="cartlink">
             <ShoppingCartIcon />
           </Link>
@@ -32,7 +32,7 @@ function Navbar() {
         <Link to="/FarmerRegister">Become a seller</Link>
         <Link to="/Payment">Payment</Link>
         <Link to="/Help">Help</Link>
-        <Link to="/Login">Login</Link>
+        <Link to="/Login">Login & Signup</Link>
         <Link to="/cart" className="cartlink">
           <ShoppingCartIcon />
         </Link>
