@@ -12,6 +12,7 @@ function DeleteProduct() {
               <option value="nameDropdown">Drop Down</option>
             </select>
             <select id="category" name="category">
+              <option value="categoryOption">--Select--</option>
               <option value="vegetable">Vegetable</option>
               <option value="fruit">Fruit</option>
               <option value="dairy">Dairy</option>

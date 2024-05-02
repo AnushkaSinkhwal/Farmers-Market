@@ -52,7 +52,6 @@ function FarmerLogin() {
             </div>
             <div className="farmer-submit">
               <Link to="/FarmerDashbord">
-                {" "}
                 <button type="submit" name="Login">
                   Login
                 </button>

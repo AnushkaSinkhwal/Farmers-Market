@@ -42,9 +42,11 @@ function LoginPg() {
               </Link>
             </div>
             <div className="submit">
-              <button type="submit" name="Login">
-                Login
-              </button>
+              <Link to="/Customer">
+                <button type="submit" name="Login">
+                  Login
+                </button>
+              </Link>
             </div>
           </div>
         </form>

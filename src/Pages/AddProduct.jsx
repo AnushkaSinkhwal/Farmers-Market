@@ -24,6 +24,7 @@ function AddProduct() {
                   placeholder="Enter product name"
                 />
                 <select id="category" name="category">
+                  <option value="Select">--Select--</option>
                   <option value="vegetable">Vegetable</option>
                   <option value="fruit">Fruit</option>
                   <option value="dairy">Dairy</option>
@@ -42,6 +43,7 @@ function AddProduct() {
                   placeholder="Enter product price"
                 />
                 <select id="unit" name="unit">
+                  <option value="categoryOption">--Select--</option>
                   <option value="kg">Per Kg</option>
                   <option value="item">Per item</option>
                   <option value="liter">Per liter</option>
