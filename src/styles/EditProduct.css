@@ -1,0 +1,73 @@
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  height: 640px;
+}
+
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background: linear-gradient(rgb(175, 255, 153), rgb(255, 241, 177));
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 640px;
+  width: 800px;
+  border-radius: 20px;
+  overflow-y: auto;
+}
+
+.edit-input-form .edit-input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit-input-form label {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.edit-input-form select,
+.edit-input-form input,
+.edit-input-form textarea {
+  flex: 1;
+  background: #f8ffb9;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.edit-input-group select {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.edit-form-buttons .edit-submit button {
+  margin-left: 10px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-form-buttons .edit-submit button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-form-buttons .edit-submit button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
