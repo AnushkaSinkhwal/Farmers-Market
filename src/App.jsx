@@ -13,6 +13,7 @@ import AddProduct from "./Pages/AddProduct";
 import EditProduct from "./Pages/EditProduct";
 import DeleteProduct from "./Pages/DeleteProduct";
 import Customer from "./Pages/Customer";
+import ProductDetailedView from "./Pages/ProductDetailedView";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -34,6 +35,11 @@ function App() {
           <Route exact path="/EditProduct" element={<EditProduct />} />
           <Route exact path="/DeleteProduct" element={<DeleteProduct />} />
           <Route exact path="/Customer" element={<Customer />} />
+          <Route
+            exact
+            path="/ProductDetailedView"
+            element={<ProductDetailedView />}
+          />
         </Routes>
       </Router>
     </div>

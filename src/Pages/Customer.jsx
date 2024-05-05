@@ -11,14 +11,16 @@ import Box from "@mui/material/Box";
 function ProductCard({ imgSrc, title, price, description }) {
   return (
     <div className="card">
-      <Box component="img" src={imgSrc} alt={title} className="productimg" />
-      <h1>{title}</h1>
-      <p className="price">{price}</p>
-      <p>{description}</p>
-      <Link to="/cart">
-        <button>
-          Add to Cart <FavoriteBorderIcon />
-        </button>
+      <Link to="/ProductDetailedView">
+        <Box component="img" src={imgSrc} alt={title} className="productimg" />
+        <h1>{title}</h1>
+        <p className="price">{price}</p>
+        <p>{description}</p>
+        <Link to="/cart">
+          <button>
+            Add to Cart <FavoriteBorderIcon />
+          </button>
+        </Link>
       </Link>
     </div>
   );
@@ -30,14 +32,11 @@ function Customer() {
 
   const handleSearch = () => {
     setIsSearching(true);
-    // Perform search functionality with searchValue
     console.log("Searching for:", searchValue);
-    // You can redirect to search results page using React Router
-    // For example:
-    // history.push(`/search?query=${searchValue}`);
+
     setTimeout(() => {
       setIsSearching(false);
-    }, 2000); // Example delay to simulate searching
+    }, 2000);
   };
 
   const handleKeyPress = (e) => {

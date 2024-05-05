@@ -30,14 +30,12 @@ function Customer() {
 
   const handleSearch = () => {
     setIsSearching(true);
-    // Perform search functionality with searchValue
+
     console.log("Searching for:", searchValue);
-    // You can redirect to search results page using React Router
-    // For example:
-    // history.push(`/search?query=${searchValue}`);
+
     setTimeout(() => {
       setIsSearching(false);
-    }, 2000); // Example delay to simulate searching
+    }, 2000);
   };
 
   const handleKeyPress = (e) => {
