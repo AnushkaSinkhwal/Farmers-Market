@@ -1,55 +1,61 @@
-import React from "react";
+import React, { useMemo } from "react";
 import cabbage from "../assets/cabbage2.jpg";
 import strawberry from "../assets/strawberry.jpg";
 import cheese from "../assets/cheese.jpg";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import "../styles/cart.css";
+import { useSelector } from "react-redux";
 
 function ProductCard({
-  imgSrc,
-  title,
-  price,
-  quantity,
-  description,
+  photo_url,
+  name,
   totalPrice,
+  price,
+  description,
+  cartQuantity,
 }) {
   return (
-    <div className="card">
-      <Box component="img" src={imgSrc} alt={title} className="productimg" />
-      <div class>
-        <h1>{title}</h1>
-        <p className="price">{price}</p>
+    <div className="card-cart">
+      <Box component="img" src={photo_url} alt={name} className="productimge" />
+      <div className="textcont">
+        <h1>{name}</h1>
+        <p className="price">Rs. {price}/kg</p>
         <p>{description}</p>
-        <p>{quantity}</p>
+        <p>{cartQuantity} kg</p>
       </div>
+      <div className="seperator-c"></div>
       <div className="price-card">
-        <p>{totalPrice}</p>
+        <p>Rs. {totalPrice}</p>
       </div>
     </div>
   );
 }
 
 function Cart() {
+  const products = useSelector((state) => state.cart?.items);
+  const totalCost = products
+    ?.map((product) => product?.totalPrice)
+    ?.reduce((acc, currVal) => acc + currVal, 0);
+
   return (
     <div>
       <div className="cart-container">
-        <div className="product container">
+        <div className="product-container">
           <h1>Item List</h1>
-          <Box sx={{ display: "flex", gap: "40px" }}>
-            <ProductCard
-              imgSrc={cabbage}
-              title="Fress Cabbage"
-              price="Rs.249"
-              description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
-              totalPrice="Total Price: Rs. 498"
-            />
-          </Box>
+          <div className="items-card">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+              {products?.map((product) => (
+                <ProductCard {...product} />
+              ))}
+            </Box>
+          </div>
         </div>
 
         <div className="checkoutCard">
           <div className="totalPrice">
             <h1>Your subtotal:</h1>
-            <p>Rs. 650</p>
+            <p>Rs. {totalCost}</p>
           </div>
           <div className="paymentMethod">
             <h1>Payment Method</h1>

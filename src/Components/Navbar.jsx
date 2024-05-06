@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../assets/KhetiMart.png";
-import CartLogo from "../assets/shopping-cart.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";

@@ -1,5 +1,6 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Cart from "./Pages/Cart";
 import FarmerRegister from "./Pages/FarmerRegister";
@@ -37,10 +38,11 @@ function App() {
           <Route exact path="/Customer" element={<Customer />} />
           <Route
             exact
-            path="/ProductDetailedView"
+            path="/productDetailedView/:type/:id"
             element={<ProductDetailedView />}
           />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

@@ -2,6 +2,7 @@
 .vegetable-container,
 .fruit-container,
 .dairy-container {
+  border: 2px solid rgb(0, 0, 0);
   background-color: aliceblue;
   border-radius: 20px;
   padding: 20px;
@@ -11,11 +12,9 @@
 }
 .product-card {
   display: flex;
-  flex-direction: row;
-  align-items: start;
-  margin: 0px 50px 0px 50px;
-  gap: 40px;
+  justify-content: center;
 }
+
 .product-category {
   display: flex;
   justify-content: space-between;
@@ -33,6 +32,17 @@
   text-align: center;
   border-radius: 5px;
   border: 2px#000;
+  text-decoration: none;
+}
+
+.card .description {
+  padding: 0 10px;
+  text-align: left;
+}
+
+.card a {
+  text-decoration: none;
+  color: #000;
 }
 
 .card img {
@@ -56,7 +66,6 @@ button {
   outline: 0;
   padding: 12px;
   color: white;
-  background-color: #000;
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -65,7 +74,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.7;
+  background-color: #40b81b;
 }
 
 .separator {
@@ -100,6 +109,7 @@ button:hover {
   margin: 35px;
   padding: 50px;
   display: flex;
+  border: 2px solid black;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -123,10 +133,14 @@ button:hover {
 }
 
 .Search-container button {
-  background-color: #00837a;
+  background-color: #33a510;
   width: 5cm;
   border-radius: 10px;
-  color: #000;
+  color: white;
+}
+
+.Search-container button:hover {
+  background-color: #37b212;
 }
 
 .searching-popup-card {

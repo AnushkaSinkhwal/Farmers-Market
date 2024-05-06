@@ -32,6 +32,7 @@ function Customer() {
 
   const handleSearch = () => {
     setIsSearching(true);
+    // Perform search functionality with searchValue
     console.log("Searching for:", searchValue);
 
     setTimeout(() => {
@@ -91,25 +92,25 @@ function Customer() {
             <Box sx={{ display: "flex", gap: "40px" }}>
               <ProductCard
                 imgSrc={cabbage}
-                title="Fress Cabbage"
+                title="Fresh Cabbage"
                 price="Rs.249"
                 description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
               />
               <ProductCard
                 imgSrc={cabbage}
-                title="Fress Cabbage"
+                title="Fresh Cabbage"
                 price="Rs.249"
                 description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
               />
               <ProductCard
                 imgSrc={cabbage}
-                title="Fress Cabbage"
+                title="Fresh Cabbage"
                 price="Rs.249"
                 description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
               />
               <ProductCard
                 imgSrc={cabbage}
-                title="Fress Cabbage"
+                title="Fresh Cabbage"
                 price="Rs.249"
                 description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
               />

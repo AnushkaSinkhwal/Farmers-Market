@@ -1,25 +1,29 @@
-import { Link } from "react-router-dom";
-import React from "react";
-import cabbage from "../assets/cabbage2.jpg";
-import strawberry from "../assets/strawberry.jpg";
-import cheese from "../assets/cheese.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+
 import "../styles/Home.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useState } from "react";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addProducts } from "../store/productSlice";
 
-function ProductCard({ imgSrc, title, price, description }) {
+function ProductCard(props) {
   return (
-    <div className="card">
-      <Box component="img" src={imgSrc} alt={title} className="productimg" />
-      <h1>{title}</h1>
-      <p className="price">{price}</p>
-      <p>{description}</p>
-      <Link to="/cart">
-        <button>
-          Add to Cart <FavoriteBorderIcon />
-        </button>
-      </Link>
+    <div className="card" onClick={props.data.onClick}>
+      <Box
+        component="img"
+        src={props.data.photo_url}
+        alt={props.data.name}
+        className="productimg"
+      />
+      <h1>{props.data.name}</h1>
+      <p className="price">Rs.{props.data.price}</p>
+      <p className="description">{props.data.description}</p>
+      <button onClick={props.data.onClick}>
+        View Details <FavoriteBorderIcon />
+      </button>
     </div>
   );
 }
@@ -27,10 +31,22 @@ function ProductCard({ imgSrc, title, price, description }) {
 function Customer() {
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const products = useSelector((state) => state.product.products);
+  const { vegetables, fruits, dairy } = products;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get("vegetables.json").then((resp) => {
+      if (resp?.data) {
+        dispatch(addProducts(resp?.data));
+      }
+    });
+  }, []);
 
   const handleSearch = () => {
     setIsSearching(true);
-
+    // Perform search functionality with searchValue
     console.log("Searching for:", searchValue);
 
     setTimeout(() => {
@@ -80,7 +96,7 @@ function Customer() {
           <div className="product-category">
             <h1>Vegetable</h1>
             <h1>
-              <Link to="/vegetable" className="view-all-link">
+              <Link to="/vegetables" className="view-all-link">
                 View all
               </Link>
             </h1>
@@ -88,30 +104,17 @@ function Customer() {
           <div className="separator"></div>
           <div className="product-card">
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <ProductCard
-                imgSrc={cabbage}
-                title="Fress Cabbage"
-                price="Rs.249"
-                description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
-              />
-              <ProductCard
-                imgSrc={cabbage}
-                title="Fress Cabbage"
-                price="Rs.249"
-                description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
-              />
-              <ProductCard
-                imgSrc={cabbage}
-                title="Fress Cabbage"
-                price="Rs.249"
-                description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
-              />
-              <ProductCard
-                imgSrc={cabbage}
-                title="Fress Cabbage"
-                price="Rs.249"
-                description="Enjoy the crisp and refreshing taste of our cabbage, packed with nutrients and versatile enough for salads, stir-fries, and more"
-              />
+              {vegetables?.slice(0, 4)?.map((vegetable) => (
+                <ProductCard
+                  data={{
+                    ...vegetable,
+                    onClick: () =>
+                      navigate(
+                        `/productDetailedView/vegetables/${vegetable.id}`
+                      ),
+                  }}
+                />
+              ))}
             </Box>
           </div>
         </div>
@@ -129,30 +132,15 @@ function Customer() {
           <div className="separator"></div>
           <div className="product-card">
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <ProductCard
-                imgSrc={strawberry}
-                title="Strawberry"
-                price="Rs. 800"
-                description="Experience the sweetness of freshly picked strawberries with our succulent and juicy strawberry, perfect for adding a burst of flavor to your favorite desserts and snacks"
-              />
-              <ProductCard
-                imgSrc={strawberry}
-                title="Strawberry"
-                price="Rs. 800"
-                description="Experience the sweetness of freshly picked strawberries with our succulent and juicy strawberry, perfect for adding a burst of flavor to your favorite desserts and snacks"
-              />
-              <ProductCard
-                imgSrc={strawberry}
-                title="Strawberry"
-                price="Rs. 800"
-                description="Experience the sweetness of freshly picked strawberries with our succulent and juicy strawberry, perfect for adding a burst of flavor to your favorite desserts and snacks"
-              />
-              <ProductCard
-                imgSrc={strawberry}
-                title="Strawberry"
-                price="Rs. 800"
-                description="Experience the sweetness of freshly picked strawberries with our succulent and juicy strawberry, perfect for adding a burst of flavor to your favorite desserts and snacks"
-              />
+              {fruits?.slice(0, 4)?.map((fruit) => (
+                <ProductCard
+                  data={{
+                    ...fruit,
+                    onClick: () =>
+                      navigate(`/productDetailedView/fruits/${fruit.id}`),
+                  }}
+                />
+              ))}
             </Box>
           </div>
         </div>
@@ -170,30 +158,15 @@ function Customer() {
           <div className="separator"></div>
           <div className="product-card">
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <ProductCard
-                imgSrc={cheese}
-                title="Cheddar Cheese"
-                price="$19.99"
-                description="Indulge in the rich and creamy flavor of our cheddar cheese, crafted with the finest ingredients for a delightful culinary experience"
-              />
-              <ProductCard
-                imgSrc={cheese}
-                title="Cheddar Cheese"
-                price="Rs. 650"
-                description="Indulge in the rich and creamy flavor of our cheddar cheese, crafted with the finest ingredients for a delightful culinary experience"
-              />
-              <ProductCard
-                imgSrc={cheese}
-                title="Cheddar Cheese"
-                price="Rs. 650"
-                description="Indulge in the rich and creamy flavor of our cheddar cheese, crafted with the finest ingredients for a delightful culinary experience"
-              />
-              <ProductCard
-                imgSrc={cheese}
-                title="Cheddar Cheese"
-                price="Rs. 650"
-                description="Indulge in the rich and creamy flavor of our cheddar cheese, crafted with the finest ingredients for a delightful culinary experience"
-              />
+              {dairy?.slice(0, 4)?.map((dairy) => (
+                <ProductCard
+                  data={{
+                    ...dairy,
+                    onClick: () =>
+                      navigate(`/productDetailedView/dairy/${dairy.id}`),
+                  }}
+                />
+              ))}
             </Box>
           </div>
         </div>
