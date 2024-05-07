@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Logo from "../assets/KhetiMart.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
@@ -7,10 +7,16 @@ import "../styles/Navbar.css";
 
 function Navbar() {
   const [openLinks, setOpenlinks] = useState(false);
+  const footerRef = useRef(null);
 
   const toggleNavbar = () => {
     setOpenlinks(!openLinks);
   };
+
+  const scrollToFooter = () => {
+    footerRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="navbar">
       <div className="Leftside" id={openLinks ? "open" : "close"}>

@@ -1,16 +1,17 @@
 .container {
-  height: 640px;
+  height: 100%;
+  margin: 40px;
 }
+
 .form-container {
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 80px;
-  background-color: aliceblue;
-  padding-bottom: 30px;
+  background-color: rgb(240, 255, 243);
   width: 700px;
   border-radius: 50px;
-  margin-bottom: 80px;
+  border: 3px solid black;
+  height: fit-content;
 }
 
 .header {

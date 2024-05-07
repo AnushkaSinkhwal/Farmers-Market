@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState } from "react";
 import cabbage from "../assets/cabbage2.jpg";
 import strawberry from "../assets/strawberry.jpg";
 import cheese from "../assets/cheese.jpg";
@@ -34,9 +34,26 @@ function ProductCard({
 
 function Cart() {
   const products = useSelector((state) => state.cart?.items);
+  const [optionASelected, setOptionASelected] = useState(false);
+  const [optionBSelected, setOptionBSelected] = useState(false);
+
   const totalCost = products
     ?.map((product) => product?.totalPrice)
     ?.reduce((acc, currVal) => acc + currVal, 0);
+
+  const handleOptionAChange = () => {
+    setOptionASelected(!optionASelected);
+    if (optionBSelected) {
+      setOptionBSelected(false);
+    }
+  };
+
+  const handleOptionBChange = () => {
+    setOptionBSelected(!optionBSelected);
+    if (optionASelected) {
+      setOptionASelected(false);
+    }
+  };
 
   return (
     <div>
@@ -59,8 +76,24 @@ function Cart() {
           </div>
           <div className="paymentMethod">
             <h1>Payment Method</h1>
-            <p>cash on delivery</p>
-            <p>Fone Pay</p>
+            <div className="checkbox-card">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={optionASelected}
+                  onChange={handleOptionAChange}
+                />
+                Cash on Delivery
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={optionBSelected}
+                  onChange={handleOptionBChange}
+                />
+                Fone Pay
+              </label>
+            </div>
           </div>
           <button>Procced to checkout</button>
         </div>

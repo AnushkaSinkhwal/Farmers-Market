@@ -76,3 +76,12 @@ button:hover {
   padding: 10px;
   border: 2px dashed black;
 }
+
+.checkbox-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox-card input {
+  margin: 10px;
+}
