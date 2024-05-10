@@ -1,0 +1,41 @@
+.commentCard {
+  border: 1px solid rgb(205, 199, 199);
+  padding: 10px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.userDetails span {
+  color: rgb(22, 160, 191);
+}
+
+.comment {
+  padding-left: 30px;
+  font-size: 13px;
+}
+
+.comment .action-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.comment .action-container span {
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.comment .action-container span:hover {
+  text-decoration: underline;
+  color: rgb(22, 160, 191);
+}
+
+.replysection {
+  margin-top: 10px;
+}

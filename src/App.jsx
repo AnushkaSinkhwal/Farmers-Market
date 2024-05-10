@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import Cart from "./Pages/Cart";
 import FarmerRegister from "./Pages/FarmerRegister";
 import FarmerLogin from "./Pages/FarmerLogin";
-import Help from "./Pages/Help";
+import AboutUs from "./Pages/AboutUs";
 import LoginPg from "./Pages/LoginPg";
 import Payment from "./Pages/Payment";
 import RegisterPg from "./Pages/RegisterPg";
@@ -27,7 +27,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/FarmerRegister" element={<FarmerRegister />} />
           <Route exact path="/FarmerLogin" element={<FarmerLogin />} />
-          <Route exact path="/Help" element={<Help />} />
+          <Route exact path="/AboutUs" element={<AboutUs />} />
           <Route exact path="/Login" element={<LoginPg />} />
           <Route exact path="/Payment" element={<Payment />} />
           <Route exact path="/RegisterPg" element={<RegisterPg />} />

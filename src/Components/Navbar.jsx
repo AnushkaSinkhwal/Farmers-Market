@@ -14,7 +14,11 @@ function Navbar() {
   };
 
   const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -36,7 +40,7 @@ function Navbar() {
       <div className="rightside">
         <Link to="/FarmerRegister">Become a seller</Link>
         <Link to="/Payment">Payment</Link>
-        <Link to="/Help">Help</Link>
+        <a onClick={scrollToFooter}>Help</a>
         <Link to="/Login">Login & Signup</Link>
         <Link to="/cart" className="cartlink">
           <ShoppingCartIcon />

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import cabbage from "../assets/cabbage2.jpg";
-import strawberry from "../assets/strawberry.jpg";
-import cheese from "../assets/cheese.jpg";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
 import "../styles/cart.css";
+import Modal from "@mui/material/Modal";
 import { useSelector } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 function ProductCard({
   photo_url,
@@ -36,6 +35,7 @@ function Cart() {
   const products = useSelector((state) => state.cart?.items);
   const [optionASelected, setOptionASelected] = useState(false);
   const [optionBSelected, setOptionBSelected] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const totalCost = products
     ?.map((product) => product?.totalPrice)
@@ -53,6 +53,10 @@ function Cart() {
     if (optionASelected) {
       setOptionASelected(false);
     }
+  };
+
+  const addToCardHandler = () => {
+    setShowModal(true);
   };
 
   return (
@@ -95,8 +99,30 @@ function Cart() {
               </label>
             </div>
           </div>
-          <button>Procced to checkout</button>
+          <button onClick={addToCardHandler}>Procced to checkout</button>
         </div>
+
+        <Modal
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          className={"successModal"}
+        >
+          <Box className={"modalBox"}>
+            <div className="modal-header">
+              <div className="title">
+                <CheckCircleIcon />
+                <span>Confirmation</span>
+              </div>
+              <CloseIcon
+                className="closeIcon"
+                onClick={() => setShowModal(false)}
+              />
+            </div>
+            <div className="description">
+              <span>Your order has be placed successfully!!</span>
+            </div>
+          </Box>
+        </Modal>
       </div>
     </div>
   );

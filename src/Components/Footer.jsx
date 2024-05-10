@@ -1,11 +1,12 @@
 import React from "react";
 import "../styles/footer.css";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <div class="footer">
+    <div id="footer" class="footer">
       <div className="km-card">
         <h1>Kheti Mart</h1>
-        <p>About Us</p>
+        <Link to="/AboutUs">About Us</Link>
         <p>Terms and condition</p>
       </div>
 
