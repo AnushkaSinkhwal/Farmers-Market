@@ -10,6 +10,7 @@ export default function App() {
     { text: "Add", to: "/AddProduct" },
     { text: "Edit", to: "/EditProduct" },
     { text: "Delete", to: "/DeleteProduct" },
+    { text: "view Queries", to: "/Queries" },
   ];
 
   // the stagger effect
@@ -23,7 +24,7 @@ export default function App() {
       "ul",
       {
         width: open ? 200 : 0,
-        height: open ? 300 : 0,
+        height: open ? 370 : 0,
         opacity: open ? 1 : 0,
       },
       {

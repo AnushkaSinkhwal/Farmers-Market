@@ -27,7 +27,7 @@ ul {
   flex-direction: column;
   gap: 50px;
   width: 200px;
-  height: 0px;
+  height: 500px;
   border-radius: 8px;
   align-items: center;
   opacity: 0;
@@ -46,7 +46,4 @@ li a {
   color: black;
   background: transparent;
   text-decoration: none;
-}
-
-li a::shadow {
 }

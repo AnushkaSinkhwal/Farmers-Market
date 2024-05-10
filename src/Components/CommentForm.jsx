@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/commentForm.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addComment, editComment } from "../store/commentSlice";
+import { addComment, editComment, replyComment } from "../store/commentSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const CommentForm = ({
@@ -11,6 +11,7 @@ const CommentForm = ({
   productId,
   setIsEdit,
   setIsReply,
+  isFarmer,
   commentToEdit,
   commentId,
 }) => {
@@ -31,6 +32,8 @@ const CommentForm = ({
       dispatch(editComment({ commentText, commentId }));
       setIsEdit(false);
     } else if (isReply) {
+      dispatch(replyComment({ commentText, commentId }));
+      setIsReply(false);
     } else {
       dispatch(
         addComment({
@@ -39,6 +42,8 @@ const CommentForm = ({
           userId: 1,
           userName: "Meme Famrme",
           id,
+          storeId: 121,
+          storeName: "Chamin Vegetables",
         })
       );
     }

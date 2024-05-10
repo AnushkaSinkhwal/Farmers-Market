@@ -19,8 +19,22 @@ const commentSlice = createSlice({
       );
       state.comments = editedArr;
     },
+    replyComment: (state, action) => {
+      const editArr = [...state.comments].map((comment) =>
+        comment.id === action.payload.commentId
+          ? {
+              ...comment,
+              replies: [
+                ...(comment?.replies || []),
+                { commentText: action.payload.commentText },
+              ],
+            }
+          : comment
+      );
+      state.comments = editArr;
+    },
   },
 });
 
-export const { addComment, editComment } = commentSlice.actions;
+export const { addComment, editComment, replyComment } = commentSlice.actions;
 export default commentSlice.reducer;

@@ -1,0 +1,14 @@
+.query-container {
+  display: flex;
+  justify-content: center;
+}
+
+.query-container .query-section {
+  width: 80%;
+  padding: 40px 20px;
+}
+
+.query-section .title {
+  font-size: 30px;
+  font-weight: 500;
+}

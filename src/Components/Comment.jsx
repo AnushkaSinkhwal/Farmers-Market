@@ -5,9 +5,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CommentForm from "./CommentForm";
 
 const Comment = ({ comment }) => {
-  const isFarmer = false;
+  const isFarmer = true;
   const [isEdit, setIsEdit] = useState(false);
   const [isReply, setIsReply] = useState(false);
+  console.log(comment.replies);
   return (
     <div className="commentCard">
       <div className="userDetails">
@@ -28,14 +29,16 @@ const Comment = ({ comment }) => {
             </span>
           )}
 
-          <span
-            onClick={() => {
-              setIsEdit(!isEdit);
-              setIsReply(false);
-            }}
-          >
-            Edit
-          </span>
+          {!isFarmer && (
+            <span
+              onClick={() => {
+                setIsEdit(!isEdit);
+                setIsReply(false);
+              }}
+            >
+              Edit
+            </span>
+          )}
         </div>
         {(isEdit || isReply) && (
           <div className="replysection">
@@ -50,6 +53,19 @@ const Comment = ({ comment }) => {
             />
           </div>
         )}
+
+        {comment?.replies?.length > 0 &&
+          comment.replies.map((reply) => (
+            <div>
+              <div className="userDetails">
+                <AccountCircleIcon height={40} width={40} />
+                <span>{comment.storeName}</span>
+              </div>
+              <div className="comment">
+                <span>{reply.commentText}</span>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
