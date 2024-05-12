@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-
 import "../styles/Home.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useState } from "react";
@@ -10,6 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProducts } from "../store/productSlice";
 
 function ProductCard(props) {
+  const handleAddToCart = () => {
+    if (typeof props.onAddToCart === 'function') {
+      props.onAddToCart(props.data);
+    } else {
+      console.error("onAddToCart is not a function");
+    }
+  };
+
+
   return (
     <div className="card" onClick={props.data.onClick}>
       <Box
@@ -21,8 +29,8 @@ function ProductCard(props) {
       <h1>{props.data.name}</h1>
       <p className="price">Rs.{props.data.price}</p>
       <p className="description">{props.data.description}</p>
-      <button onClick={props.data.onClick}>
-        View Details <FavoriteBorderIcon />
+      <button onClick={handleAddToCart}>
+        Add to Cart <FavoriteBorderIcon />
       </button>
     </div>
   );
@@ -31,6 +39,7 @@ function ProductCard(props) {
 function Customer() {
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
   const products = useSelector((state) => state.product.products);
   const { vegetables, fruits, dairy } = products;
   const dispatch = useDispatch();
@@ -60,6 +69,13 @@ function Customer() {
       handleSearch();
     }
   };
+  const addToCart = (product) => {
+    // Add logic to add product to cart
+    setAddedToCart(true); // Set state to show cart message
+    setTimeout(() => {
+      setAddedToCart(false); // Reset state after a delay
+    }, 2000);
+  };
 
   return (
     <div>
@@ -81,6 +97,12 @@ function Customer() {
             <button onClick={handleSearch}>Search</button>
           </div>
         </div>
+
+        {addedToCart && ( // Show message when added to cart
+          <div className="added-to-cart-message">
+            Added to cart successfully!
+          </div>
+        )}
 
         {/* Pop-up card */}
         {isSearching && (
@@ -124,7 +146,7 @@ function Customer() {
           <div className="product-category">
             <h1>Fruit</h1>
             <h1>
-              <Link to="/vegetable" className="view-all-link">
+              <Link to="/fruits" className="view-all-link">
                 View all
               </Link>
             </h1>
@@ -150,7 +172,7 @@ function Customer() {
           <div className="product-category">
             <h1>Dairy</h1>
             <h1>
-              <Link to="/vegetable" className="view-all-link">
+              <Link to="/dairy" className="view-all-link">
                 View all
               </Link>
             </h1>

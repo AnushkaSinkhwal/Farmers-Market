@@ -2,6 +2,7 @@ import "../styles/FarmerDashbord.css";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import EditProduct from "./EditProduct";
 
 export default function App() {
   const [open, setOpen] = useState(false);
