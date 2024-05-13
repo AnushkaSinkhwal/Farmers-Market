@@ -39,7 +39,6 @@ function AddProduct() {
           productDescription: "",
         });
         console.log("Product added successfully!");
-        fetchProducts();
       } else {
         console.error("Failed to add product.");
       }
@@ -53,24 +52,6 @@ function AddProduct() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/api/products");
-      if (response.ok) {
-        const data = await response.json();
-        setProducts(data.data);
-      } else {
-        console.error("Failed to fetch products.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  useEffect(() => {
-    // Fetch initial list of products when component mounts
-    fetchProducts();
-  }, []);
 
   return (
     <div className="add-container">

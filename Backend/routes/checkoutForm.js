@@ -6,12 +6,13 @@ const router = express.Router();
 // Route to handle form submission
 router.post('/submit-form', async (req, res) => {
   try {
-    const { fullName, address, paymentMethod } = req.body;
+    const { fullName, address,phonenumber, paymentMethod } = req.body;
 
     // Create a new instance of the CheckoutForm model
     const newCheckout = new CheckoutForm({
       fullName,
       address,
+      phonenumber,
       paymentMethod,
       // Add more fields as needed
     });

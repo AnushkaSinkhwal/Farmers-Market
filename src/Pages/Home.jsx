@@ -1,12 +1,12 @@
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
 import "../styles/Home.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addProducts } from "../store/productSlice";
+
 
 function ProductCard(props) {
   const handleAddToCart = () => {
@@ -16,6 +16,8 @@ function ProductCard(props) {
       console.error("onAddToCart is not a function");
     }
   };
+
+  console.log("Fetched products inside ProductCard:", props.data);
 
 
   return (
@@ -36,22 +38,42 @@ function ProductCard(props) {
   );
 }
 
-function Customer() {
+function Home() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [ products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
-  const products = useSelector((state) => state.product.products);
   const { vegetables, fruits, dairy } = products;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  
+
   useEffect(() => {
-    axios.get("vegetables.json").then((resp) => {
-      if (resp?.data) {
-        dispatch(addProducts(resp?.data));
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/products");
+        if (response.status === 200) {
+          dispatch(addProducts(response.data.data));
+          setProducts(response.data.data);
+          const farmersData = response.data.data;
+          console.log(farmersData)
+        } else {
+          setError("Failed to fetch products.");
+        }
+      } catch (error) {
+        setError("Error fetching products.");
+      } finally {
+        setLoading(false);
       }
-    });
-  }, []);
+    };
+  
+    fetchProducts();
+  }, [dispatch]);
+
+  console.log("Products:", products);
 
   const handleSearch = () => {
     setIsSearching(true);
@@ -70,11 +92,13 @@ function Customer() {
     }
   };
   const addToCart = (product) => {
-    // Add logic to add product to cart
     setAddedToCart(true); // Set state to show cart message
     setTimeout(() => {
       setAddedToCart(false); // Reset state after a delay
     }, 2000);
+  };
+  const filterProductsByCategory = (category) => {
+    return products.filter((product) => product.category === category);
   };
 
   return (
@@ -97,13 +121,13 @@ function Customer() {
             <button onClick={handleSearch}>Search</button>
           </div>
         </div>
-
+  
         {addedToCart && ( // Show message when added to cart
           <div className="added-to-cart-message">
             Added to cart successfully!
           </div>
         )}
-
+  
         {/* Pop-up card */}
         {isSearching && (
           <div className="searching-popup-card">
@@ -112,89 +136,83 @@ function Customer() {
             </div>
           </div>
         )}
-
-        {/* Vegetable */}
-        <div className="vegetable-container">
-          <div className="product-category">
-            <h1>Vegetable</h1>
-            <h1>
-              <Link to="/vegetables" className="view-all-link">
-                View all
-              </Link>
-            </h1>
+  
+        <div>
+          {/* Vegetable */}
+          <div className="vegetable-container">
+            <div className="product-category">
+              <h1>Vegetable</h1>
+              <h1>
+                <Link to="/vegetables" className="view-all-link">
+                  View all
+                </Link>
+              </h1>
+            </div>
+            <div className="separator"></div>
+            <div className="product-card">
+              <Box sx={{ display: "flex", gap: "40px" }}>
+                {filterProductsByCategory("vegetable").map((vegetable) => (
+                  <ProductCard
+                    key={vegetable.id}
+                    data={vegetable}
+                    onAddToCart={addToCart}
+                  />
+                ))}
+              </Box>
+            </div>
           </div>
-          <div className="separator"></div>
-          <div className="product-card">
-            <Box sx={{ display: "flex", gap: "40px" }}>
-              {vegetables?.slice(0, 4)?.map((vegetable) => (
-                <ProductCard
-                  data={{
-                    ...vegetable,
-                    onClick: () =>
-                      navigate(
-                        `/productDetailedView/vegetables/${vegetable.id}`
-                      ),
-                  }}
-                />
-              ))}
-            </Box>
+  
+          {/* Fruit */}
+          <div className="fruit-container">
+            <div className="product-category">
+              <h1>Fruit</h1>
+              <h1>
+                <Link to="/fruits" className="view-all-link">
+                  View all
+                </Link>
+              </h1>
+            </div>
+            <div className="separator"></div>
+            <div className="product-card">
+              <Box sx={{ display: "flex", gap: "40px" }}>
+                {filterProductsByCategory("fruit").map((fruit) => (
+                  <ProductCard
+                    key={fruit.id}
+                    data={fruit}
+                    onAddToCart={addToCart}
+                  />
+                ))}
+              </Box>
+            </div>
           </div>
-        </div>
-
-        {/* Fruits */}
-        <div className="fruit-container">
-          <div className="product-category">
-            <h1>Fruit</h1>
-            <h1>
-              <Link to="/fruits" className="view-all-link">
-                View all
-              </Link>
-            </h1>
-          </div>
-          <div className="separator"></div>
-          <div className="product-card">
-            <Box sx={{ display: "flex", gap: "40px" }}>
-              {fruits?.slice(0, 4)?.map((fruit) => (
-                <ProductCard
-                  data={{
-                    ...fruit,
-                    onClick: () =>
-                      navigate(`/productDetailedView/fruits/${fruit.id}`),
-                  }}
-                />
-              ))}
-            </Box>
-          </div>
-        </div>
-
-        {/* Dairy */}
-        <div className="dairy-container">
-          <div className="product-category">
-            <h1>Dairy</h1>
-            <h1>
-              <Link to="/dairy" className="view-all-link">
-                View all
-              </Link>
-            </h1>
-          </div>
-          <div className="separator"></div>
-          <div className="product-card">
-            <Box sx={{ display: "flex", gap: "40px" }}>
-              {dairy?.slice(0, 4)?.map((dairy) => (
-                <ProductCard
-                  data={{
-                    ...dairy,
-                    onClick: () =>
-                      navigate(`/productDetailedView/dairy/${dairy.id}`),
-                  }}
-                />
-              ))}
-            </Box>
+  
+          {/* Dairy */}
+          <div className="dairy-container">
+            <div className="product-category">
+              <h1>Dairy</h1>
+              <h1>
+                <Link to="/dairy" className="view-all-link">
+                  View all
+                </Link>
+              </h1>
+            </div>
+            <div className="separator"></div>
+            <div className="product-card">
+              <Box sx={{ display: "flex", gap: "40px" }}>
+                {filterProductsByCategory("dairy").map((dairy) => (
+                  <ProductCard
+                    key={dairy.id}
+                    data={dairy}
+                    onAddToCart={addToCart}
+                  />
+                ))}
+              </Box>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+}  
 
-export default Customer;
+export default Home;

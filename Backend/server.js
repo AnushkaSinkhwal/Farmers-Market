@@ -10,6 +10,7 @@ const fs = require('fs');
 const Product = require("./models/productModel.js");
 const Cart = require("./models/cartModel");
 const checkoutFormRoutes = require('./routes/checkoutForm');
+const router = express.Router();
 
 //express app
 const app = express()
@@ -106,7 +107,7 @@ app.put('/api/products/update', async (req, res) => {
 
 // Serve vegetables.json
 app.get("/api/vegetables", (req, res) => {
-  fs.readFile("vegetables.json", "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "vegetables.json"), "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
@@ -119,7 +120,7 @@ app.get("/api/vegetables", (req, res) => {
 
 // Serve fruits.json
 app.get("/api/fruits", (req, res) => {
-  fs.readFile("fruits.json", "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "fruits.json"), "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
@@ -132,7 +133,7 @@ app.get("/api/fruits", (req, res) => {
 
 // Serve dairy.json
 app.get("/api/dairy", (req, res) => {
-  fs.readFile("dairy.json", "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "dairy.json"), "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
@@ -164,6 +165,19 @@ app.get('/api/products/search', async (req, res) => {
   } catch (error) {
     console.error('Error searching products:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.post('/submit-form', async (req, res) => {
+  try {
+    // Extract form data from request body
+    const { formData } = req.body;
+    // Send a success response
+    res.status(200).json({ message: 'Form submitted successfully' });
+  } catch (error) {
+    // Handle errors
+    console.error('Error submitting form:', error);
+    res.status(500).json({ error: 'Failed to submit form' });
   }
 });
 

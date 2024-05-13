@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";import Box from "@mui/material/Box"; // Import Box from MUI
+import axios from "axios";
+import Box from "@mui/material/Box"; // Import Box from MUI
 import Modal from "@mui/material/Modal"; // Import Modal from MUI
 import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon from MUI
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"; // Import CheckCircleIcon from MUI
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"; 
+
 import "../styles/CheckoutForm.css";
 
 function CheckoutForm({ products }) {
   const [formData, setFormData] = useState({
     fullName: "",
     address: "",
+    phoneNumber: "",
     paymentMethod: "", // Add payment method field
   });
 
@@ -17,8 +20,6 @@ function CheckoutForm({ products }) {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  const baseURL = "http://localhost:8000/submit-form";
 
   useEffect(() => {
     calculateSubtotal();
@@ -42,18 +43,23 @@ function CheckoutForm({ products }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/submit-form", formData);
+      await axios.post("http://localhost:3000/submit-form", formData);
       console.log("Form submitted:", formData);
       // Reset form fields after submission
       setFormData({
         fullName: "",
         address: "",
+        phoneNumber: "",
         paymentMethod: "",
       });
       setShowSuccessModal(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Close modal when close button is clicked
   };
 
   return (
@@ -83,6 +89,16 @@ function CheckoutForm({ products }) {
             />
           </label>
           <label>
+            Phone Number:
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
             Payment Method:
             <select
               name="paymentMethod"
@@ -105,7 +121,7 @@ function CheckoutForm({ products }) {
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
-        className={"successModal"}
+        className={handleCloseModal}
       >
         <Box className={"modalBox"}>
           <div className="modal-header">
@@ -115,11 +131,13 @@ function CheckoutForm({ products }) {
             </div>
             <CloseIcon
               className="closeIcon"
-              onClick={() => setShowModal(false)}
-            />
+              onClick ={handleCloseModal}/>
           </div>
           <div className="description">
             <span>successfully submitted form for placing order</span>
+          </div>
+          <div className="buttonContainer">
+            <button onClick={handleCloseModal}>close</button>
           </div>
         </Box>
       </Modal>
