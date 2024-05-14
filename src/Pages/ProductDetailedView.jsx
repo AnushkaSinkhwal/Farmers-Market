@@ -78,7 +78,8 @@ function ProductDetailedView() {
       })
     );
   };
-  console.log(comments);
+
+  console.log(id, "hello");
 
   return (
     <div>

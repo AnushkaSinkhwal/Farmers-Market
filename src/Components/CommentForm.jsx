@@ -25,9 +25,7 @@ const CommentForm = ({
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    // axios
-    //   .post("http://localhost:8000/comments", { comment: commentText })
-    //   .then((resp) => console.log(resp));
+
     if (isEdit) {
       dispatch(editComment({ commentText, commentId }));
       setIsEdit(false);
@@ -35,17 +33,28 @@ const CommentForm = ({
       dispatch(replyComment({ commentText, commentId }));
       setIsReply(false);
     } else {
-      dispatch(
-        addComment({
-          commentText,
-          productId,
-          userId: 1,
-          userName: "Meme Famrme",
-          id,
-          storeId: 121,
-          storeName: "Chamin Vegetables",
+      axios
+        .post("http://localhost:3002", {
+          prodID: productId,
+          username: "ABC",
+          comment: commentText,
+          replies: [],
         })
-      );
+        .then((resp) => {
+          if (resp) {
+            dispatch(
+              addComment({
+                commentText,
+                productId,
+                userId: 1,
+                userName: "Meme Famrme",
+                id,
+                storeId: 121,
+                storeName: "Chamin Vegetables",
+              })
+            );
+          }
+        });
     }
 
     setCommentText("");

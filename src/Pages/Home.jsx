@@ -96,7 +96,7 @@ function Customer() {
           <div className="product-category">
             <h1>Vegetable</h1>
             <h1>
-              <Link to="/vegetables" className="view-all-link">
+              <Link to="/ViewVegetables" className="view-all-link">
                 View all
               </Link>
             </h1>
@@ -124,7 +124,7 @@ function Customer() {
           <div className="product-category">
             <h1>Fruit</h1>
             <h1>
-              <Link to="/vegetable" className="view-all-link">
+              <Link to="/ViewFruits" className="view-all-link">
                 View all
               </Link>
             </h1>
@@ -150,7 +150,7 @@ function Customer() {
           <div className="product-category">
             <h1>Dairy</h1>
             <h1>
-              <Link to="/vegetable" className="view-all-link">
+              <Link to="/ViewDairy" className="view-all-link">
                 View all
               </Link>
             </h1>

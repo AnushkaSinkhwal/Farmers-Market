@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 function LoginPg() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const userInfo = { username: "Hari Prasad", userId: 1211 };
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
   };
   return (
     <div className="container">
@@ -42,11 +44,9 @@ function LoginPg() {
               </Link>
             </div>
             <div className="submit">
-              <Link to="/Customer">
-                <button type="submit" name="Login">
-                  Login
-                </button>
-              </Link>
+              <button type="submit" name="Login">
+                Login
+              </button>
             </div>
           </div>
         </form>

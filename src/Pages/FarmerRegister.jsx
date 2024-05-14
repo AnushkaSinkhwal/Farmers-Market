@@ -4,11 +4,31 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import HomeIcon from "@mui/icons-material/Home";
+
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function FarmerRegister() {
+  const [fullName, setFullName] = useState("");
+  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("submitting");
+    axios
+      .post("http://localhost:8000/api/farmers/farmersignup", {
+        fname: fullName,
+        phoneNumber: contact,
+        address,
+        email,
+        password,
+      })
+      .then((res) => toast.success(<div>User registered succesfully!!</div>));
   };
 
   return (
@@ -26,8 +46,11 @@ function FarmerRegister() {
               </span>
               <input
                 type="text"
+                required
                 placeholder="Full Name/Company Name"
                 name="Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </div>
 
@@ -38,7 +61,10 @@ function FarmerRegister() {
               <input
                 type="Contact No"
                 placeholder="Contact number"
+                required
                 name="Phoneno"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
               />
             </div>
 
@@ -46,14 +72,42 @@ function FarmerRegister() {
               <span className="farmer-EmailIcon">
                 <EmailIcon />
               </span>
-              <input type="email" placeholder="Email Id" name="Email" />
+              <input
+                type="email"
+                placeholder="example@gmail.com"
+                name="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
 
             <div className="farmer-input">
               <span className="farmer-LockIcon">
                 <LockIcon />
               </span>
-              <input type="password" placeholder="Password" name="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                name="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="farmer-input">
+              <span className="farmer-LockIcon">
+                <HomeIcon />
+              </span>
+              <input
+                type="text"
+                placeholder="Enter your address"
+                name="Address"
+                required
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
             </div>
           </div>
 

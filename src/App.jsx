@@ -16,13 +16,23 @@ import DeleteProduct from "./Pages/DeleteProduct";
 import Customer from "./Pages/Customer";
 import ProductDetailedView from "./Pages/ProductDetailedView";
 import Queries from "./Pages/Queries";
+import ViewVegetables from "./Pages/ViewVegetables";
+import ViewDairy from "./Pages/ViewDairy";
+import ViewFruits from "./Pages/ViewFruits";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
+import PrivateRoute from "./PrivateRoute";
+import { useEffect } from "react";
 
 function App() {
+  const baseUrl = process.env.APP_BASE_URL;
+
   return (
     <div className="app">
       <Router>
         <Navbar />
+        <ToastContainer />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/cart" element={<Cart />} />
@@ -43,6 +53,9 @@ function App() {
             path="/productDetailedView/:type/:id"
             element={<ProductDetailedView />}
           />
+          <Route exact path="ViewVegetables" element={<ViewVegetables />} />
+          <Route exact path="ViewDairy" element={<ViewDairy />} />
+          <Route exact path="ViewFruits" element={<ViewFruits />} />
         </Routes>
         <Footer />
       </Router>
