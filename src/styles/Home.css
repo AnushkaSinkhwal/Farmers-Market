@@ -121,7 +121,7 @@ button:hover {
 
 /* Search container styles */
 .Search-container {
-  background-image: url("C:\Users\hp\OneDrive\Desktop\FarmersMarket\src\assets\vgi.jpg");
+  background-image: url("../assets/vgi.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
