@@ -46,7 +46,6 @@ function Customer() {
 
   const handleSearch = () => {
     setIsSearching(true);
-    // Perform search functionality with searchValue
     console.log("Searching for:", searchValue);
 
     setTimeout(() => {
@@ -64,33 +63,6 @@ function Customer() {
   return (
     <div>
       <div className="home-container">
-        {/* The search*/}
-        <div className="Search-container">
-          <h1>Order Now!</h1>
-          <div className="searchNbtn">
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Enter product name"
-                name="search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-              />
-            </div>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        </div>
-
-        {/* Pop-up card */}
-        {isSearching && (
-          <div className="searching-popup-card">
-            <div className="popup-content">
-              <p>We are searching...</p>
-            </div>
-          </div>
-        )}
-
         {/* Vegetable */}
         <div className="vegetable-container">
           <div className="product-category">

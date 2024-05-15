@@ -2,6 +2,7 @@
   background-image: url("../assets/bg-img.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .aboutus-section .container {

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
+import Search from "../Components/Search";
 import "../styles/viewAllcategory.css";
 
 function ProductCardViewdairy(props) {
@@ -31,6 +32,9 @@ function ViewDairy() {
   return (
     <div className="view-all-container">
       <h1>All Dairy Products</h1>
+      <div className="seperator" />
+      <Search />
+
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
           {dairy.map((vegetable) => (

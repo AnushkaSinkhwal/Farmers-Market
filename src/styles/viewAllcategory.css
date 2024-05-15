@@ -1,6 +1,5 @@
 /* Container styles */
 .view-all-container {
-  border: 2px solid rgb(0, 0, 0);
   background-color: aliceblue;
   border-radius: 20px;
   padding: 20px;
@@ -17,8 +16,14 @@
 .product-grid {
   display: flex;
   justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
+  padding: 0px 65px;
   gap: 40px;
+}
+
+.seperator {
+  border: 3px solid black;
 }
 
 /* Card styles */

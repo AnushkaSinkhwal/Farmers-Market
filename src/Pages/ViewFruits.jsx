@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
 import "../styles/viewAllcategory.css";
+import Search from "../Components/Search";
+
 function ProductCardViewfruits(props) {
   return (
     <div className="card" onClick={props.data.onClick}>
@@ -30,6 +32,8 @@ function ViewFruits() {
   return (
     <div className="view-all-container">
       <h1>All Fruits</h1>
+      <div className="seperator" />
+      <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
           {fruits.map((vegetable) => (

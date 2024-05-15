@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import cabbage from "../assets/cabbage2.jpg";
 import "../styles/productview.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";

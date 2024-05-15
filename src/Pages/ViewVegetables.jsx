@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
 import "../styles/viewAllcategory.css";
+import Search from "../Components/Search";
 
 function ProductCardViewvegetable(props) {
   return (
@@ -31,6 +32,8 @@ function ViewVegetables() {
   return (
     <div className="view-all-container">
       <h1>All Vegetables</h1>
+      <div className="seperator" />
+      <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
           {vegetables.map((vegetable) => (
