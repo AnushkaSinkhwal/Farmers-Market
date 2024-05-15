@@ -8,23 +8,19 @@ export default function App() {
   const [scope, animate] = useAnimate();
   const links = [
     { text: "Add", to: "/AddProduct" },
-    { text: "Edit", to: "/EditProduct" },
-    { text: "Delete", to: "/DeleteProduct" },
+    { text: "Edit", to: "/ProductList" },
     { text: "view Queries", to: "/Queries" },
   ];
 
   // the stagger effect
   const staggerList = stagger(0.1, { startDelay: 0.25 });
 
-  // create the animations that will be applied
-  // whenever the open state is toggled
-
   useEffect(() => {
     animate(
       "ul",
       {
         width: open ? 200 : 0,
-        height: open ? 370 : 0,
+        height: open ? 300 : 0,
         opacity: open ? 1 : 0,
       },
       {

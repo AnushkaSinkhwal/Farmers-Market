@@ -15,16 +15,9 @@ function EditProduct() {
             {/* Product Name */}
             <div className="edit-input-group">
               <label htmlFor="productName">Product Name:</label>
-              <select id="category" name="category">
-                <option value="Product Name">Product Name</option>
-              </select>
-
-              <select id="category" name="category">
-                <option value="categoryOption">--Select--</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="fruit">Fruit</option>
-                <option value="dairy">Dairy</option>
-              </select>
+              <label htmlFor="productName" className="pdname">
+                Apple
+              </label>
             </div>
 
             {/* New Name */}
@@ -90,7 +83,7 @@ function EditProduct() {
           {/* Form Buttons */}
           <div className="edit-form-buttons">
             <div className="edit-submit">
-              <Link to="/FarmerDashbord">
+              <Link to="/ProductList">
                 <button type="button">Cancel</button>
               </Link>
             </div>
