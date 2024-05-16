@@ -1,0 +1,105 @@
+.add-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  height: 640px;
+}
+
+.add-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background: linear-gradient(rgb(175, 255, 153), rgb(255, 241, 177));
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 80vh;
+  width: 800px;
+  border-radius: 20px;
+  overflow-y: auto;
+}
+
+.add-input-form input,
+.add-input-form select,
+.add-input-form textarea {
+  background: #f8ffb9;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+}
+
+.add-input-form select {
+  width: 100px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper select {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.input-group label {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.form-buttons button {
+  margin-left: 10px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.add-input-form input,
+.add-input-form select,
+.add-input-form textarea {
+  flex: 1;
+  background: #f8ffb9;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+}

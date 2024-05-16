@@ -1,0 +1,131 @@
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import "../styles/cart.css";
+import Modal from "@mui/material/Modal";
+import { useSelector } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+
+function ProductCard({
+  photo_url,
+  name,
+  totalPrice,
+  price,
+  description,
+  cartQuantity,
+}) {
+  return (
+    <div className="card-cart">
+      <Box component="img" src={photo_url} alt={name} className="productimge" />
+      <div className="textcont">
+        <h1>{name}</h1>
+        <p className="price">Rs. {price}/kg</p>
+        <p>{description}</p>
+        <p>{cartQuantity} kg</p>
+      </div>
+      <div className="seperator-c"></div>
+      <div className="price-card">
+        <p>Rs. {totalPrice}</p>
+      </div>
+    </div>
+  );
+}
+
+function Cart() {
+  const products = useSelector((state) => state.cart?.items);
+  const [optionASelected, setOptionASelected] = useState(false);
+  const [optionBSelected, setOptionBSelected] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const totalCost = products
+    ?.map((product) => product?.totalPrice)
+    ?.reduce((acc, currVal) => acc + currVal, 0);
+
+  const handleOptionAChange = () => {
+    setOptionASelected(!optionASelected);
+    if (optionBSelected) {
+      setOptionBSelected(false);
+    }
+  };
+
+  const handleOptionBChange = () => {
+    setOptionBSelected(!optionBSelected);
+    if (optionASelected) {
+      setOptionASelected(false);
+    }
+  };
+
+  const addToCardHandler = () => {
+    setShowModal(true);
+  };
+
+  return (
+    <div>
+      <div className="cart-container">
+        <div className="product-container">
+          <h1>Item List</h1>
+          <div className="items-card">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+              {products?.map((product) => (
+                <ProductCard {...product} />
+              ))}
+            </Box>
+          </div>
+        </div>
+
+        <div className="checkoutCard">
+          <div className="totalPrice">
+            <h1>Your subtotal:</h1>
+            <p>Rs. {totalCost}</p>
+          </div>
+          <div className="paymentMethod">
+            <h1>Payment Method</h1>
+            <div className="checkbox-card">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={optionASelected}
+                  onChange={handleOptionAChange}
+                />
+                Cash on Delivery
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={optionBSelected}
+                  onChange={handleOptionBChange}
+                />
+                Fone Pay
+              </label>
+            </div>
+          </div>
+          <button onClick={addToCardHandler}>Procced to checkout</button>
+        </div>
+
+        <Modal
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          className={"successModal"}
+        >
+          <Box className={"modalBox"}>
+            <div className="modal-header">
+              <div className="title">
+                <CheckCircleIcon />
+                <span>Confirmation</span>
+              </div>
+              <CloseIcon
+                className="closeIcon"
+                onClick={() => setShowModal(false)}
+              />
+            </div>
+            <div className="description">
+              <span>Your order has be placed successfully!!</span>
+            </div>
+          </Box>
+        </Modal>
+      </div>
+    </div>
+  );
+}
+
+export default Cart;

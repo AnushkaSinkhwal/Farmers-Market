@@ -1,0 +1,40 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #20610c;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.footer-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.km-card {
+  margin: 50px;
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.payments-card {
+  margin: 50px;
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.footer h1 {
+  color: aliceblue;
+}

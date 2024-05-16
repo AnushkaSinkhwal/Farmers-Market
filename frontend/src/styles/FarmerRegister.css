@@ -1,0 +1,108 @@
+.farmer-container {
+  height: auto;
+}
+.farmer-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 80px;
+  background-color: rgb(240, 255, 243);
+  padding-bottom: 30px;
+  width: 700px;
+  border-radius: 50px;
+  margin-bottom: 80px;
+  border: 3px solid black;
+}
+
+.farmer-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.farmer-text {
+  color: black;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.farmer-underline {
+  width: 200px;
+  height: 6px;
+  background: green;
+  border-radius: 9px;
+}
+
+.farmer-inputs {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.farmer-input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 480px;
+  height: 80px;
+  background: rgb(255, 241, 206);
+  border-radius: 50px;
+}
+
+.farmer-input .farmer-BadgeIcon {
+  margin: 0px 30px;
+}
+.farmer-input .farmer-PhoneIcon {
+  margin: 0px 30px;
+}
+.farmer-input .farmer-HomeIcon {
+  margin: 0px 30px;
+}
+.farmer-input .farmer-EmailIcon {
+  margin: 0px 30px;
+}
+.farmer-input .farmer-LockIcon {
+  margin: 0px 30px;
+}
+
+.farmer-input input {
+  height: 50px;
+  width: 400px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(72, 60, 46, 0.842);
+  font-size: 19px;
+  margin-left: 35px;
+}
+
+.farmer-submit-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px auto;
+}
+
+.farmer-submit button {
+  width: 220px;
+  height: 59px;
+  color: aliceblue;
+  background: rgb(0, 129, 0);
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.farmer-submit button:hover {
+  background-color: rgb(85, 215, 85);
+  color: black;
+}
+.farmer-gray {
+  background: rgb(255, 255, 255);
+  color: gray;
+}

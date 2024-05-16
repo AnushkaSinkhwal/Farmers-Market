@@ -1,0 +1,49 @@
+.Farmer-Dashbord {
+  height: 640px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.inventoryButton {
+  padding: 50px 20px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color: #fff;
+  border: none;
+  background-color: #57a02e;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 190px;
+}
+
+ul {
+  padding: 20px 20px 20px 20px;
+  background-color: #fdfd32;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 200px;
+  height: 500px;
+  border-radius: 8px;
+  align-items: center;
+  opacity: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 5000;
+  font-style: normal;
+  font-size: 29px;
+}
+
+li a {
+  color: black;
+  background: transparent;
+  text-decoration: none;
+}

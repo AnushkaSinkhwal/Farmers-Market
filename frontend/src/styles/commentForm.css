@@ -1,0 +1,21 @@
+.comment-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-section textarea {
+  resize: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.comment-section span {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.comment-section button {
+  width: 150px;
+}
