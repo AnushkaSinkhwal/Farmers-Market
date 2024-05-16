@@ -34,16 +34,15 @@ function ViewDairy() {
       <h1>All Dairy Products</h1>
       <div className="seperator" />
       <Search />
-
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {dairy.map((vegetable) => (
+          {dairy.map((dairyProduct) => (
             <ProductCardViewdairy
-              key={dairy.id}
+              key={dairyProduct.id}
               data={{
-                ...dairy,
+                ...dairyProduct,
                 onClick: () =>
-                  navigate(`/productDetailedView/vegetables/${dairy.id}`),
+                  navigate(`/productDetailedView/dairy/${dairyProduct.id}`),
               }}
             />
           ))}

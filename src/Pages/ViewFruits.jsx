@@ -36,13 +36,13 @@ function ViewFruits() {
       <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {fruits.map((vegetable) => (
+          {fruits.map((fruit) => (
             <ProductCardViewfruits
-              key={fruits.id}
+              key={fruit.id}
               data={{
-                ...fruits,
+                ...fruit,
                 onClick: () =>
-                  navigate(`/productDetailedView/vegetables/${fruits.id}`),
+                  navigate(`/productDetailedView/fruits/${fruit.id}`),
               }}
             />
           ))}
