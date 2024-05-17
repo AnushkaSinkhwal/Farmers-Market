@@ -1,4 +1,12 @@
+import React from "react";
 import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
@@ -19,43 +27,42 @@ import ViewVegetables from "./Pages/ViewVegetables";
 import ViewDairy from "./Pages/ViewDairy";
 import ViewFruits from "./Pages/ViewFruits";
 import ProductList from "./Pages/ProductList";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-
-import PrivateRoute from "./PrivateRoute";
-import { useEffect } from "react";
+import CheckoutForm from "./Pages/CheckoutForm";
 
 function App() {
-  const baseUrl = process.env.APP_BASE_URL;
-
   return (
     <div className="app">
       <Router>
         <Navbar />
         <ToastContainer />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/FarmerRegister" element={<FarmerRegister />} />
-          <Route exact path="/FarmerLogin" element={<FarmerLogin />} />
-          <Route exact path="/AboutUs" element={<AboutUs />} />
-          <Route exact path="/Login" element={<LoginPg />} />
-          <Route exact path="/Payment" element={<Payment />} />
-          <Route exact path="/RegisterPg" element={<RegisterPg />} />
-          <Route exact path="/FarmerDashbord" element={<FarmerDashbord />} />
-          <Route exact path="/AddProduct" element={<AddProduct />} />
-          <Route exact path="/EditProduct" element={<EditProduct />} />
-          <Route exact path="/Customer" element={<Customer />} />
-          <Route exact path="/Queries" element={<Queries />} />
-          <Route
-            exact
-            path="/productDetailedView/:type/:id"
-            element={<ProductDetailedView />}
-          />
-          <Route exact path="ViewVegetables" element={<ViewVegetables />} />
-          <Route exact path="ViewDairy" element={<ViewDairy />} />
-          <Route exact path="ViewFruits" element={<ViewFruits />} />
-          <Route exact path="ProductList" element={<ProductList />} />
+          {/* Public Routes */}
+          <Route>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/FarmerRegister" element={<FarmerRegister />} />
+            <Route exact path="/FarmerLogin" element={<FarmerLogin />} />
+            <Route exact path="/AboutUs" element={<AboutUs />} />
+            <Route exact path="/Login" element={<LoginPg />} />
+            <Route exact path="/Payment" element={<Payment />} />
+            <Route exact path="/RegisterPg" element={<RegisterPg />} />
+            <Route exact path="/FarmerDashbord" element={<FarmerDashbord />} />
+            <Route exact path="/AddProduct" element={<AddProduct />} />
+            <Route exact path="/EditProduct" element={<EditProduct />} />
+            <Route exact path="/Customer" element={<Customer />} />
+            <Route exact path="/Queries" element={<Queries />} />
+            <Route exact path="/CheckoutForm" element={<CheckoutForm />} />
+
+            <Route
+              exact
+              path="/productDetailedView/:type/:id"
+              element={<ProductDetailedView />}
+            />
+            <Route exact path="/ViewVegetables" element={<ViewVegetables />} />
+            <Route exact path="/ViewDairy" element={<ViewDairy />} />
+            <Route exact path="/ViewFruits" element={<ViewFruits />} />
+            <Route exact path="/ProductList" element={<ProductList />} />
+          </Route>
         </Routes>
         <Footer />
       </Router>

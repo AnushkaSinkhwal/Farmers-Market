@@ -42,6 +42,7 @@ function ProductDetailedView() {
     )
   );
 
+  //NEED TO CALL API TO GET
   const comments = useSelector((state) => state.commentData.comments);
   const filteredComments = comments.filter(
     (comment) => comment.productId === id && comment.userId === 1
