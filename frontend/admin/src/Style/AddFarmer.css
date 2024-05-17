@@ -1,0 +1,88 @@
+.farmer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+
+.farmer-form-container {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 30px;
+  border: 2px solid #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.farmer-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.farmer-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.farmer-underline {
+  height: 3px;
+  width: 50px;
+  background-color: #000;
+  margin: 0 auto;
+}
+
+.farmer-inputs {
+  margin-bottom: 20px;
+}
+
+.farmer-input {
+  width: 550px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 3px solid #000;
+}
+
+.farmer-input p {
+  min-width: 150px;
+  margin: 10px 0;
+}
+
+.inputid {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="Contact No"] {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.farmer-submit-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.farmer-submit {
+  width: 48%;
+}
+
+.farmer-submit button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #009451;
+  color: #fff;
+  cursor: pointer;
+}
+
+.farmer-submit button:hover {
+  color: #000;
+  background-color: #2cd27a;
+}

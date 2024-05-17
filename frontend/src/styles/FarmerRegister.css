@@ -1,17 +1,13 @@
 .farmer-container {
-  height: auto;
-}
-.farmer-form-container {
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-top: 80px;
-  background-color: rgb(240, 255, 243);
+  background-color: aliceblue;
   padding-bottom: 30px;
   width: 700px;
   border-radius: 50px;
   margin-bottom: 80px;
-  border: 3px solid black;
 }
 
 .farmer-header {
@@ -88,6 +84,9 @@
 }
 
 .farmer-submit button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 220px;
   height: 59px;
   color: aliceblue;

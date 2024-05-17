@@ -37,7 +37,7 @@ const userSchema = new Schema({
             validator: (value) => {
                 return validator.isStrongPassword(value)
             },
-            message: 'Password must contain at least one uppercase, one lowercase, one number, one special character and one symbol',
+            message: 'Password must contain at least one uppercase, one lowercase, one number and one special character',
         },
     },
 })

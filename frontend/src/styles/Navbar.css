@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   height: 100px;
-  background-color: #2f8b13;
+  background-color: #20610c;
   display: flex;
   flex-direction: row;
 }
@@ -14,51 +14,44 @@
 }
 
 .navbar .Leftside img {
-  width: 90px;
+  width: 100px;
   cursor: pointer;
 }
 
+.navbar .rightside {
+  margin-left: 50%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .rightside img {
+  width: 40px;
+  cursor: pointer;
+}
 .navbar a {
   color: white;
   text-decoration: none;
-  margin: 0 17px; /* Adjusted margin */
-}
-
-.navbar .rightside {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  padding-right: 20px;
-}
-
-.navbar .rightside a:hover {
-  background-color: rgb(181, 255, 128);
-  color: #20610c;
-  padding: 10px;
-  border-radius: 10px;
-  transition: 0.3s;
-  align-items: center;
-}
-
-.navbar .hiddenLinks a:hover {
-  background-color: rgb(255, 215, 36);
-  color: #20610c;
-  padding: 5px;
-  border-radius: 10px;
-  transition: 0.3s;
-  align-items: center;
+  margin: 20px;
 }
 
 .navbar .rightside button {
+  padding-left: 85px;
   background-color: transparent;
   border: none;
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
+.navbar .rightside svg {
+  font-size: 40px;
+}
+
 .navbar #open {
   padding-left: 0px;
 }
+
 .navbar #open img {
   display: none;
 }
@@ -69,7 +62,12 @@
 
 .navbar #open .hiddenLinks {
   display: inherit;
-  margin-left: 30px;
+  margin-left: 10px;
+}
+
+.navbar #open .hiddenLinks img {
+  width: 40px;
+  display: inherit;
 }
 
 .navbar #close .hiddenLinks {
@@ -80,6 +78,7 @@
   width: 70px;
   margin: 5px;
 }
+
 @media only screen and (max-width: 900px) {
   .navbar .rightside a {
     width: 70px;
@@ -89,7 +88,7 @@
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 700px) {
   .navbar .rightside a {
     display: none;
   }

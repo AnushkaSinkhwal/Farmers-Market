@@ -1,0 +1,64 @@
+.list-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 13%;
+}
+
+.tableC {
+  width: 90%; /* Adjust the width as needed */
+}
+
+table {
+  width: 100%;
+  border: 5px solid #000;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 3px solid #000000;
+  width: fit-content;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td.options {
+  white-space: nowrap; /* Prevents button wrapping */
+}
+
+td button {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+  width: 100px; /* Set fixed button width */
+  border: 2px solid #000; /* Add stroke */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  background-color: transparent; /* Transparent background */
+  color: #000; /* Text color */
+  font-size: 16px; /* Adjust font size */
+  text-decoration: none;
+  margin-right: 5px; /* Add margin between buttons */
+}
+
+td button:hover {
+  background-color: #f0f0f0;
+}
+
+td button:last-child {
+  margin-right: 0;
+}
+
+td button a {
+  text-decoration: none; /* Remove underline for link inside button */
+}
+
+.link-button {
+  text-decoration: none;
+}
