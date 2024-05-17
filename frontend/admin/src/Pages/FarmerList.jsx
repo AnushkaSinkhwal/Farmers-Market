@@ -11,7 +11,7 @@ function FarmerList() {
     const fetchFarmers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://localhost:3002/api/farmers');
+        const response = await fetch(process.env.BACKEND_URL + '/api/farmers');
         if (response.ok) {
           const json = await response.json();
           setFarmers(json);

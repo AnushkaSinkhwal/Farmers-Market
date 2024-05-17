@@ -3,14 +3,37 @@ import "../styles/FarmerRegister.css";
 import BadgeIcon from "@mui/icons-material/Badge";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../const";
 
 function FarmerLogin() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const handleSubmit = (event) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(email, password)
-    
+    console.log(email, password);
+
+    const farmer = { email, password };
+
+    const response = await fetch(BACKEND_URL + "/api/farmers/farmerlogin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(farmer),
+    });
+    const json = await response.json();
+    if (!response.ok) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      setEmail("");
+      setPassword("");
+      setError(null);
+      console.log("farmer logged in", json);
+    }
+
+    //save the user to localstorage
+    localStorage.setItem("farmer", JSON.stringify(json));
   };
 
   return (
@@ -30,8 +53,8 @@ function FarmerLogin() {
               type="text"
               placeholder="Email Address"
               name="FarmerName"
-              onChange={(e)=> setEmail(e.target.value)}
-            value = {email}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </div>
 
@@ -43,8 +66,8 @@ function FarmerLogin() {
               type="password"
               placeholder="Password"
               name="FarmerPassword"
-              onChange={(e)=> setPassword(e.target.value)}
-            value = {password}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
           </div>
         </div>

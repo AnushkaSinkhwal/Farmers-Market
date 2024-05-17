@@ -19,7 +19,7 @@ function RegisterPg() {
     e.preventDefault();
     const user = {username, phoneNumber, address, email, password}
     console.log(username, phoneNumber, address, email, password)
-    const response = await fetch('http://localhost:3002/api/users/signup', {
+    const response = await fetch(process.env.BACKEND_URL + '/api/users/signup', {
       method: 'POST',
       headers: {          'Content-Type': 'application/json'
         },

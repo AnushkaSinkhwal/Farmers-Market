@@ -11,7 +11,7 @@ function CustomerList() {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://localhost:3002/api/users');
+        const response = await fetch(process.env.BACKEND_URL + '/api/users');
         if (!response.ok) {
           throw new Error('Failed to fetch users');
         }
