@@ -73,11 +73,16 @@ function ProductDetailedView() {
 
   const addToCardHandler = () => {
     setShowModal(true);
+    console.log("cart", {
+      ...product,
+      cartQuantity: quantity,
+      totalPrice: quantity * product?.productPrice,
+    });
     dispatch(
       addToCart({
         ...product,
         cartQuantity: quantity,
-        totalPrice: quantity * product?.price,
+        totalPrice: quantity * product?.productPrice,
       })
     );
   };
