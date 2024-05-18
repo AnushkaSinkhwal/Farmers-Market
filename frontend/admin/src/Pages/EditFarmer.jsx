@@ -10,21 +10,23 @@ function EditFarmer() {
     fname: "",
     phoneNumber: "",
     email: "",
-    password: ""
+    password: "",
   });
 
   useEffect(() => {
     const fetchFarmer = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/api/farmers/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/farmers/${id}`
+        );
         if (response.ok) {
           const data = await response.json();
           setFarmer(data);
         } else {
-          throw new Error('Failed to fetch farmer');
+          throw new Error("Failed to fetch farmer");
         }
       } catch (error) {
-        console.error('Error fetching farmer:', error);
+        console.error("Error fetching farmer:", error);
       }
     };
     fetchFarmer();
@@ -34,33 +36,36 @@ function EditFarmer() {
     const { name, value } = event.target;
     setFarmer((prevFarmer) => ({
       ...prevFarmer,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3002/api/farmers/updatefarmer/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(farmer)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/farmers/updatefarmer/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(farmer),
+        }
+      );
       if (response.ok) {
         // Handle success
-        navigate('/FarmerList');
+        navigate("/FarmerList");
       } else {
-        throw new Error('Failed to update farmer');
+        throw new Error("Failed to update farmer");
       }
     } catch (error) {
-      console.error('Error updating farmer:', error);
+      console.error("Error updating farmer:", error);
     }
   };
 
   const handleCancel = () => {
-    navigate('/FarmerList');
+    navigate("/FarmerList");
   };
 
   return (
@@ -76,28 +81,48 @@ function EditFarmer() {
               <div className="holderid">
                 <p>Company/Full Name</p>
               </div>
-              <input type="text" name="fname" value={farmer.fname} onChange={handleChange} />
+              <input
+                type="text"
+                name="fname"
+                value={farmer.fname}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="farmer-input">
               <div className="holderid">
                 <p>Contact number</p>
               </div>
-              <input type="text" name="phoneNumber" value={farmer.phoneNumber} onChange={handleChange} />
+              <input
+                type="text"
+                name="phoneNumber"
+                value={farmer.phoneNumber}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="farmer-input">
               <div className="holderid">
                 <p>Email Id</p>
               </div>
-              <input type="email" name="email" value={farmer.email} onChange={handleChange} />
+              <input
+                type="email"
+                name="email"
+                value={farmer.email}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="farmer-input">
               <div className="holderid">
                 <p>Password</p>
               </div>
-              <input type="password" name="password" value={farmer.password} onChange={handleChange} />
+              <input
+                type="password"
+                name="password"
+                value={farmer.password}
+                onChange={handleChange}
+              />
             </div>
           </div>
 

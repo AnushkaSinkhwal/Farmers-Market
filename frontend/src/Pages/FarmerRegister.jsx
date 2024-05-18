@@ -21,7 +21,7 @@ function FarmerRegister() {
     event.preventDefault();
     console.log("submitting");
     axios
-      .post("http://localhost:8000/api/farmers/farmersignup", {
+      .post(process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmersignup", {
         fname: fullName,
         phoneNumber: contact,
         address,

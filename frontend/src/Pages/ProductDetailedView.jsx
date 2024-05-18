@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import cabbage from "../assets/cabbage2.jpg";
 import "../styles/productview.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -37,12 +36,16 @@ function ProductDetailedView() {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { id, type } = useParams();
-  const product = useSelector((state) =>
-    state?.product?.products[type]?.find(
-      (vegetable) => vegetable.id === Number(id)
-    )
-  );
+  console.log("type: ", type);
+  console.log("id: ", id);
+  const product = useSelector((state) => {
+    console.log("state: ", state);
 
+    return state?.product?.products.find((product) => product._id === id);
+  });
+  console.log("product: ", product);
+
+  //NEED TO CALL API TO GET
   const comments = useSelector((state) => state.commentData.comments);
   const filteredComments = comments.filter(
     (comment) => comment.productId === id && comment.userId === 1
@@ -78,7 +81,6 @@ function ProductDetailedView() {
       })
     );
   };
-  console.log(comments);
 
   return (
     <div>
@@ -88,16 +90,18 @@ function ProductDetailedView() {
             <div className="img-container">
               <Box
                 component="img"
-                src={product?.photo_url}
+                src={product?.productImage}
                 alt="cabbaGE"
                 className="productimg"
               />
             </div>
             <div className="text-side">
-              <h1>{product?.name}</h1>
+              <h1>{product?.productName}</h1>
               <div className="seperator"></div>
               <p>Seller- cha min vegetables</p>
-              <p>Price: Rs.{product?.price}/kg </p>
+              <p>
+                Price: Rs.{product?.productPrice}/{product?.unit}
+              </p>
               <div className="seperator"></div>
 
               <h3>Quantity</h3>
@@ -115,7 +119,7 @@ function ProductDetailedView() {
 
           <div className="description-card">
             <h1>Description</h1>
-            <p>{product?.description}</p>
+            <p>{product?.productDescription}</p>
           </div>
         </div>
 

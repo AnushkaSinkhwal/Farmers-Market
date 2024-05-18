@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import "../styles/cart.css";
 import Modal from "@mui/material/Modal";
-import { useSelector } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import "../styles/cart.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import CheckoutForm from "./CheckoutForm.jsx";
 
 function ProductCard({
   photo_url,
@@ -36,11 +39,19 @@ function Cart() {
   const [optionASelected, setOptionASelected] = useState(false);
   const [optionBSelected, setOptionBSelected] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [checkoutClicked, setCheckoutClicked] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const totalCost = products
-    ?.map((product) => product?.totalPrice)
-    ?.reduce((acc, currVal) => acc + currVal, 0);
+  const totalCost = products.reduce(
+    (acc, product) => acc + product.totalPrice,
+    0
+  );
 
+  const handleProceedToCheckout = () => {
+    setShowModal(true);
+    setCheckoutClicked(true);
+  };
   const handleOptionAChange = () => {
     setOptionASelected(!optionASelected);
     if (optionBSelected) {
@@ -55,10 +66,6 @@ function Cart() {
     }
   };
 
-  const addToCardHandler = () => {
-    setShowModal(true);
-  };
-
   return (
     <div>
       <div className="cart-container">
@@ -66,8 +73,8 @@ function Cart() {
           <h1>Item List</h1>
           <div className="items-card">
             <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-              {products?.map((product) => (
-                <ProductCard {...product} />
+              {products?.map((product, index) => (
+                <ProductCard key={index} {...product} />
               ))}
             </Box>
           </div>
@@ -99,31 +106,35 @@ function Cart() {
               </label>
             </div>
           </div>
-          <button onClick={addToCardHandler}>Procced to checkout</button>
+          <button onClick={handleProceedToCheckout}>Proceed to checkout</button>
         </div>
-
-        <Modal
-          open={showModal}
-          onClose={() => setShowModal(false)}
-          className={"successModal"}
-        >
-          <Box className={"modalBox"}>
-            <div className="modal-header">
-              <div className="title">
-                <CheckCircleIcon />
-                <span>Confirmation</span>
-              </div>
-              <CloseIcon
-                className="closeIcon"
-                onClick={() => setShowModal(false)}
-              />
-            </div>
-            <div className="description">
-              <span>Your order has be placed successfully!!</span>
-            </div>
-          </Box>
-        </Modal>
       </div>
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        className={"successModal"}
+      >
+        <Box className={"modalBox"}>
+          <div className="modal-header">
+            <div className="title">
+              <CheckCircleIcon />
+              <span>Confirmation</span>
+            </div>
+            <CloseIcon
+              className="closeIcon"
+              onClick={() => setShowModal(false)}
+            />
+          </div>
+          <div className="description">
+            <span>fill up the checkout form for placing order</span>
+          </div>
+          <div className="buttonContainer">
+            <button onClick={() => navigate("/CheckoutForm")}>
+              go to checkout
+            </button>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 }

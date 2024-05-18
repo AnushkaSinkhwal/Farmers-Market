@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/AddProduct.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function AddProduct() {
-  const handleSubmit = (event) => {
+  const [formData, setFormData] = useState({
+    productName: "",
+    category: "",
+    productPrice: "",
+    unit: "",
+    productImage: "",
+    productQuantity: "",
+    productDescription: "",
+  });
+
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add your form submission logic here
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/api/products/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (response.ok) {
+        // Reset form data on successful submission
+        setFormData({
+          productName: "",
+          category: "",
+          productPrice: "",
+          unit: "",
+          productImage: "",
+          productQuantity: "",
+          productDescription: "",
+        });
+        console.log("Product added successfully!");
+      } else {
+        console.error("Failed to add product.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -22,8 +69,15 @@ function AddProduct() {
                   id="productName"
                   name="productName"
                   placeholder="Enter product name"
+                  onChange={handleInputChange}
+                  value={formData.productName}
                 />
-                <select id="category" name="category">
+                <select
+                  id="category"
+                  name="category"
+                  onChange={handleInputChange}
+                  value={formData.category}
+                >
                   <option value="Select">--Select--</option>
                   <option value="vegetable">Vegetable</option>
                   <option value="fruit">Fruit</option>
@@ -41,8 +95,15 @@ function AddProduct() {
                   id="productPrice"
                   name="productPrice"
                   placeholder="Enter product price"
+                  onChange={handleInputChange}
+                  value={formData.productPrice}
                 />
-                <select id="unit" name="unit">
+                <select
+                  id="unit"
+                  name="unit"
+                  onChange={handleInputChange}
+                  value={formData.unit}
+                >
                   <option value="categoryOption">--Select--</option>
                   <option value="kg">Per Kg</option>
                   <option value="item">Per item</option>
@@ -60,6 +121,8 @@ function AddProduct() {
                   id="productImage"
                   name="productImage"
                   placeholder="Enter product image URL"
+                  onChange={handleInputChange}
+                  value={formData.productImage}
                 />
               </div>
             </div>
@@ -73,6 +136,8 @@ function AddProduct() {
                   id="productQuantity"
                   name="productQuantity"
                   placeholder="Enter product quantity"
+                  onChange={handleInputChange}
+                  value={formData.productQuantity}
                 />
               </div>
             </div>
@@ -83,6 +148,8 @@ function AddProduct() {
                 id="productDescription"
                 name="productDescription"
                 placeholder="Enter product description"
+                onChange={handleInputChange}
+                value={formData.productDescription}
               ></textarea>
             </div>
           </div>

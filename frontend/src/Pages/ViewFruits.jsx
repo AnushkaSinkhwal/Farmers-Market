@@ -7,17 +7,18 @@ import "../styles/viewAllcategory.css";
 import Search from "../Components/Search";
 
 function ProductCardViewfruits(props) {
+  console.log("props: ", props);
   return (
     <div className="card" onClick={props.data.onClick}>
       <Box
         component="img"
-        src={props.data.photo_url}
-        alt={props.data.name}
+        src={props.data.productImage}
+        alt={props.data.productName}
         className="productimg"
       />
-      <h1>{props.data.name}</h1>
-      <p className="price">Rs.{props.data.price}</p>
-      <p className="description">{props.data.description}</p>
+      <h1>{props.data.productName}</h1>
+      <p className="price">Rs.{props.data.productPrice}</p>
+      <p className="description">{props.data.productDescription}</p>
       <button onClick={props.data.onClick}>
         View Details <FavoriteBorderIcon />
       </button>
@@ -26,7 +27,10 @@ function ProductCardViewfruits(props) {
 }
 
 function ViewFruits() {
-  const fruits = useSelector((state) => state.product.products.fruits);
+  const fruits = useSelector((state) =>
+    state.product.products.filter((product) => product.category === "fruit")
+  );
+
   const navigate = useNavigate();
 
   return (
@@ -36,16 +40,17 @@ function ViewFruits() {
       <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {fruits.map((fruit) => (
-            <ProductCardViewfruits
-              key={fruit.id}
-              data={{
-                ...fruit,
-                onClick: () =>
-                  navigate(`/productDetailedView/fruits/${fruit.id}`),
-              }}
-            />
-          ))}
+          {fruits &&
+            fruits.map((fruit) => (
+              <ProductCardViewfruits
+                key={fruit._id}
+                data={{
+                  ...fruit,
+                  onClick: () =>
+                    navigate(`/productDetailedView/fruits/${fruit._id}`),
+                }}
+              />
+            ))}
         </Box>
       </div>
     </div>

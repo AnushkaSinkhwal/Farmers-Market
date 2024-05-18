@@ -7,6 +7,7 @@ const { MongoClient } = require("mongodb");
 const userRoutes = require("./routes/users");
 const farmerRoutes = require("./routes/farmers");
 const commentRoutes = require("./routes/comments");
+const productsRoutes = require("./routes/product");
 const {
   deleteUser,
   getUsers,
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 app.use("/api/users", userRoutes);
 app.use("/api/farmers", farmerRoutes);
 app.use("/api/comments", commentRoutes);
+app.use("/api/products", productsRoutes);
 
 // Connection URI
 mongoose

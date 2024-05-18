@@ -3,7 +3,6 @@ import "../styles/FarmerRegister.css";
 import BadgeIcon from "@mui/icons-material/Badge";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
-import { BACKEND_URL } from "../const";
 
 function FarmerLogin() {
   const [email, setEmail] = useState("");
@@ -16,11 +15,14 @@ function FarmerLogin() {
 
     const farmer = { email, password };
 
-    const response = await fetch(BACKEND_URL + "/api/farmers/farmerlogin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(farmer),
-    });
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmerlogin",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(farmer),
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);

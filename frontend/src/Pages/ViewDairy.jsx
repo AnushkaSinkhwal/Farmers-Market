@@ -11,13 +11,13 @@ function ProductCardViewdairy(props) {
     <div className="card" onClick={props.data.onClick}>
       <Box
         component="img"
-        src={props.data.photo_url}
-        alt={props.data.name}
+        src={props.data.productImage}
+        alt={props.data.productName}
         className="productimg"
       />
-      <h1>{props.data.name}</h1>
-      <p className="price">Rs.{props.data.price}</p>
-      <p className="description">{props.data.description}</p>
+      <h1>{props.data.productName}</h1>
+      <p className="price">Rs.{props.data.productPrice}</p>
+      <p className="description">{props.data.productDescription}</p>
       <button onClick={props.data.onClick}>
         View Details <FavoriteBorderIcon />
       </button>
@@ -26,7 +26,9 @@ function ProductCardViewdairy(props) {
 }
 
 function ViewDairy() {
-  const dairy = useSelector((state) => state.product.products.dairy);
+  const dairy = useSelector((state) =>
+    state.product.products.filter((product) => product.category === "dairy")
+  );
   const navigate = useNavigate();
 
   return (
@@ -36,16 +38,17 @@ function ViewDairy() {
       <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {dairy.map((dairyProduct) => (
-            <ProductCardViewdairy
-              key={dairyProduct.id}
-              data={{
-                ...dairyProduct,
-                onClick: () =>
-                  navigate(`/productDetailedView/dairy/${dairyProduct.id}`),
-              }}
-            />
-          ))}
+          {dairy &&
+            dairy.map((dairyProduct) => (
+              <ProductCardViewdairy
+                key={dairyProduct._id}
+                data={{
+                  ...dairyProduct,
+                  onClick: () =>
+                    navigate(`/productDetailedView/dairy/${dairyProduct._id}`),
+                }}
+              />
+            ))}
         </Box>
       </div>
     </div>

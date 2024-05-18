@@ -7,17 +7,18 @@ import "../styles/viewAllcategory.css";
 import Search from "../Components/Search";
 
 function ProductCardViewvegetable(props) {
+  console.log("props: ", props);
   return (
     <div className="card" onClick={props.data.onClick}>
       <Box
         component="img"
-        src={props.data.photo_url}
-        alt={props.data.name}
+        src={props.data.productImage}
+        alt={props.data.productName}
         className="productimg"
       />
-      <h1>{props.data.name}</h1>
-      <p className="price">Rs.{props.data.price}</p>
-      <p className="description">{props.data.description}</p>
+      <h1>{props.data.productName}</h1>
+      <p className="price">Rs.{props.data.productPrice}</p>
+      <p className="description">{props.data.productDescription}</p>
       <button onClick={props.data.onClick}>
         View Details <FavoriteBorderIcon />
       </button>
@@ -26,7 +27,12 @@ function ProductCardViewvegetable(props) {
 }
 
 function ViewVegetables() {
-  const vegetables = useSelector((state) => state.product.products.vegetables);
+  const vegetables = useSelector((state) => {
+    console.log("state: ", state);
+    return state.product.products.filter(
+      (product) => product.category === "vegetable"
+    );
+  });
   const navigate = useNavigate();
 
   return (
@@ -36,16 +42,19 @@ function ViewVegetables() {
       <Search />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {vegetables.map((vegetable) => (
-            <ProductCardViewvegetable
-              key={vegetable.id}
-              data={{
-                ...vegetable,
-                onClick: () =>
-                  navigate(`/productDetailedView/vegetables/${vegetable.id}`),
-              }}
-            />
-          ))}
+          {vegetables &&
+            vegetables.map((vegetable) => (
+              <ProductCardViewvegetable
+                key={vegetable._id}
+                data={{
+                  ...vegetable,
+                  onClick: () =>
+                    navigate(
+                      `/productDetailedView/vegetables/${vegetable._id}`
+                    ),
+                }}
+              />
+            ))}
         </Box>
       </div>
     </div>

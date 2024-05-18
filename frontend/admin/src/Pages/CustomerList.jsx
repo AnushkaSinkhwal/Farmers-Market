@@ -11,15 +11,17 @@ function CustomerList() {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(process.env.BACKEND_URL + '/api/users');
+        const response = await fetch(
+          process.env.REACT_APP_BACKEND_URL + "/api/users"
+        );
         if (!response.ok) {
-          throw new Error('Failed to fetch users');
+          throw new Error("Failed to fetch users");
         }
         const json = await response.json();
         setUsers(json);
       } catch (error) {
         setError(error);
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       } finally {
         setIsLoading(false);
       }
@@ -30,16 +32,19 @@ function CustomerList() {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3002/api/users/delete/${userId}`, {
-        method: 'DELETE'
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/delete/${userId}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (!response.ok) {
         throw new Error("Could not delete the user");
       }
-      setUsers(users.filter(user => user._id !== userId));
+      setUsers(users.filter((user) => user._id !== userId));
     } catch (error) {
       setError(error);
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
     }
   };
 
@@ -70,7 +75,10 @@ function CustomerList() {
                 <td>{index + 1}</td>
                 <td>{user.username}</td>
                 <td className="options">
-                  <Link to={`/Editcustomer/${user._id}`} className="link-button">
+                  <Link
+                    to={`/Editcustomer/${user._id}`}
+                    className="link-button"
+                  >
                     <button>Edit</button>
                   </Link>
                   <button onClick={() => handleDelete(user._id)}>Delete</button>
