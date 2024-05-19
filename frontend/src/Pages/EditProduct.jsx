@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/EditProduct.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function EditProduct() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  const { id } = useParams();
+  console.log("Product ID: ", id);
+  const handleSubmit = (event) => {};
 
   return (
     <div className="edit-container">

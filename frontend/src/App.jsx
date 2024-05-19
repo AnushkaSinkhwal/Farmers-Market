@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/RegisterPg" element={<RegisterPg />} />
             <Route exact path="/FarmerDashbord" element={<FarmerDashbord />} />
             <Route exact path="/AddProduct" element={<AddProduct />} />
-            <Route exact path="/EditProduct" element={<EditProduct />} />
+            <Route exact path="/EditProduct/:id" element={<EditProduct />} />
             <Route exact path="/Customer" element={<Customer />} />
             <Route exact path="/Queries" element={<Queries />} />
             <Route exact path="/CheckoutForm" element={<CheckoutForm />} />
