@@ -138,3 +138,4 @@ function ProductDetailedView() {
 }
 
 export default ProductDetailedView;
+

@@ -1,26 +1,6 @@
 /* Container styles */
-.vegetable-container {
-  border: 2px solid rgb(0, 0, 0);
-  background-color: aliceblue;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 35px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Fruit container styles */
-.fruit-container {
-  border: 2px solid rgb(0, 0, 0);
-  background-color: aliceblue;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 35px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Dairy container styles */
+.vegetable-container,
+.fruit-container,
 .dairy-container {
   border: 2px solid rgb(0, 0, 0);
   background-color: aliceblue;
@@ -30,7 +10,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .product-card {
   display: flex;
   justify-content: center;
@@ -52,7 +31,7 @@
   margin-bottom: 20px;
   text-align: center;
   border-radius: 5px;
-  border: 2px solid #000;
+  border: 2px#000;
   text-decoration: none;
 }
 
@@ -119,7 +98,6 @@ button:hover {
   color: #fff;
 }
 
-/* Search container styles */
 .Search-container {
   background-image: url("C:\Users\hp\OneDrive\Desktop\FarmersMarket\src\assets\vgi.jpg");
   background-size: cover;
@@ -136,7 +114,6 @@ button:hover {
   align-items: flex-start;
   justify-content: center;
 }
-
 .searchNbtn {
   display: flex;
   flex-direction: column;
@@ -166,7 +143,6 @@ button:hover {
   background-color: #37b212;
 }
 
-/* Searching popup card styles */
 .searching-popup-card {
   position: fixed;
   top: 50%;

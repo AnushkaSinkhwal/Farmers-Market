@@ -1,148 +1,80 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Box from "@mui/material/Box"; // Import Box from MUI
-import Modal from "@mui/material/Modal"; // Import Modal from MUI
-import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon from MUI
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"; 
+import React, { useState } from 'react';
 
-import "../styles/CheckoutForm.css";
-
-function CheckoutForm({ products }) {
+const CheckoutForm = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    paymentMethod: "", // Add payment method field
+    fullName: '',
+    phoneNumber: '',
+    address: '',
+    paymentMethod: ''
   });
-
-  const [deliveryCharge, setDeliveryCharge] = useState(0);
-  const [subtotal, setSubtotal] = useState(0);
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    calculateSubtotal();
-  }, [products]);
-
-  const calculateSubtotal = () => {
-    if (products && products.length > 0) {
-      let total = 0;
-      products.forEach((product) => {
-        total += product.price * product.quantity;
-      });
-      setSubtotal(total);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:3000/submit-form", formData);
-      console.log("Form submitted:", formData);
-      // Reset form fields after submission
-      setFormData({
-        fullName: "",
-        address: "",
-        phoneNumber: "",
-        paymentMethod: "",
-      });
-      setShowSuccessModal(true);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false); // Close modal when close button is clicked
+    // You can handle form submission logic here, e.g., send data to server
+    console.log(formData);
   };
 
   return (
     <div>
       <h2>Checkout</h2>
-      {orderPlaced ? (
-        <p>Your order has been successfully placed!</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Full Name:
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Address:
-            <textarea
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Phone Number:
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Payment Method:
-            <select
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Payment Method</option>
-              <option value="Cash on Delivery">Cash on Delivery</option>
-              <option value="Credit Card">Credit Card</option>
-              {/* Add more payment methods as needed */}
-            </select>
-          </label>
-          <div>
-            <p>Delivery Charge: $ 15{deliveryCharge}</p>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      )}
-      <Modal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        className={handleCloseModal}
-      >
-        <Box className={"modalBox"}>
-          <div className="modal-header">
-            <div className="title">
-              <CheckCircleIcon />
-              <span>Confirmation</span>
-            </div>
-            <CloseIcon
-              className="closeIcon"
-              onClick ={handleCloseModal}/>
-          </div>
-          <div className="description">
-            <span>successfully submitted form for placing order</span>
-          </div>
-          <div className="buttonContainer">
-            <button onClick={handleCloseModal}>close</button>
-          </div>
-        </Box>
-      </Modal>
+      <form 
+      onSubmit={handleSubmit} 
+      action="/checkoutForm" method="post">
+        <div>
+          <label>Full Name:</label>
+          <input 
+            type="text" 
+            name="fullName" 
+            value={formData.fullName} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Address:</label>
+          <textarea 
+            name="address" 
+            value={formData.address} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Phone Number:</label>
+          <input 
+            type="tel" 
+            name="phoneNumber" 
+            value={formData.phoneNumber} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Payment Method:</label>
+          <select 
+            name="paymentMethod" 
+            value={formData.paymentMethod} 
+            onChange={handleChange} 
+            required 
+          >
+            <option value="">Select Payment Method</option>
+            <option value="Fone pay">Fone pay</option>
+            <option value="Cash on delivery">Cash on delivery</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
-}
+};
 
 export default CheckoutForm;
+

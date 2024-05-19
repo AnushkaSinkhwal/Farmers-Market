@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../styles/EditProduct.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link , useParams } from "react-router-dom";
 
 function EditProduct() {
+  const { productId } = useParams();
   const [formData, setFormData] = useState({
     productName: "",
     category: "",
@@ -13,36 +13,39 @@ function EditProduct() {
     productQuantity: "",
     productDescription: "",
   });
-  const [productNames, setProductNames] = useState([]);
 
   useEffect(() => {
-    // Fetch product names from the backend API
-    const fetchProductName = async () => {
-      try { const response = await axios.get("/api/productName");
-        setProductNames(response.data.productName);
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch  (`http://localhost:8000/api/products/${productId}`);
+        if (response.ok){
+          const data =  await response.json()
+          setFormData(data)
+        }else{
+          throw new Error('failed to fetch data')
+        }
       } catch (error) {
-        console.error('Error fetching product names:', error);
+        console.error("Error fetching product:", error);
       }
     };
-    fetchProductName();
-  }, []);
+
+    fetchProductData();
+  }, [productId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/products/update', formData);
+      const response = await fetch(`http://localhost:8000/api/products/${productId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productId)
+      });
 
       if (response.status === 200) {
         console.log('Product updated successfully');
-        setFormData({
-          productName: "",
-          category: "",
-          productPrice: "",
-          unit: "",
-          productImage: "",
-          productQuantity: "",
-          productDescription: "",
-        });
+        
     } else {
       console.error('Error updating product:');
     }
@@ -65,97 +68,96 @@ function EditProduct() {
             {/* Product Name */}
             <div className="edit-input-group">
               <label htmlFor="productName">Product Name:</label>
-              <select id="productName" name="productName" onChange={handleInputChange} value={formData.productName}>
-              <option value="">--Select--</option>
-                {productNames.map((name, index) => (
-                  <option key={index} value={name}>{name}</option>
-                ))}
-              </select>
-
-              <select id="category" name="category"
-              onChange={handleInputChange}
-              value={formData.category} >
-              <option value="Select">--Select--</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="fruit">Fruit</option>
-                <option value="dairy">Dairy</option>
-              </select>
+              <div className="input-wrapper">
+              <input
+                type="text"
+                id="productName"
+                name="productName"
+                placeholder="Product Name"
+                onChange={handleInputChange}
+                value={formData.productName}
+              />
+            </div>
             </div>
 
-            {/* Product Price */}
+            <select id="category" name="category" 
+                  onChange={handleInputChange}
+                  value={formData.category} >
+                  <option value="Select">--Select--</option>
+                  <option value="vegetable">Vegetable</option>
+                  <option value="fruit">Fruit</option>
+                  <option value="dairy">Dairy</option>
+                </select>
+
+            {/* product price */}
             <div className="edit-input-group">
               <label htmlFor="productPrice">Product Price:</label>
-              <div className="input-wrapper"></div>
-              <input
-                type="number"
-                id="productPrice"
-                name="productPrice"
-                placeholder="Product Price"
-                onChange={handleInputChange}
-                value={formData.productPrice}
-              />
-              <select id="unit" name="unit"
-                onChange={handleInputChange}
-                value={formData.unit}>
-              <option value="categoryOption">--Select--</option>
-                <option value="kg">Per Kg</option>
-                <option value="item">Per item</option>
-                <option value="liter">Per liter</option>
-              </select>
+              <div className="input-wrapper">
+                <input
+                  type="number"
+                  name="productPrice"
+                  placeholder="edit product price"
+                  value={formData.productPrice}
+                  onChange={handleInputChange}
+                  />
+              </div>
             </div>
 
+            <select id="unit" name="unit"
+                value={formData.unit}
+                onChange={handleInputChange}>
+                  <option value="categoryOption">--Select--</option>
+                  <option value="kg">Per Kg</option>
+                  <option value="item">Per item</option>
+                  <option value="liter">Per liter</option>
+                </select>
+    
             {/* Product Image */}
             <div className="edit-input-group">
               <label htmlFor="productImage">Product Image:</label>
               <div className="input-wrapper">
-              <input
-                type="url"
-                id="productImage"
-                name="productImage"
-                placeholder="Product Image URL"
-                onChange={handleInputChange}
-                value={formData.productImage}
-              />
-            </div>
+                <input
+                  type="url"
+                  name="productImage"
+                  placeholder="edit product image URL"
+                  value={formData.productImage}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
 
             {/* Product Quantity */}
             <div className="edit-input-group">
               <label htmlFor="productQuantity">Product Quantity:</label>
               <div className="input-wrapper">
-              <input
-                type="number"
-                id="productQuantity"
-                name="productQuantity"
-                placeholder="Product Quantity"
-                onChange={handleInputChange}
-                value={formData.productQuantity}
-              />
-            </div>
+                <input
+                  type="number"
+                  name="productQuantity"
+                  placeholder="edit product quantity"
+                  value={formData.productQuantity}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
 
             {/* Product Description */}
             <div className="edit-input-group">
-              <textarea
-                id="productDescription"
-                name="productDescription"
-                placeholder="Product Description"
-                onChange={handleInputChange}
-                value={formData.productDescription}
-              ></textarea>
+            <input
+                  type="text"
+                  name="productDescription"
+                  placeholder="edit product description"
+                  value={formData.productDescription}
+                  onChange={handleInputChange}
+                />
             </div>
           </div>
 
           {/* Form Buttons */}
           <div className="edit-form-buttons">
-            <div className="edit-submit">
-              <Link to="/FarmerDashbord">
-                <button type="button">Cancel</button>
-              </Link>
-            </div>
-            <div className="edit-submit">
-              <button type="submit">Update</button>
-            </div>
+            <Link to="/FarmerDashbord">
+             <button type="button">Cancel</button>
+            </Link>
+            <button type="submit">update</button>
           </div>
         </form>
       </div>

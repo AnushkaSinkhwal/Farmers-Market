@@ -2,15 +2,14 @@ import "../styles/FarmerDashbord.css";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import EditProduct from "./EditProduct";
 
 export default function App() {
   const [open, setOpen] = useState(false);
   const [scope, animate] = useAnimate();
   const links = [
     { text: "Add", to: "/AddProduct" },
-    { text: "Edit", to: "/EditProduct" },
-    { text: "Delete", to: "/DeleteProduct" },
+    { text: "Edit", to: "/ProductList" },
+    { text: "view Queries", to: "/Queries" },
   ];
 
   // the stagger effect

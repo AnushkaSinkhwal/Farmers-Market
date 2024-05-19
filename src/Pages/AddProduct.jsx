@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "../styles/AddProduct.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
 
 function AddProduct() { 
   const [formData, setFormData] = useState({
@@ -13,9 +12,6 @@ function AddProduct() {
   productQuantity: "",
   productDescription: "",
 });
-
-  const dispatch = useDispatch();
-  const [products, setProducts] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

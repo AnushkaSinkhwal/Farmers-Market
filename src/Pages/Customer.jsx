@@ -39,8 +39,6 @@ function ProductCard(props) {
 }
 
 function Customer() {
-  const [searchValue, setSearchValue] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
   const products = useSelector((state) => state.product.products);
   const { vegetables, fruits, dairy } = products;
@@ -92,22 +90,10 @@ function Customer() {
     fetchData();
   }, []);
   
-  
-
-  const handleSearch = () => {
-    setIsSearching(true);
-    // Perform search functionality with searchValue
-    console.log("Searching for:", searchValue);
-
-    setTimeout(() => {
-      setIsSearching(false);
-    }, 2000);
-  };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleSearch();
     }
   };
   const AddToCart = (product) => {
@@ -125,36 +111,11 @@ function Customer() {
   return (
     <div>
       <div className="home-container">
-        {/* The search*/}
-        <div className="Search-container">
-          <h1>Order Now!</h1>
-          <div className="searchNbtn">
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Enter product name"
-                name="search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-              />
-            </div>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        </div>
+       
 
         {addedToCart && ( // Show message when added to cart
           <div className="added-to-cart-message">
             Added to cart successfully!
-          </div>
-        )}
-
-        {/* Pop-up card */}
-        {isSearching && (
-          <div className="searching-popup-card">
-            <div className="popup-content">
-              <p>We are searching...</p>
-            </div>
           </div>
         )}
 

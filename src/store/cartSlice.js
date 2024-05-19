@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addToCart as addToCartAction } from "../store/cartSlice";
+
 
 const initialState = {
   items: [],
 };
 
 const cartSlice = createSlice({
-  initialState,
   name: "cart",
+  initialState,
   reducers: {
     addToCart: (state, action) => {
       const products = [...state?.items];

@@ -13,13 +13,18 @@ import RegisterPg from "./Pages/RegisterPg";
 import FarmerDashbord from "./Pages/FarmerDashbord";
 import AddProduct from "./Pages/AddProduct";
 import EditProduct from "./Pages/EditProduct";
-import DeleteProduct from "./Pages/DeleteProduct";
 import Customer from "./Pages/Customer";
 import ProductDetailedView from "./Pages/ProductDetailedView";
+import ViewVegetables from "./Pages/ViewVegetables";
+import ViewDairy from "./Pages/ViewDairy";
+import ViewFruits from "./Pages/ViewFruits";
+import ProductList from "./Pages/ProductList";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Switch } from "@mui/material";
 
 function App() {
+  const baseUrl = process.env.APP_BASE_URL;
   return (
     <div className="App">
       <Router>
@@ -37,10 +42,12 @@ function App() {
           <Route exact path="/FarmerDashbord" element={<FarmerDashbord />} />
           <Route exact path="/AddProduct" element={<AddProduct />} />
           <Route exact path="/EditProduct" element={<EditProduct />} />
-          <Route exact path="/DeleteProduct" element={<DeleteProduct />} />
           <Route exact path="/Customer" element={<Customer />} />
-          <Route exact path="/productDetailedView/:type/:id" element={<ProductDetailedView />}
-          />
+          <Route exact path="/productDetailedView/:type/:id" element={<ProductDetailedView />}/>
+          <Route exact path="/ViewVegetables" element={<ViewVegetables />} />
+          <Route exact path="/ViewDairy" element={<ViewDairy />} />
+          <Route exact path="/ViewFruits" element={<ViewFruits />} />
+          <Route exact path="/ProductList" element={<ProductList/>} />
         </Routes>
         <Footer />
       </Router>

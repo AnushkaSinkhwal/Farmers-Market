@@ -6,50 +6,15 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addProducts } from "../store/productSlice";
-
-
-function ProductCard(props) {
-  const handleAddToCart = () => {
-    if (typeof props.onAddToCart === 'function') {
-      props.onAddToCart(props.data);
-    } else {
-      console.error("onAddToCart is not a function");
-    }
-  };
-
-  console.log("Fetched products inside ProductCard:", props.data);
-
-
-  return (
-    <div className="card" onClick={props.data.onClick}>
-      <Box
-        component="img"
-        src={props.data.photo_url}
-        alt={props.data.name}
-        className="productimg"
-      />
-      <h1>{props.data.name}</h1>
-      <p className="price">Rs.{props.data.price}</p>
-      <p className="description">{props.data.description}</p>
-      <button onClick={handleAddToCart}>
-        Add to Cart <FavoriteBorderIcon />
-      </button>
-    </div>
-  );
-}
+import ProductCard from "../Components/productCards"; 
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [ products, setProducts] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
-  const { vegetables, fruits, dairy } = products;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  
+  const products = useSelector((state) => state.product.products); // Initialize products with useSelector
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -57,16 +22,14 @@ function Home() {
         const response = await axios.get("http://localhost:8000/api/products");
         if (response.status === 200) {
           dispatch(addProducts(response.data.data));
-          setProducts(response.data.data);
-          const farmersData = response.data.data;
-          console.log(farmersData)
+          setLoading(false); // Set loading to false after fetching data
         } else {
           setError("Failed to fetch products.");
+          setLoading(false); // Set loading to false in case of error
         }
       } catch (error) {
         setError("Error fetching products.");
-      } finally {
-        setLoading(false);
+        setLoading(false); // Set loading to false in case of error
       }
     };
   
@@ -74,66 +37,30 @@ function Home() {
   }, [dispatch]);
 
   console.log("Products:", products);
+  console.log("Loading:", loading);
+  console.log("Error:", error);
 
-  const handleSearch = () => {
-    setIsSearching(true);
-    // Perform search functionality with searchValue
-    console.log("Searching for:", searchValue);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    setTimeout(() => {
-      setIsSearching(false);
-    }, 2000);
-  };
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSearch();
-    }
-  };
   const addToCart = (product) => {
     setAddedToCart(true); // Set state to show cart message
     setTimeout(() => {
       setAddedToCart(false); // Reset state after a delay
     }, 2000);
   };
-  const filterProductsByCategory = (category) => {
-    return products.filter((product) => product.category === category);
-  };
 
   return (
     <div>
       <div className="home-container">
-        {/* The search*/}
-        <div className="Search-container">
-          <h1>Order Now!</h1>
-          <div className="searchNbtn">
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Enter product name"
-                name="search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-              />
-            </div>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        </div>
-  
-        {addedToCart && ( // Show message when added to cart
+         {addedToCart && ( // Show message when added to cart
           <div className="added-to-cart-message">
             Added to cart successfully!
-          </div>
-        )}
-  
-        {/* Pop-up card */}
-        {isSearching && (
-          <div className="searching-popup-card">
-            <div className="popup-content">
-              <p>We are searching...</p>
-            </div>
           </div>
         )}
   
@@ -143,22 +70,22 @@ function Home() {
             <div className="product-category">
               <h1>Vegetable</h1>
               <h1>
-                <Link to="/vegetables" className="view-all-link">
+                <Link to="/ViewVegetables" className="view-all-link">
                   View all
                 </Link>
               </h1>
             </div>
             <div className="separator"></div>
             <div className="product-card">
-              <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory("vegetable").map((vegetable) => (
-                  <ProductCard
-                    key={vegetable.id}
-                    data={vegetable}
-                    onAddToCart={addToCart}
-                  />
-                ))}
-              </Box>
+            <Box sx={{ display: "flex", gap: "40px" }}>
+              {products.filter((product) => product.category === "vegetable").map((vegetable) => (
+                <ProductCard
+                  key={vegetable._id} // Assuming _id is the unique identifier for each product
+                  data={vegetable}
+                  onAddToCart={addToCart} // Pass addToCart function to ProductCard
+                />
+              ))}
+            </Box>
             </div>
           </div>
   
@@ -167,22 +94,22 @@ function Home() {
             <div className="product-category">
               <h1>Fruit</h1>
               <h1>
-                <Link to="/fruits" className="view-all-link">
+                <Link to="/ViewFruits" className="view-all-link">
                   View all
                 </Link>
               </h1>
             </div>
             <div className="separator"></div>
             <div className="product-card">
-              <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory("fruit").map((fruit) => (
-                  <ProductCard
-                    key={fruit.id}
-                    data={fruit}
-                    onAddToCart={addToCart}
-                  />
-                ))}
-              </Box>
+            <Box sx={{ display: "flex", gap: "40px" }}>
+              {products.filter((product) => product.category === "fruits").map((fruits) => (
+                <ProductCard
+                  key={fruits._id} // Assuming _id is the unique identifier for each product
+                  data={fruits}
+                  onAddToCart={addToCart} // Pass addToCart function to ProductCard
+                />
+              ))}
+            </Box>
             </div>
           </div>
   
@@ -191,22 +118,22 @@ function Home() {
             <div className="product-category">
               <h1>Dairy</h1>
               <h1>
-                <Link to="/dairy" className="view-all-link">
+                <Link to="/ViewDairy" className="view-all-link">
                   View all
                 </Link>
               </h1>
             </div>
             <div className="separator"></div>
             <div className="product-card">
-              <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory("dairy").map((dairy) => (
-                  <ProductCard
-                    key={dairy.id}
-                    data={dairy}
-                    onAddToCart={addToCart}
-                  />
-                ))}
-              </Box>
+            <Box sx={{ display: "flex", gap: "40px" }}>
+              {products.filter((product) => product.category === "dairy").map((dairy) => (
+                <ProductCard
+                  key={dairy._id} // Assuming _id is the unique identifier for each product
+                  data={dairy}
+                  onAddToCart={addToCart} // Pass addToCart function to ProductCard
+                />
+              ))}
+            </Box>
             </div>
           </div>
         </div>

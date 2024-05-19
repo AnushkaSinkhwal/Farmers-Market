@@ -4,10 +4,8 @@ import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import "../styles/cart.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import CheckoutForm from "./CheckoutForm.jsx";
 
 function ProductCard({
   photo_url,
@@ -39,8 +37,7 @@ function Cart() {
   const [optionASelected, setOptionASelected] = useState(false);
   const [optionBSelected, setOptionBSelected] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [checkoutClicked, setCheckoutClicked] = useState(false);
-  const dispatch = useDispatch();
+  const [setCheckoutClicked] = useState(false);
   const navigate = useNavigate();
 
   const totalCost = products.reduce((acc, product) => acc + product.totalPrice, 0)

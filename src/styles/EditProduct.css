@@ -27,6 +27,16 @@
   margin-bottom: 10px;
 }
 
+.pdname {
+  flex: 1;
+  background: #f8ffb9;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .edit-input-form label {
   width: 150px;
   margin-right: 10px;
@@ -52,6 +62,7 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  gap: 20px;
 }
 
 .edit-form-buttons .edit-submit button {
