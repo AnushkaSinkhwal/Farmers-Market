@@ -37,9 +37,7 @@ function ProductDetailedView() {
   const dispatch = useDispatch();
   const { id, type } = useParams();
   const product = useSelector((state) =>
-    state?.product?.products[type]?.find(
-      (vegetable) => vegetable.id === Number(id)
-    )
+    state?.product?.products?.find((prod) => prod?._id === id)
   );
 
   //NEED TO CALL API TO GET
@@ -79,8 +77,6 @@ function ProductDetailedView() {
     );
   };
 
-  console.log(id, "hello");
-
   return (
     <div>
       <div className="detail-container">
@@ -89,16 +85,16 @@ function ProductDetailedView() {
             <div className="img-container">
               <Box
                 component="img"
-                src={product?.photo_url}
+                src={product?.productImage}
                 alt="cabbaGE"
                 className="productimg"
               />
             </div>
             <div className="text-side">
-              <h1>{product?.name}</h1>
+              <h1>{product?.productName}</h1>
               <div className="seperator"></div>
               <p>Seller- cha min vegetables</p>
-              <p>Price: Rs.{product?.price}/kg </p>
+              <p>Price: Rs.{product?.productPrice}/kg </p>
               <div className="seperator"></div>
 
               <h3>Quantity</h3>
@@ -116,7 +112,7 @@ function ProductDetailedView() {
 
           <div className="description-card">
             <h1>Description</h1>
-            <p>{product?.description}</p>
+            <p>{product?.productDescription}</p>
           </div>
         </div>
 

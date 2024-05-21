@@ -71,24 +71,6 @@ function Home() {
   return (
     <div>
       <div className="home-container">
-        {/* The search*/}
-        <div className="Search-container">
-          <h1>Order Now!</h1>
-          <div className="searchNbtn">
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Enter product name"
-                name="search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-              />
-            </div>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        </div>
-
         {addedToCart && ( // Show message when added to cart
           <div className="added-to-cart-message">
             Added to cart successfully!
@@ -110,7 +92,7 @@ function Home() {
             <div className="product-category">
               <h1>Vegetable</h1>
               <h1>
-                <Link to="/vegetables" className="view-all-link">
+                <Link to="/viewall/vegetable" className="view-all-link">
                   View all
                 </Link>
               </h1>
@@ -134,7 +116,7 @@ function Home() {
             <div className="product-category">
               <h1>Fruit</h1>
               <h1>
-                <Link to="/fruits" className="view-all-link">
+                <Link to="/viewall/fruit" className="view-all-link">
                   View all
                 </Link>
               </h1>
@@ -158,7 +140,7 @@ function Home() {
             <div className="product-category">
               <h1>Dairy</h1>
               <h1>
-                <Link to="/dairy" className="view-all-link">
+                <Link to="/viewall/dairy" className="view-all-link">
                   View all
                 </Link>
               </h1>

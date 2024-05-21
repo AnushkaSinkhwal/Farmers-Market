@@ -23,11 +23,9 @@ import EditProduct from "./Pages/EditProduct";
 import Customer from "./Pages/Customer";
 import ProductDetailedView from "./Pages/ProductDetailedView";
 import Queries from "./Pages/Queries";
-import ViewVegetables from "./Pages/ViewVegetables";
-import ViewDairy from "./Pages/ViewDairy";
-import ViewFruits from "./Pages/ViewFruits";
 import ProductList from "./Pages/ProductList";
 import CheckoutForm from "./Pages/CheckoutForm";
+import ViewAllProducts from "./Pages/ViewAllProducts";
 
 function App() {
   return (
@@ -58,10 +56,13 @@ function App() {
               path="/productDetailedView/:type/:id"
               element={<ProductDetailedView />}
             />
-            <Route exact path="/ViewVegetables" element={<ViewVegetables />} />
-            <Route exact path="/ViewDairy" element={<ViewDairy />} />
-            <Route exact path="/ViewFruits" element={<ViewFruits />} />
+
             <Route exact path="/ProductList" element={<ProductList />} />
+            <Route
+              exact
+              path="viewall/:category"
+              element={<ViewAllProducts />}
+            />
           </Route>
         </Routes>
         <Footer />
