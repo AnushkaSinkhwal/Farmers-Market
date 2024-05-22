@@ -25,9 +25,10 @@ function Home() {
           process.env.REACT_APP_BACKEND_URL + "/api/products"
         );
         const response = await jsonResponse.json();
-        if (response?.data) {
-          dispatch(addProducts(response.data));
-          setProducts(response.data);
+
+        if (response) {
+          dispatch(addProducts(response));
+          setProducts(response);
         } else {
           setError("Failed to fetch products.");
         }
@@ -47,6 +48,7 @@ function Home() {
     }, 2000);
   };
 
+  console.log("products: ", products);
   const filterProductsByCategory = (category) => {
     return products
       .filter((product) => product.category === category)
@@ -87,7 +89,7 @@ function Home() {
               <Box sx={{ display: "flex", gap: "40px" }}>
                 {filterProductsByCategory("vegetable").map((vegetable) => (
                   <ProductCard
-                    key={vegetable.id}
+                    key={vegetable._id}
                     data={vegetable}
                     onAddToCart={addToCart}
                   />
@@ -111,7 +113,7 @@ function Home() {
               <Box sx={{ display: "flex", gap: "40px" }}>
                 {filterProductsByCategory("fruit").map((fruit) => (
                   <ProductCard
-                    key={fruit.id}
+                    key={fruit._id}
                     data={fruit}
                     onAddToCart={addToCart}
                   />
@@ -135,7 +137,7 @@ function Home() {
               <Box sx={{ display: "flex", gap: "40px" }}>
                 {filterProductsByCategory("dairy").map((dairy) => (
                   <ProductCard
-                    key={dairy.id}
+                    key={dairy._id}
                     data={dairy}
                     onAddToCart={addToCart}
                   />
