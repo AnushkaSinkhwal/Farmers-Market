@@ -40,35 +40,6 @@ function Home() {
     fetchProducts();
   }, [dispatch]);
 
-  const handleSearch = () => {
-    setIsSearching(true);
-    // Perform search functionality with searchValue
-
-    // search for the text in the product name or description
-    const searchResults = products.filter(
-      (product) =>
-        product.productName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.productDescription
-          .toLowerCase()
-          .includes(searchValue.toLowerCase())
-    );
-
-    setProducts(searchResults); // Update the products with the search results
-
-    // Reset the search value
-    setSearchValue("");
-
-    setTimeout(() => {
-      setIsSearching(false);
-    }, 2000);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSearch();
-    }
-  };
   const addToCart = (product) => {
     setAddedToCart(true); // Set state to show cart message
     setTimeout(() => {

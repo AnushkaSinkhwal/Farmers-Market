@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 
-function Search() {
+function Search({ props }) {
+  let products = props.products;
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = () => {
     setIsSearching(true);
-    console.log("Searching for:", searchValue);
+    // Perform search functionality with searchValue
+
+    // search for the text in the product name or description
+    const searchResults = products.filter(
+      (product) =>
+        product.productName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.productDescription
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+    );
+
+    products = searchResults; // Update the products with the search results
+
+    // Reset the search value
+    setSearchValue("");
 
     setTimeout(() => {
       setIsSearching(false);

@@ -38,7 +38,7 @@ const ViewAllProducts = () => {
     <div className="view-all-container">
       <h1>All {category}s</h1>
       <div className="seperator" />
-      <Search />
+      <Search products={products} />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
           {products.map((product) => (
