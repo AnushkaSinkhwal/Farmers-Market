@@ -1,11 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/EditProduct.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
-function EditProduct() {
+function EditProduct(props) {
   const { id } = useParams();
-  console.log("Product ID: ", id);
-  const handleSubmit = (event) => {};
+  const navigation = useNavigate();
+  const [product, setProduct] = useState({
+    _id: "",
+    productName: "",
+    category: "",
+    productPrice: "",
+    unit: "",
+    productImage: "",
+    productQuantity: "",
+    productDescription: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
+  };
+
+  //get product by id
+  useEffect(() => {
+    // Fetch product by id
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACKEND_URL + `/api/products/${id}`
+        );
+        const data = await response.json();
+        setProduct(data.data); // Set the initial state with the received data
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  // handle update
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + `/api/products/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(product),
+        }
+      );
+      console.log("response: ", response);
+      if (response.ok) {
+        navigation("/ProductList");
+      }
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
 
   return (
     <div className="edit-container">
@@ -14,20 +72,14 @@ function EditProduct() {
           <div className="edit-input-form">
             {/* Product Name */}
             <div className="edit-input-group">
-              <label htmlFor="productName">Product Name:</label>
-              <label htmlFor="productName" className="pdname">
-                Apple
-              </label>
-            </div>
-
-            {/* New Name */}
-            <div className="edit-input-group">
-              <label htmlFor="newName">New Name:</label>
+              <label htmlFor="name">Product Name:</label>
               <input
                 type="text"
-                id="newName"
-                name="newName"
-                placeholder="New Product Name"
+                id="name"
+                name="productName"
+                placeholder="Product Name"
+                value={product.productName}
+                onChange={handleChange}
               />
             </div>
 
@@ -39,8 +91,15 @@ function EditProduct() {
                 id="productPrice"
                 name="productPrice"
                 placeholder="Product Price"
+                value={product.productPrice}
+                onChange={handleChange}
               />
-              <select id="unit" name="unit">
+              <select
+                id="unit"
+                name="unit"
+                value={product.unit}
+                onChange={handleChange}
+              >
                 <option value="categoryOption">--Select--</option>
                 <option value="kg">Per Kg</option>
                 <option value="item">Per item</option>
@@ -56,6 +115,8 @@ function EditProduct() {
                 id="productImage"
                 name="productImage"
                 placeholder="Product Image URL"
+                value={product.productImage}
+                onChange={handleChange}
               />
             </div>
 
@@ -67,6 +128,8 @@ function EditProduct() {
                 id="productQuantity"
                 name="productQuantity"
                 placeholder="Product Quantity"
+                value={product.productQuantity}
+                onChange={handleChange}
               />
             </div>
 
@@ -76,6 +139,8 @@ function EditProduct() {
                 id="productDescription"
                 name="productDescription"
                 placeholder="Product Description"
+                value={product.productDescription}
+                onChange={handleChange}
               ></textarea>
             </div>
           </div>
