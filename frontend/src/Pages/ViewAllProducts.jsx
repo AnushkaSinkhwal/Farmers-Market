@@ -12,7 +12,6 @@ import { Box } from "@mui/material";
 const ViewAllProducts = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,8 +20,9 @@ const ViewAllProducts = () => {
           process.env.REACT_APP_BACKEND_URL + "/api/products"
         );
         const response = await jsonResponse.json();
-        if (response?.data && category) {
-          const filterdData = response?.data?.filter(
+        console.log("response: ", response);
+        if (response && category) {
+          const filterdData = response?.filter(
             (item) => item?.category === category
           );
           setProducts(filterdData || []);
@@ -32,18 +32,20 @@ const ViewAllProducts = () => {
       }
     };
     fetchProducts();
-  }, [dispatch, category]);
+  }, [category]);
+  console.log("products: ", products);
 
   return (
     <div className="view-all-container">
       <h1>All {category}s</h1>
       <div className="seperator" />
-      <Search products={products} />
+      <Search products={products ? products : []} />
       <div className="product-grid">
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {products.map((product) => (
-            <ProductCard key={product.id} data={product} />
-          ))}
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} data={product} />
+            ))}
         </Box>
       </div>
     </div>

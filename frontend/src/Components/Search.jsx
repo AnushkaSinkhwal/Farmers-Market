@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 
-function Search({ props }) {
+function Search(props) {
   let products = props.products;
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
