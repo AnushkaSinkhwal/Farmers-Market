@@ -30,6 +30,23 @@ function ProductList() {
   }, []);
   console.log("products: ", products);
 
+  //delete product
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + `/api/products/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        setProducts(products.filter((product) => product._id !== id));
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   return (
     <div className="list-container">
       <h2>Product Listings</h2>
@@ -57,7 +74,9 @@ function ProductList() {
                     >
                       <button>Edit</button>
                     </Link>
-                    <button>Delete</button>
+                    <button onClick={() => handleDelete(product._id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
