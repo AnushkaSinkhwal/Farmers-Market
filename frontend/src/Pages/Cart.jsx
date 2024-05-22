@@ -10,22 +10,21 @@ import { useNavigate } from "react-router-dom";
 import CheckoutForm from "./CheckoutForm.jsx";
 
 function ProductCard({
-  productImage,
-  productName,
+  photo_url,
+  name,
   totalPrice,
-  productPrice,
-  productDescription,
+  price,
+  description,
   cartQuantity,
-  unit
 }) {
   return (
     <div className="card-cart">
-      <Box component="img" src={productImage} alt={productName} className="productimge" />
+      <Box component="img" src={photo_url} alt={name} className="productimge" />
       <div className="textcont">
-        <h1>{productName}</h1>
-        <p className="price">Rs. {productPrice}/{unit}</p>
-        <p>{productDescription}</p>
-        <p>{cartQuantity} {unit}</p>
+        <h1>{name}</h1>
+        <p className="price">Rs. {price}/kg</p>
+        <p>{description}</p>
+        <p>{cartQuantity} kg</p>
       </div>
       <div className="seperator-c"></div>
       <div className="price-card">
@@ -44,7 +43,6 @@ function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log("products: ", products);
   const totalCost = products.reduce(
     (acc, product) => acc + product.totalPrice,
     0

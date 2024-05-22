@@ -16,13 +16,7 @@ const loginFarmer = async (req, res) => {
 const signupFarmer = async (req, res) => {
   const { fname, phoneNumber, address, email, password } = req.body;
   try {
-    const farmer = await Farmer.create({
-      fname,
-      phoneNumber: +phoneNumber,
-      address,
-      email,
-      password,
-    });
+    const farmer = await Farmer.signupFarmer(fname, phoneNumber, address, email, password);
     res.status(200).json({
       message: "Signup successful",
       farmer: { id: farmer.id, fname: farmer.fname },

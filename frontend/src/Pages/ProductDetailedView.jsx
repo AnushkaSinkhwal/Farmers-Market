@@ -12,20 +12,18 @@ import Comment from "../Components/Comment";
 
 function QuantityBox({ handleIncrease, handleDecrease, quantity }) {
   return (
-    <div className="quantity-card">
-      <button onClick={handleDecrease} className="quantity-btn">
-        {" "}
-        -{" "}
+    <div className="quantity-card-qb">
+      <button onClick={handleDecrease} className="quantity-btn-qb">
+        -
       </button>
       <input
         type="number"
         value={quantity}
         readOnly
-        className="quantity-input"
+        className="quantity-input-qb"
       />
-      <button onClick={handleIncrease} className="quantity-btn">
-        {" "}
-        +{" "}
+      <button onClick={handleIncrease} className="quantity-btn-qb">
+        +
       </button>
     </div>
   );
@@ -36,21 +34,13 @@ function ProductDetailedView() {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { id, type } = useParams();
-  console.log("type: ", type);
-  console.log("id: ", id);
-  const product = useSelector((state) => {
-    console.log("state: ", state);
-
-    return state?.product?.products.find((product) => product._id === id);
-  });
-  console.log("product: ", product);
-
-  //NEED TO CALL API TO GET
+  const product = useSelector((state) =>
+    state?.product?.products.find((product) => product._id === id)
+  );
   const comments = useSelector((state) => state.commentData.comments);
   const filteredComments = comments.filter(
     (comment) => comment.productId === id && comment.userId === 1
   );
-
   const itemExistOnCart = useSelector((state) =>
     state?.cart?.items?.find?.((item) => item?.id === Number(id))
   );
@@ -73,11 +63,6 @@ function ProductDetailedView() {
 
   const addToCardHandler = () => {
     setShowModal(true);
-    console.log("cart", {
-      ...product,
-      cartQuantity: quantity,
-      totalPrice: quantity * product?.productPrice,
-    });
     dispatch(
       addToCart({
         ...product,
@@ -90,34 +75,32 @@ function ProductDetailedView() {
   return (
     <div>
       <div className="detail-container">
-        <div className="productdetail-conntainer">
+        <div className="productdetail-container">
           <div className="img-pri-card">
             <div className="img-container">
               <Box
                 component="img"
                 src={product?.productImage}
-                alt="cabbaGE"
+                alt="cabbage"
                 className="productimg"
               />
             </div>
-            <div className="text-side">
+            <div className="text-side-tt">
               <h1>{product?.productName}</h1>
-              <div className="seperator"></div>
-              <p>Seller- cha min vegetables</p>
+              <div className="seperator-tt"></div>
+              <p>Seller: Cha Min Vegetables</p>
               <p>
                 Price: Rs.{product?.productPrice}/{product?.unit}
               </p>
-              <div className="seperator"></div>
-
+              <div className="seperator-tt"></div>
               <h3>Quantity</h3>
-
               <QuantityBox
                 handleIncrease={handleIncrease}
                 handleDecrease={handleDecrease}
                 quantity={quantity}
               />
-              <button className="addtocartbtn" onClick={addToCardHandler}>
-                Add to cart
+              <button className="add-to-cart-btn-tt" onClick={addToCardHandler}>
+                Add to Cart
               </button>
             </div>
           </div>
@@ -148,11 +131,12 @@ function ProductDetailedView() {
               <span>Item has been successfully added to the cart!!</span>
             </div>
             <div className="buttonContainer">
-              <button onClick={() => navigate("/cart")}>Go to cart</button>
+              <button onClick={() => navigate("/cart")}>Go to Cart</button>
             </div>
           </Box>
         </Modal>
       </div>
+
       <div className="commentBlock">
         <div className="commentWrapper">
           <CommentForm productId={id} />
@@ -160,7 +144,7 @@ function ProductDetailedView() {
             style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
             {filteredComments.map((comment) => (
-              <Comment comment={comment} />
+              <Comment key={comment.id} comment={comment} />
             ))}
           </div>
         </div>

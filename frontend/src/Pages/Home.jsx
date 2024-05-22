@@ -21,9 +21,7 @@ function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const jsonResponse = await fetch(
-          process.env.REACT_APP_BACKEND_URL + "/api/products"
-        );
+        const jsonResponse = await fetch("http://localhost:8000/api/products");
         const response = await jsonResponse.json();
         if (response?.data) {
           dispatch(addProducts(response.data));
@@ -64,7 +62,6 @@ function Home() {
       setAddedToCart(false); // Reset state after a delay
     }, 2000);
   };
-  
   const filterProductsByCategory = (category) => {
     return products
       .filter((product) => product.category === category)
@@ -74,24 +71,6 @@ function Home() {
   return (
     <div>
       <div className="home-container">
-        {/* The search*/}
-        <div className="Search-container">
-          <h1>Order Now!</h1>
-          <div className="searchNbtn">
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Enter product name"
-                name="search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-              />
-            </div>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        </div>
-
         {addedToCart && ( // Show message when added to cart
           <div className="added-to-cart-message">
             Added to cart successfully!
@@ -113,7 +92,7 @@ function Home() {
             <div className="product-category">
               <h1>Vegetable</h1>
               <h1>
-                <Link to="/vegetables" className="view-all-link">
+                <Link to="/viewall/vegetable" className="view-all-link">
                   View all
                 </Link>
               </h1>
@@ -121,14 +100,13 @@ function Home() {
             <div className="separator"></div>
             <div className="product-card">
               <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory &&
-                  filterProductsByCategory("vegetable").map((vegetable) => (
-                    <ProductCard
-                      key={vegetable.id}
-                      data={vegetable}
-                      onAddToCart={addToCart}
-                    />
-                  ))}
+                {filterProductsByCategory("vegetable").map((vegetable) => (
+                  <ProductCard
+                    key={vegetable.id}
+                    data={vegetable}
+                    onAddToCart={addToCart}
+                  />
+                ))}
               </Box>
             </div>
           </div>
@@ -138,7 +116,7 @@ function Home() {
             <div className="product-category">
               <h1>Fruit</h1>
               <h1>
-                <Link to="/fruits" className="view-all-link">
+                <Link to="/viewall/fruit" className="view-all-link">
                   View all
                 </Link>
               </h1>
@@ -146,14 +124,13 @@ function Home() {
             <div className="separator"></div>
             <div className="product-card">
               <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory &&
-                  filterProductsByCategory("fruit").map((fruit) => (
-                    <ProductCard
-                      key={fruit.id}
-                      data={fruit}
-                      onAddToCart={addToCart}
-                    />
-                  ))}
+                {filterProductsByCategory("fruit").map((fruit) => (
+                  <ProductCard
+                    key={fruit.id}
+                    data={fruit}
+                    onAddToCart={addToCart}
+                  />
+                ))}
               </Box>
             </div>
           </div>
@@ -163,7 +140,7 @@ function Home() {
             <div className="product-category">
               <h1>Dairy</h1>
               <h1>
-                <Link to="/dairy" className="view-all-link">
+                <Link to="/viewall/dairy" className="view-all-link">
                   View all
                 </Link>
               </h1>
@@ -171,14 +148,13 @@ function Home() {
             <div className="separator"></div>
             <div className="product-card">
               <Box sx={{ display: "flex", gap: "40px" }}>
-                {filterProductsByCategory &&
-                  filterProductsByCategory("dairy").map((dairy) => (
-                    <ProductCard
-                      key={dairy.id}
-                      data={dairy}
-                      onAddToCart={addToCart}
-                    />
-                  ))}
+                {filterProductsByCategory("dairy").map((dairy) => (
+                  <ProductCard
+                    key={dairy.id}
+                    data={dairy}
+                    onAddToCart={addToCart}
+                  />
+                ))}
               </Box>
             </div>
           </div>

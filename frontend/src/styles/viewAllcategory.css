@@ -80,7 +80,6 @@ button:hover {
   background-color: #40b81b;
 }
 
-/* Separator */
 .separator {
   width: 100%;
   border-top: 3px solid #363333;
@@ -88,7 +87,6 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* View All Link */
 .view-all-link {
   text-decoration: none;
   color: #000;

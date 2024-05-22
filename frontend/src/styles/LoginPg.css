@@ -1,9 +1,9 @@
-.container {
+.container-c {
   height: 100%;
   margin: 40px;
 }
 
-.form-container {
+.form-container-c {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -14,7 +14,7 @@
   height: fit-content;
 }
 
-.header {
+.header-c {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,27 +23,27 @@
   margin-top: 20px;
 }
 
-.text {
+.text-c {
   color: black;
   font-size: 48px;
   font-weight: 700;
 }
 
-.underline {
+.underline-c {
   width: 200px;
   height: 6px;
   background: green;
   border-radius: 9px;
 }
 
-.inputs {
+.inputs-c {
   margin-top: 55px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.input {
+.input-c {
   display: flex;
   align-items: center;
   margin: auto;
@@ -53,23 +53,23 @@
   border-radius: 50px;
 }
 
-.input .BadgeIcon {
+.input-c .BadgeIcon-c {
   margin: 0px 30px;
 }
-.input .PhoneIcon {
+.input-c .PhoneIcon-c {
   margin: 0px 30px;
 }
-.input .HomeIcon {
+.input-c .HomeIcon-c {
   margin: 0px 30px;
 }
-.input .EmailIcon {
+.input-c .EmailIcon-c {
   margin: 0px 30px;
 }
-.input .LockIcon {
+.input-c .LockIcon-c {
   margin: 0px 30px;
 }
 
-.input input {
+.input-c input {
   height: 50px;
   width: 400px;
   background: transparent;
@@ -80,14 +80,14 @@
   margin-left: 35px;
 }
 
-.submit-container {
+.submit-container-c {
   display: flex;
   justify-content: center;
   gap: 30px;
   margin: 60px auto;
 }
 
-.submit button {
+.submit-c button {
   width: 220px;
   height: 59px;
   color: aliceblue;
@@ -99,11 +99,11 @@
   cursor: pointer;
 }
 
-.submit button:hover {
+.submit-c button:hover {
   background-color: rgb(85, 215, 85);
   color: black;
 }
-.gray {
+.gray-c {
   background: rgb(255, 255, 255);
   color: gray;
 }
