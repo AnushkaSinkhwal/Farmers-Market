@@ -42,7 +42,10 @@ function CheckoutForm({ products }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/submit-form", formData);
+      await axios.post(
+        process.env.REACT_APP_BACKEND_URL + "/submit-form",
+        formData
+      );
       console.log("Form submitted:", formData);
       // Reset form fields after submission
       setFormData({

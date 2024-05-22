@@ -24,7 +24,7 @@ function FarmerRegister() {
     console.log(fname, phoneNumber, email, password);
 
     const response = await fetch(
-      "http://localhost:5000/api/farmers/farmersignup",
+      process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmersignup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

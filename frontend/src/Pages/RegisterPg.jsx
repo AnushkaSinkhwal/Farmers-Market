@@ -18,11 +18,14 @@ function RegisterPg() {
     event.preventDefault();
     const user = { username, phoneNumber, address, email, password };
     console.log(username, phoneNumber, address, email, password);
-    const response = await fetch("http://localhost:5000/api/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
+    const response = await fetch(
+      process.env.REACT_APP_BACKEND_URL + "/api/users/signup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);

@@ -21,7 +21,9 @@ function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const jsonResponse = await fetch("http://localhost:8000/api/products");
+        const jsonResponse = await fetch(
+          process.env.REACT_APP_BACKEND_URL + "/api/products"
+        );
         const response = await jsonResponse.json();
         if (response?.data) {
           dispatch(addProducts(response.data));

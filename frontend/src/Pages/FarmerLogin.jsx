@@ -14,7 +14,7 @@ function FarmerLogin() {
     event.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:8000/api/farmers/farmerlogin",
+        process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmerlogin",
         {
           method: "POST",
           headers: {
