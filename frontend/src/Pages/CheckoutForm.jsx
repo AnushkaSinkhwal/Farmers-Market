@@ -19,6 +19,7 @@ function CheckoutForm({ products }) {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [checkoutClicked, setCheckoutClicked] = useState(false);
 
   useEffect(() => {
     calculateSubtotal();
@@ -60,6 +61,11 @@ function CheckoutForm({ products }) {
 
   const handleCloseModal = () => {
     setShowModal(false); // Close modal when close button is clicked
+  };
+
+  const handleProceedToCheckout = () => {
+    setShowModal(true);
+    setCheckoutClicked(true);
   };
 
   return (
@@ -113,9 +119,13 @@ function CheckoutForm({ products }) {
             </select>
           </label>
           <div className="delivery-charge-cf">
-            <p>Delivery Charge: RS. 10{deliveryCharge}</p>
+            <p>Delivery Charge: Rs. {deliveryCharge}</p>
           </div>
-          <button className="submit-button-cf" type="submit">
+          <button
+            className="submit-button-cf"
+            type="submit"
+            onClick={handleProceedToCheckout}
+          >
             Submit
           </button>
         </form>
@@ -123,7 +133,7 @@ function CheckoutForm({ products }) {
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
-        className={handleCloseModal}
+        className={"successModal"}
       >
         <Box className="modal-box-cf">
           <div className="modal-header-cf">
@@ -134,7 +144,7 @@ function CheckoutForm({ products }) {
             <CloseIcon className="close-icon-cf" onClick={handleCloseModal} />
           </div>
           <div className="description-cf">
-            <span>Successfully submitted form for placing order</span>
+            <span>Order placed successfully!</span>
           </div>
           <div className="button-container-cf">
             <button onClick={handleCloseModal}>Close</button>
