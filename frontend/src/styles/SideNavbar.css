@@ -1,0 +1,59 @@
+.sidnav-container {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #b2deb4;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.dashboard-link,
+.CustomerBtn,
+.FarmersBtn {
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #171a17;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.CustomerBtn:hover,
+.FarmersBtn:hover,
+.dashboard-link:hover {
+  background-color: #39493a;
+  color: #f1f1f1;
+}
+
+.customerDropdown,
+.FarmerDropdown {
+  display: none;
+  background-color: rgb(78, 129, 92);
+  padding-left: 8px;
+  font-size: large;
+}
+
+.active {
+  display: block;
+}
+
+.customerDropdown a,
+.FarmerDropdown a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.customerDropdown a:hover,
+.FarmerDropdown a:hover {
+  background-color: #39493a;
+}

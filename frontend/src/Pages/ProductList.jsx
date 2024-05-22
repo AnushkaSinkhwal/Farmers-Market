@@ -1,39 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Productlist.css";
-
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function ProductList() {
-  const [products, setProducts] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsLoading(true);
       try {
-        const jsonResponse = await fetch(
-          process.env.REACT_APP_BACKEND_URL + "/api/products"
-        );
-        const response = await jsonResponse.json();
-        if (response?.data) {
-          setProducts(response.data);
+        const response = await fetch('http://localhost:5000/api/products');
+        if (response.ok) {
+          const json = await response.json();
+          setProducts(Array.isArray(json) ? json : []);
         } else {
-          setError("Failed to fetch products.");
+          throw new Error("Failed to fetch products");
         }
       } catch (error) {
-        setError("Error fetching products.");
+        setError(error.message);
+        console.error("Error fetching products:", error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchProducts();
   }, []);
-  console.log("products: ", products);
+
+  const deleteProduct = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/products/deleteProduct/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete the product");
+      }
+      setProducts(products.filter((product) => product._id !== id));
+    } catch (error) {
+      setError(error.message);
+      console.error("Error deleting product:", error);
+    }
+  };
 
   return (
     <div className="list-container">
       <h2>Product Listings</h2>
-      <div className="tableC">
+      {isLoading && <p>Loading...</p>}
+      {error && <p className="error-message">{error}</p>}
+      <div className="table-container">
         <table>
           <thead>
             <tr>
@@ -44,23 +62,23 @@ function ProductList() {
             </tr>
           </thead>
           <tbody>
-            {products &&
+            {products.length > 0 ? (
               products.map((product, index) => (
                 <tr key={product._id}>
                   <td>{index + 1}</td>
                   <td>{product.productName}</td>
                   <td>{product.category}</td>
                   <td className="options">
-                    <Link
-                      to={`/EditProduct/${product._id}`}
-                      className="link-button"
-                    >
+                    <Link to={`/EditProduct/${product._id}`} className="link-button">
                       <button>Edit</button>
                     </Link>
-                    <button>Delete</button>
+                    <button onClick={() => deleteProduct(product._id)}>Delete</button>
                   </td>
                 </tr>
-              ))}
+              ))
+            ) : (
+              !isLoading && <tr><td colSpan="4">No products found.</td></tr>
+            )}
           </tbody>
         </table>
       </div>

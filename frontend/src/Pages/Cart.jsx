@@ -16,16 +16,25 @@ function ProductCard({
   productPrice,
   productDescription,
   cartQuantity,
-  unit
+  unit,
 }) {
   return (
     <div className="card-cart">
-      <Box component="img" src={productImage} alt={productName} className="productimge" />
+      <Box
+        component="img"
+        src={productImage}
+        alt={productName}
+        className="productimge"
+      />
       <div className="textcont">
         <h1>{productName}</h1>
-        <p className="price">Rs. {productPrice}/{unit}</p>
+        <p className="price">
+          Rs. {productPrice}/{unit}
+        </p>
         <p>{productDescription}</p>
-        <p>{cartQuantity} {unit}</p>
+        <p>
+          {cartQuantity} {unit}
+        </p>
       </div>
       <div className="seperator-c"></div>
       <div className="price-card">

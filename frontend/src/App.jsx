@@ -23,17 +23,24 @@ import EditProduct from "./Pages/EditProduct";
 import Customer from "./Pages/Customer";
 import ProductDetailedView from "./Pages/ProductDetailedView";
 import Queries from "./Pages/Queries";
-import ViewVegetables from "./Pages/ViewVegetables";
-import ViewDairy from "./Pages/ViewDairy";
-import ViewFruits from "./Pages/ViewFruits";
 import ProductList from "./Pages/ProductList";
 import CheckoutForm from "./Pages/CheckoutForm";
+import ViewAllProducts from "./Pages/ViewAllProducts";
+import Sidenavbar from "./Components/Sidenavbar";
+import CustomerList from "./admin/CustomerList";
+import AddCustomer from "./admin/AddCustomer";
+import AddFarmer from "./admin/AddFarmer";
+import CustomerOrder from "./admin/CustomerOrder";
+import EditCustomer from "./admin/Editcustomer";
+import EditFarmer from "./admin/EditFarmer";
+import FarmerList from "./admin/FarmerList";
 
 function App() {
   return (
     <div className="app">
       <Router>
         <Navbar />
+        <Sidenavbar />
         <ToastContainer />
         <Routes>
           {/* Public Routes */}
@@ -52,16 +59,31 @@ function App() {
             <Route exact path="/Customer" element={<Customer />} />
             <Route exact path="/Queries" element={<Queries />} />
             <Route exact path="/CheckoutForm" element={<CheckoutForm />} />
-
             <Route
               exact
               path="/productDetailedView/:type/:id"
               element={<ProductDetailedView />}
             />
-            <Route exact path="/vegetables" element={<ViewVegetables />} />
-            <Route exact path="/dairy" element={<ViewDairy />} />
-            <Route exact path="/fruits" element={<ViewFruits />} />
             <Route exact path="/ProductList" element={<ProductList />} />
+            <Route
+              exact
+              path="viewall/:category"
+              element={<ViewAllProducts />}
+            />
+            <Route exact path="/adminHome" element={<CustomerList />} />
+            <Route exact path="/AddCustomer" element={<AddCustomer />} />
+            <Route exact path="/AddFarmer" element={<AddFarmer />} />
+            <Route exact path="/CustomerList" element={<CustomerList />} />
+            <Route exact path="/CustomerOrder" element={<CustomerOrder />} />
+            <Route
+              exact
+              path="/Editcustomer/:id"
+              element={<EditCustomer />}
+            />{" "}
+            {/* Route with parameter */}
+            <Route exact path="/EditFarmer/:id" element={<EditFarmer />} />{" "}
+            {/* Fixed route for EditFarmer */}
+            <Route exact path="/FarmerList" element={<FarmerList />} />
           </Route>
         </Routes>
         <Footer />

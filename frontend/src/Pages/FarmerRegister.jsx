@@ -11,37 +11,51 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function FarmerRegister() {
-  const [fullName, setFullName] = useState("");
-  const [contact, setContact] = useState("");
+  const [fname, setFname] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submitting");
-    axios
-      .post(process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmersignup", {
-        fname: fullName,
-        phoneNumber: contact,
-        address,
-        email,
-        password,
-      })
-      .then((res) => toast.success(<div>User registered succesfully!!</div>));
+    const farmer = { fname, phoneNumber, email, password };
+    console.log(fname, phoneNumber, email, password);
+
+    const response = await fetch(
+      "http://localhost:5000/api/farmers/farmersignup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(farmer),
+      }
+    );
+    const json = await response.json();
+    if (!response.ok) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      setFname("");
+      setEmail("");
+      setPhoneNumber("");
+      setPassword("");
+      setError(null);
+      console.log("new farmer added", json);
+    }
   };
 
   return (
-    <div className="farmer-container">
-      <div className="farmer-form-container">
-        <div className="farmer-header">
-          <div className="farmer-text">Register as a seller</div>
-          <div className="farmer-underline"></div>
+    <div className="farmer-container-fm">
+      <div className="farmer-form-container-fm">
+        <div className="farmer-header-fm">
+          <div className="farmer-text-fm">Register as a seller</div>
+          <div className="farmer-underline-fm"></div>
         </div>
-        <form className="farmerRegister-form" onSubmit={handleSubmit}>
-          <div className="farmer-inputs">
-            <div className="farmer-input">
-              <span className="farmer-BadgeIcon">
+        <form className="farmerRegister-form-fm" onSubmit={handleSubmit}>
+          <div className="farmer-inputs-fm">
+            <div className="farmer-input-fm">
+              <span className="farmer-BadgeIcon-fm">
                 <BadgeIcon />
               </span>
               <input
@@ -49,13 +63,13 @@ function FarmerRegister() {
                 required
                 placeholder="Full Name/Company Name"
                 name="Name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={(e) => setFname(e.target.value)}
+                value={fname}
               />
             </div>
 
-            <div className="farmer-input">
-              <span className="farmer-PhoneIcon">
+            <div className="farmer-input-fm">
+              <span className="farmer-PhoneIcon-fm">
                 <PhoneIcon />
               </span>
               <input
@@ -63,13 +77,13 @@ function FarmerRegister() {
                 placeholder="Contact number"
                 required
                 name="Phoneno"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                value={phoneNumber}
               />
             </div>
 
-            <div className="farmer-input">
-              <span className="farmer-EmailIcon">
+            <div className="farmer-input-fm">
+              <span className="farmer-EmailIcon-fm">
                 <EmailIcon />
               </span>
               <input
@@ -77,13 +91,13 @@ function FarmerRegister() {
                 placeholder="example@gmail.com"
                 name="Email"
                 required
-                value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </div>
 
-            <div className="farmer-input">
-              <span className="farmer-LockIcon">
+            <div className="farmer-input-fm">
+              <span className="farmer-LockIcon-fm">
                 <LockIcon />
               </span>
               <input
@@ -91,13 +105,13 @@ function FarmerRegister() {
                 placeholder="Password"
                 name="Password"
                 required
-                value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
             </div>
 
-            <div className="farmer-input">
-              <span className="farmer-LockIcon">
+            <div className="farmer-input-fm">
+              <span className="farmer-LockIcon-fm">
                 <HomeIcon />
               </span>
               <input
@@ -111,13 +125,13 @@ function FarmerRegister() {
             </div>
           </div>
 
-          <div className="farmer-submit-container">
-            <div className="farmer-submit">
+          <div className="farmer-submit-container-fm">
+            <div className="farmer-submit-fm">
               <button type="submit" name="Register">
                 Register
               </button>
             </div>
-            <div className="farmer-submit">
+            <div className="farmer-submit-fm">
               <Link to="/FarmerLogin">
                 <button type="button" name="Login">
                   Login

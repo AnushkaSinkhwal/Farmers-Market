@@ -2,60 +2,94 @@ import React, { useState } from "react";
 import "../styles/FarmerRegister.css";
 import BadgeIcon from "@mui/icons-material/Badge";
 import LockIcon from "@mui/icons-material/Lock";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function FarmerLogin() {
-  const handleSubmit = (event) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/farmers/farmerlogin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Login failed");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      // Save any necessary data to state or context
+      navigate("/FarmerDashboard");
+    } catch (error) {
+      setError(error.message);
+      console.error("Error:", error);
+    }
   };
 
   return (
-    <div className="farmer-container">
-      <div className="farmer-form-container">
-        <div className="farmer-header">
-          <div className="farmer-text">Login</div>
-          <div className="farmer-underline"></div>
+    <div className="farmer-container-fm">
+      <div className="farmer-form-container-fm">
+        <div className="farmer-header-fm">
+          <div className="farmer-text-fm">Login</div>
+          <div className="farmer-underline-fm"></div>
         </div>
 
-        <form className="farmerLogin-form" onSubmit={handleSubmit}>
-          <div className="farmer-inputs">
-            <div className="farmer-input">
-              <span className="farmer-BadgeIcon">
+        <form className="farmerLogin-form-fm" onSubmit={handleSubmit}>
+          <div className="farmer-inputs-fm">
+            <div className="farmer-input-fm">
+              <span className="farmer-BadgeIcon-fm">
                 <BadgeIcon />
               </span>
               <input
                 type="text"
-                placeholder="Registered Name"
-                name="FarmerName"
+                placeholder="Email address"
+                name="FarmerEmail"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </div>
 
-            <div className="farmer-input">
-              <span className="farmer-LockIcon">
+            <div className="farmer-input-fm">
+              <span className="farmer-LockIcon-fm">
                 <LockIcon />
               </span>
               <input
                 type="password"
                 placeholder="Password"
                 name="FarmerPassword"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
             </div>
           </div>
 
-          <div className="farmer-submit-container">
-            <div className="farmer-submit">
-              <Link to="/FarmerRegister">
+          {error && <div className="farmer-error-fm">{error}</div>}
+
+          <div className="farmer-submit-container-fm">
+            <div className="farmer-submit-fm">
+              <Link to="/FarmerRegister-fm">
                 <button type="button" name="Register">
                   Register
                 </button>
               </Link>
             </div>
-            <div className="farmer-submit">
-              <Link to="/FarmerDashbord">
-                <button type="submit" name="Login">
-                  Login
-                </button>
-              </Link>
+            <div className="farmer-submit-fm">
+              <button type="submit" name="Login">
+                Login
+              </button>
             </div>
           </div>
         </form>

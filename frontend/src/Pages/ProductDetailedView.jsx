@@ -12,8 +12,8 @@ import Comment from "../Components/Comment";
 
 function QuantityBox({ handleIncrease, handleDecrease, quantity }) {
   return (
-    <div className="quantity-card">
-      <button onClick={handleDecrease} className="quantity-btn">
+    <div className="quantity-card-qb">
+      <button onClick={handleDecrease} className="quantity-btn-qb">
         {" "}
         -{" "}
       </button>
@@ -21,9 +21,9 @@ function QuantityBox({ handleIncrease, handleDecrease, quantity }) {
         type="number"
         value={quantity}
         readOnly
-        className="quantity-input"
+        className="quantity-input-qb"
       />
-      <button onClick={handleIncrease} className="quantity-btn">
+      <button onClick={handleIncrease} className="quantity-btn-qb">
         {" "}
         +{" "}
       </button>
@@ -100,14 +100,14 @@ function ProductDetailedView() {
                 className="productimg"
               />
             </div>
-            <div className="text-side">
+            <div className="text-side-tt">
               <h1>{product?.productName}</h1>
-              <div className="seperator"></div>
+              <div className="seperator-tt"></div>
               <p>Seller- cha min vegetables</p>
               <p>
                 Price: Rs.{product?.productPrice}/{product?.unit}
               </p>
-              <div className="seperator"></div>
+              <div className="seperator-tt"></div>
 
               <h3>Quantity</h3>
 
@@ -116,7 +116,7 @@ function ProductDetailedView() {
                 handleDecrease={handleDecrease}
                 quantity={quantity}
               />
-              <button className="addtocartbtn" onClick={addToCardHandler}>
+              <button className="addtocartbtn-tt" onClick={addToCardHandler}>
                 Add to cart
               </button>
             </div>
