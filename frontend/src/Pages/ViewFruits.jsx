@@ -7,7 +7,6 @@ import "../styles/viewAllcategory.css";
 import Search from "../Components/Search";
 
 function ProductCardViewfruits(props) {
-  console.log("props: ", props);
   return (
     <div className="card" onClick={props.data.onClick}>
       <Box

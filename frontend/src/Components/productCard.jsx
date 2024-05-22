@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
 function ProductCard(props) {
-  console.log('props: ', props.data);
   const navigate = useNavigate();
 
   return (

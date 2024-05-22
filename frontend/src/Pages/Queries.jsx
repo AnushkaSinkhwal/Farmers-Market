@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 function Queries() {
   const comments = useSelector((state) => state.commentData.comments);
+  console.log('comments: ', comments);
   const filteredComment = comments.filter((comment) => comment.storeId === 121);
   console.log(filteredComment);
   return (
