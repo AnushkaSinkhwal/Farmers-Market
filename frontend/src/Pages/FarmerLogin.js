@@ -39,59 +39,61 @@ function FarmerLogin() {
   };
 
   return (
-    <div className="farmer-container">
-      <div className="farmer-header">
-        <div className="farmer-text">Login</div>
-        <div className="farmer-underline"></div>
+    <div className="farmer-container-fm">
+      <div className="farmer-form-container-fm">
+        <div className="farmer-header-fm">
+          <div className="farmer-text-fm">Login</div>
+          <div className="farmer-underline-fm"></div>
+        </div>
+
+        <form className="farmerLogin-form-fm" onSubmit={handleSubmit}>
+          <div className="farmer-inputs-fm">
+            <div className="farmer-input-fm">
+              <span className="farmer-BadgeIcon-fm">
+                <BadgeIcon />
+              </span>
+              <input
+                type="text"
+                placeholder="Email Address"
+                name="FarmerName"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
+
+            <div className="farmer-input-fm">
+              <span className="farmer-LockIcon-fm">
+                <LockIcon />
+              </span>
+              <input
+                type="password"
+                placeholder="Password"
+                name="FarmerPassword"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+          </div>
+
+          <div className="farmer-submit-container-fm">
+            <div className="farmer-submit-fm">
+              <Link to="/FarmerRegister">
+                <button type="button" name="Register">
+                  Register
+                </button>
+              </Link>
+            </div>
+            <div className="farmer-submit-fm">
+              <Link to="/FarmerDashbord">
+                {" "}
+                <button type="submit" name="Login">
+                  Login
+                </button>
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
-
-      <form className="farmerLogin-form" onSubmit={handleSubmit}>
-        <div className="farmer-inputs">
-          <div className="farmer-input">
-            <span className="farmer-BadgeIcon">
-              <BadgeIcon />
-            </span>
-            <input
-              type="text"
-              placeholder="Email Address"
-              name="FarmerName"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-          </div>
-
-          <div className="farmer-input">
-            <span className="farmer-LockIcon">
-              <LockIcon />
-            </span>
-            <input
-              type="password"
-              placeholder="Password"
-              name="FarmerPassword"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </div>
-        </div>
-
-        <div className="farmer-submit-container">
-          <div className="farmer-submit">
-            <Link to="/FarmerRegister">
-              <button type="button" name="Register">
-                Register
-              </button>
-            </Link>
-          </div>
-          <div className="farmer-submit">
-            <Link to="/FarmerDashbord">
-              {" "}
-              <button type="submit" name="Login">
-                Login
-              </button>
-            </Link>
-          </div>
-        </div>
-      </form>
     </div>
   );
 }

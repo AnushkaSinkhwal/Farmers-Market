@@ -52,6 +52,7 @@ function CheckoutForm({ products }) {
         paymentMethod: "",
       });
       setShowSuccessModal(true);
+      setOrderPlaced(true); // Set orderPlaced to true after successful submission
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -62,13 +63,13 @@ function CheckoutForm({ products }) {
   };
 
   return (
-    <div>
+    <div className="checkout-container-cf">
       <h2>Checkout</h2>
       {orderPlaced ? (
         <p>Your order has been successfully placed!</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
+        <form className="checkout-form-cf" onSubmit={handleSubmit}>
+          <label className="checkout-label-cf">
             Full Name:
             <input
               type="text"
@@ -78,7 +79,7 @@ function CheckoutForm({ products }) {
               required
             />
           </label>
-          <label>
+          <label className="checkout-label-cf">
             Address:
             <textarea
               name="address"
@@ -87,7 +88,7 @@ function CheckoutForm({ products }) {
               required
             />
           </label>
-          <label>
+          <label className="checkout-label-cf">
             Phone Number:
             <input
               type="tel"
@@ -97,7 +98,7 @@ function CheckoutForm({ products }) {
               required
             />
           </label>
-          <label>
+          <label className="checkout-label-cf">
             Payment Method:
             <select
               name="paymentMethod"
@@ -111,10 +112,12 @@ function CheckoutForm({ products }) {
               {/* Add more payment methods as needed */}
             </select>
           </label>
-          <div>
-            <p>Delivery Charge: $ 15{deliveryCharge}</p>
+          <div className="delivery-charge-cf">
+            <p>Delivery Charge: RS. 10{deliveryCharge}</p>
           </div>
-          <button type="submit">Submit</button>
+          <button className="submit-button-cf" type="submit">
+            Submit
+          </button>
         </form>
       )}
       <Modal
@@ -122,19 +125,19 @@ function CheckoutForm({ products }) {
         onClose={() => setShowModal(false)}
         className={handleCloseModal}
       >
-        <Box className={"modalBox"}>
-          <div className="modal-header">
-            <div className="title">
+        <Box className="modal-box-cf">
+          <div className="modal-header-cf">
+            <div className="title-cf">
               <CheckCircleIcon />
               <span>Confirmation</span>
             </div>
-            <CloseIcon className="closeIcon" onClick={handleCloseModal} />
+            <CloseIcon className="close-icon-cf" onClick={handleCloseModal} />
           </div>
-          <div className="description">
-            <span>successfully submitted form for placing order</span>
+          <div className="description-cf">
+            <span>Successfully submitted form for placing order</span>
           </div>
-          <div className="buttonContainer">
-            <button onClick={handleCloseModal}>close</button>
+          <div className="button-container-cf">
+            <button onClick={handleCloseModal}>Close</button>
           </div>
         </Box>
       </Modal>

@@ -1,7 +1,7 @@
-.farmer-container {
+.farmer-container-fm {
   height: auto;
 }
-.farmer-form-container {
+.farmer-form-container-fm {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -14,7 +14,7 @@
   border: 3px solid black;
 }
 
-.farmer-header {
+.farmer-header-fm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,27 +23,27 @@
   margin-top: 30px;
 }
 
-.farmer-text {
+.farmer-text-fm {
   color: black;
   font-size: 48px;
   font-weight: 700;
 }
 
-.farmer-underline {
+.farmer-underline-fm {
   width: 200px;
   height: 6px;
   background: green;
   border-radius: 9px;
 }
 
-.farmer-inputs {
+.farmer-inputs-fm {
   margin-top: 55px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.farmer-input {
+.farmer-input-fm {
   display: flex;
   align-items: center;
   margin: auto;
@@ -53,23 +53,23 @@
   border-radius: 50px;
 }
 
-.farmer-input .farmer-BadgeIcon {
+.farmer-input-fm .farmer-BadgeIcon-fm {
   margin: 0px 30px;
 }
-.farmer-input .farmer-PhoneIcon {
+.farmer-input-fm .farmer-PhoneIcon-fm {
   margin: 0px 30px;
 }
-.farmer-input .farmer-HomeIcon {
+.farmer-input-fm .farmer-HomeIcon-fm {
   margin: 0px 30px;
 }
-.farmer-input .farmer-EmailIcon {
+.farmer-input-fm .farmer-EmailIcon-fm {
   margin: 0px 30px;
 }
-.farmer-input .farmer-LockIcon {
+.farmer-input-fm .farmer-LockIcon-fm {
   margin: 0px 30px;
 }
 
-.farmer-input input {
+.farmer-input-fm input {
   height: 50px;
   width: 400px;
   background: transparent;
@@ -80,14 +80,14 @@
   margin-left: 35px;
 }
 
-.farmer-submit-container {
+.farmer-submit-container-fm {
   display: flex;
   justify-content: center;
   gap: 30px;
   margin: 60px auto;
 }
 
-.farmer-submit button {
+.farmer-submit-fm button {
   width: 220px;
   height: 59px;
   color: aliceblue;
@@ -98,11 +98,11 @@
   transition-duration: 0.4s;
   cursor: pointer;
 }
-.farmer-submit button:hover {
+.farmer-submit-fm button:hover {
   background-color: rgb(85, 215, 85);
   color: black;
 }
-.farmer-gray {
+.farmer-gray-fm {
   background: rgb(255, 255, 255);
   color: gray;
 }
