@@ -42,7 +42,7 @@ function ProductDetailedView() {
     (comment) => comment.productId === id && comment.userId === 1
   );
   const itemExistOnCart = useSelector((state) =>
-    state?.cart?.items?.find?.((item) => item?.id === Number(id))
+    state?.cart?.items?.find?.((item) => item?._id === Number(id))
   );
 
   useEffect(() => {

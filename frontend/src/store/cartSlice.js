@@ -11,12 +11,12 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const products = [...state?.items];
       const dataExist = products?.find(
-        (item) => item?.id === action?.payload?.id
+        (item) => item?._id === action?.payload?._id
       );
       let itemsToSave;
       if (dataExist) {
         itemsToSave = products?.map((item) =>
-          item?.id === action?.payload?.id
+          item?._id === action?.payload?._id
             ? { ...item, cartQuantity: action?.payload?.cartQuantity }
             : item
         );
