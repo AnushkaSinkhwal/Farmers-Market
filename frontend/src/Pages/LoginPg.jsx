@@ -37,7 +37,7 @@ function LoginPg() {
 
       const data = await response.json();
       console.log(data);
-      navigate('/Home');
+      navigate('/');
     } catch (error) {
       setError(error.message);
       console.error('Error:', error);

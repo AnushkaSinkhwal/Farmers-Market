@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 function ProductList() {
   const [products, setProducts] = React.useState([]);
   const [error, setError] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false)
   useEffect(() => {
     const fetchProducts = async () => {
       try {

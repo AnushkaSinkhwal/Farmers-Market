@@ -40,7 +40,10 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10);
+    console.log("new password", this.password)
+    const hashedpassword = await bcrypt.hash(this.password, 10);
+    console.log("hashed password", hashedpassword)
+    this.password = hashedpassword
   }
   next();
 });
@@ -58,9 +61,14 @@ userSchema.statics.signup = async function (username, phoneNumber, address, emai
     throw Error('Password must contain at least 8 characters with one uppercase, one lowercase, one symbol and one number');
   }
 
-  const exists = await this.findOne({ username });
-  if (exists) {
+  const usernameexists = await this.findOne({ username });
+  if (usernameexists) {
     throw Error('Username already exists');
+  }
+
+  const emailexists = await this.findOne({ email });
+  if (emailexists) {
+    throw Error('email already exists');
   }
 
   const user = await this.create({ username, phoneNumber, address, email, password });

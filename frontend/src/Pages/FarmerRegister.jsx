@@ -20,8 +20,8 @@ function FarmerRegister() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const farmer = { fname, phoneNumber, email, password };
-    console.log(fname, phoneNumber, email, password);
+    const farmer = { fname, phoneNumber, email, password, address };
+    console.log(fname, phoneNumber, email, password, address);
 
     const response = await fetch(
       process.env.REACT_APP_BACKEND_URL + "/api/farmers/farmersignup",
@@ -40,6 +40,7 @@ function FarmerRegister() {
       setEmail("");
       setPhoneNumber("");
       setPassword("");
+      setAddress("");
       setError(null);
       console.log("new farmer added", json);
     }

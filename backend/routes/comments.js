@@ -4,6 +4,6 @@ const {createComment} = require('../controllers/commentController')
 const router = express.Router()
 
 //create comment
-router.post('/comment', createComment)
+router.post('/', createComment)
 
 module.exports = router

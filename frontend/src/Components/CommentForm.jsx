@@ -34,7 +34,7 @@ const CommentForm = ({
       setIsReply(false);
     } else {
       axios
-        .post(process.env.REACT_APP_BACKEND_URL, {
+        .post(process.env.REACT_APP_BACKEND_URL+"/api/comments", {
           prodID: productId,
           username: "ABC",
           comment: commentText,

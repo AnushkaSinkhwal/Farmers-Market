@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/EditProduct.css";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
-function EditProduct(props) {
+function EditProduct() {
   const { id } = useParams();
   const navigation = useNavigate();
   const [product, setProduct] = useState({
@@ -33,7 +33,8 @@ function EditProduct(props) {
           process.env.REACT_APP_BACKEND_URL + `/api/products/${id}`
         );
         const data = await response.json();
-        setProduct(data.data); // Set the initial state with the received data
+        console.log("editing data",data)
+        setProduct(data); // Set the initial state with the received data
       } catch (error) {
         console.error("Error fetching product:", error);
       }

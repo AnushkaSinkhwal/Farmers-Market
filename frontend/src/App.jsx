@@ -118,7 +118,7 @@ function App() {
             />
             <Route
               exact
-              path="/FarmerDashbord"
+              path="/FarmerDashboard"
               element={
                 <NavLayout>
                   <FarmerDashbord />
