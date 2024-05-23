@@ -6,24 +6,24 @@ import { useSelector } from "react-redux";
 
 function ProductList() {
   const [products, setProducts] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const jsonResponse = await fetch(
+        const response = await fetch(
           process.env.REACT_APP_BACKEND_URL + "/api/products"
         );
-        const response = await jsonResponse.json();
-        if (response?.data) {
-          setProducts(response.data);
+        if (response.ok) {
+          const json = await response.json();
+          setProducts(json);
         } else {
-          setError("Failed to fetch products.");
+          throw new Error("Failed to fetch products");
         }
       } catch (error) {
-        setError("Error fetching products.");
+        setError(error);
+        console.error("Error fetching products:", error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchProducts();

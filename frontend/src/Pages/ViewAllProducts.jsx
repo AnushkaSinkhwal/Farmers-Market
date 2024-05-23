@@ -17,7 +17,7 @@ const ViewAllProducts = () => {
     const fetchProducts = async () => {
       try {
         const jsonResponse = await fetch(
-          process.env.REACT_APP_BACKEND_URL + "/api/products"
+          'http://localhost:5000/api/products'
         );
         const response = await jsonResponse.json();
         console.log("response: ", response);
